@@ -46,6 +46,33 @@
     "socials": "Les liens sociaux seront ajoutés lorsqu'ils seront confirmés.",
     "copyright": "© {year} Younass Ibn Abdeslam. Tous droits réservés."
   },
+  "Projects": {
+    "metadataTitle": "Projets | Younass.me",
+    "metadataDescription": "Sélection de projets en cybersécurité et ingénierie logicielle de Younass Ibn Abdeslam.",
+    "eyebrow": "Projets",
+    "title": "Une sélection de travaux techniques.",
+    "introduction": "Une sélection factuelle de travaux en cybersécurité et infrastructure, présentée avec son périmètre et son état actuels.",
+    "projectCount": "{count, plural, =1 {# projet} other {# projets}}",
+    "filterLabel": "Filtrer les projets par catégorie",
+    "allCategories": "Tous les projets",
+    "emptyFilter": "Aucun projet n'est actuellement listé dans cette catégorie.",
+    "backToProjects": "Retour aux projets",
+    "technologies": "Technologies",
+    "notFoundTitle": "Projet introuvable",
+    "notFoundDescription": "Ce projet n'existe pas dans le portfolio actuel.",
+    "categories": {
+      "offensive-security": "Sécurité offensive",
+      "network-infrastructure-security": "Sécurité réseau et infrastructure",
+      "security-engineering": "Ingénierie sécurité / DevSecOps",
+      "application-security": "Sécurité applicative",
+      "cryptography": "Cryptographie"
+    },
+    "statuses": {
+      "experimental": "Expérimental",
+      "in-progress": "En cours",
+      "completed": "Terminé"
+    }
+  },
   "About": {
     "metadataTitle": "À propos | Younass.me",
     "metadataDescription": "Parcours académique, orientation professionnelle et domaines techniques de Younass Ibn Abdeslam.",
