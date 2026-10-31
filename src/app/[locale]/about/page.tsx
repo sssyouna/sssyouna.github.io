@@ -5,6 +5,7 @@ import {notFound} from 'next/navigation';
 import {Container} from '@/components/ui/container';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
+import {localizedMetadata} from '@/lib/metadata';
 
 const skillGroups = [
   {title: 'offensiveSecurity', items: 'offensiveSecurityItems'},
@@ -24,10 +25,12 @@ export async function generateMetadata({
 
   setRequestLocale(locale);
   const t = await getTranslations('About');
-  return {
+  return localizedMetadata({
+    locale,
+    path: '/about',
     title: t('metadataTitle'),
     description: t('metadataDescription')
-  };
+  });
 }
 
 export default async function AboutPage({

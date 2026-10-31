@@ -1,7 +1,12 @@
-import {useTranslations} from 'next-intl';
+import type {Metadata} from 'next';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {hasLocale} from 'next-intl';
+import {notFound} from 'next/navigation';
 import {Link} from '@/i18n/navigation';
 import {Container} from '@/components/ui/container';
 import {SectionHeading} from '@/components/ui/section-heading';
+import {routing, type Locale} from '@/i18n/routing';
+import {localizedMetadata} from '@/lib/metadata';
 
 const previews = [
   {href: '/about', title: 'aboutTitle', description: 'aboutDescription'},
@@ -23,8 +28,34 @@ const previews = [
   {href: '/contact', title: 'contactTitle', description: 'contactDescription'}
 ] as const;
 
-export default function HomePage() {
-  const t = useTranslations('Home');
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) return {};
+
+  setRequestLocale(locale);
+  const t = await getTranslations('Metadata');
+  return localizedMetadata({
+    locale,
+    path: '',
+    title: t('title'),
+    description: t('description')
+  });
+}
+
+export default async function HomePage({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}) {
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+
+  setRequestLocale(locale as Locale);
+  const t = await getTranslations('Home');
 
   return (
     <main>

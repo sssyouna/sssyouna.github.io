@@ -6,6 +6,7 @@ import {ProjectFilter} from '@/components/projects/project-filter';
 import {Container} from '@/components/ui/container';
 import {projects, projectCategories} from '@/content/projects';
 import {routing, type Locale} from '@/i18n/routing';
+import {localizedMetadata} from '@/lib/metadata';
 
 export async function generateMetadata({
   params
@@ -17,7 +18,12 @@ export async function generateMetadata({
 
   setRequestLocale(locale);
   const t = await getTranslations('Projects');
-  return {title: t('metadataTitle'), description: t('metadataDescription')};
+  return localizedMetadata({
+    locale,
+    path: '/projects',
+    title: t('metadataTitle'),
+    description: t('metadataDescription')
+  });
 }
 
 export default async function ProjectsPage({

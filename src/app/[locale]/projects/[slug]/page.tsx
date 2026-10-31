@@ -5,6 +5,7 @@ import {notFound} from 'next/navigation';
 import {ProjectCaseStudy} from '@/components/projects/project-case-study';
 import {getProject, projects} from '@/content/projects';
 import {routing, type Locale} from '@/i18n/routing';
+import {localizedMetadata} from '@/lib/metadata';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -23,10 +24,12 @@ export async function generateMetadata({
 
   setRequestLocale(locale);
   const t = await getTranslations('Projects');
-  return {
+  return localizedMetadata({
+    locale,
+    path: `/projects/${slug}`,
     title: `${project.title[locale]} | ${t('metadataTitle')}`,
     description: project.summary[locale]
-  };
+  });
 }
 
 export default async function ProjectPage({

@@ -4,6 +4,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {Container} from '@/components/ui/container';
 import {routing, type Locale} from '@/i18n/routing';
+import {localizedMetadata} from '@/lib/metadata';
 
 export async function generateMetadata({
   params
@@ -15,10 +16,12 @@ export async function generateMetadata({
 
   setRequestLocale(locale);
   const t = await getTranslations('Experience');
-  return {
+  return localizedMetadata({
+    locale,
+    path: '/experience',
     title: t('metadataTitle'),
     description: t('metadataDescription')
-  };
+  });
 }
 
 export default async function ExperiencePage({

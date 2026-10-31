@@ -102,6 +102,21 @@
       "clubDetail": "Engagement communautaire autour de Wireshark, de la stéganographie, de la participation à des CTF et de l'exploitation binaire. Il s'agit d'apprentissage pratique et de participation, et non d'un emploi ou d'une qualification officielle."
     }
   },
+  "Contact": {
+    "metadataTitle": "Contact | Younass.me",
+    "metadataDescription": "Informations de contact et de disponibilité pour un stage PFE de Younass Ibn Abdeslam.",
+    "eyebrow": "Contact",
+    "title": "Prêt pour un nouveau défi en sécurité.",
+    "introduction": "Je suis actuellement ouvert à une opportunité de stage PFE de six mois afin de continuer à développer une expérience pratique en cybersécurité et développement numérique.",
+    "availabilityEyebrow": "Disponibilité PFE",
+    "availabilityTitle": "Disponible de février à juillet 2027.",
+    "availabilityDescription": "Ouvert aux opportunités au Maroc et en France pour un stage PFE de six mois.",
+    "periodLabel": "Période",
+    "period": "Février–juillet 2027 · Six mois",
+    "locationLabel": "Localisation",
+    "location": "Maroc et France",
+    "contactDetailsNote": "Les coordonnées professionnelles et les profils vérifiés seront ajoutés dès confirmation."
+  },
   "About": {
     "metadataTitle": "À propos | Younass.me",
     "metadataDescription": "Parcours académique, orientation professionnelle et domaines techniques de Younass Ibn Abdeslam.",

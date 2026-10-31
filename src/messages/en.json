@@ -102,6 +102,21 @@
       "clubDetail": "Community involvement through Wireshark, steganography, CTF participation, and binary exploitation activities. This represents practical learning and participation, not employment or a formal qualification."
     }
   },
+  "Contact": {
+    "metadataTitle": "Contact | Younass.me",
+    "metadataDescription": "Contact and PFE internship availability information for Younass Ibn Abdeslam.",
+    "eyebrow": "Contact",
+    "title": "Open to the next security challenge.",
+    "introduction": "I am currently open to a six-month PFE internship opportunity where I can continue developing practical experience in cybersecurity and digital development.",
+    "availabilityEyebrow": "PFE availability",
+    "availabilityTitle": "Available from February to July 2027.",
+    "availabilityDescription": "Open to opportunities in Morocco and France for a six-month PFE internship.",
+    "periodLabel": "Period",
+    "period": "February–July 2027 · Six months",
+    "locationLabel": "Location",
+    "location": "Morocco and France",
+    "contactDetailsNote": "Professional contact details and verified profile links will be added once confirmed."
+  },
   "About": {
     "metadataTitle": "About | Younass.me",
     "metadataDescription": "Academic background, professional focus, and technical domains of Younass Ibn Abdeslam.",

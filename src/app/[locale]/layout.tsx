@@ -6,6 +6,7 @@ import {notFound} from 'next/navigation';
 import {routing, type Locale} from '@/i18n/routing';
 import {SiteHeader} from '@/components/layout/site-header';
 import {SiteFooter} from '@/components/layout/site-footer';
+import {localizedMetadata} from '@/lib/metadata';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -26,10 +27,12 @@ export async function generateMetadata({
   setRequestLocale(locale);
   const t = await getTranslations('Metadata');
 
-  return {
+  return localizedMetadata({
+    locale,
+    path: '',
     title: t('title'),
     description: t('description')
-  };
+  });
 }
 
 export default async function LocaleLayout({

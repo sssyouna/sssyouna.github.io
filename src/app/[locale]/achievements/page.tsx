@@ -7,6 +7,7 @@ import {achievements} from '@/content/achievements';
 import {Container} from '@/components/ui/container';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
+import {localizedMetadata} from '@/lib/metadata';
 
 export async function generateMetadata({
   params
@@ -18,10 +19,12 @@ export async function generateMetadata({
 
   setRequestLocale(locale);
   const t = await getTranslations('Achievements');
-  return {
+  return localizedMetadata({
+    locale,
+    path: '/achievements',
     title: t('metadataTitle'),
     description: t('metadataDescription')
-  };
+  });
 }
 
 export default async function AchievementsPage({
