@@ -188,6 +188,16 @@ a {
   color: var(--accent-foreground);
 }
 
+.achievement-entry {
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+}
+
+.achievement-entry-featured {
+  border-left-color: var(--accent);
+  padding-block: 0.25rem 0.25rem;
+}
+
 .filter-button:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 4px;

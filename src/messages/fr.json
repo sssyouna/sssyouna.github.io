@@ -73,6 +73,35 @@
       "completed": "Terminé"
     }
   },
+  "Achievements": {
+    "metadataTitle": "Réalisations | Younass.me",
+    "metadataDescription": "Certification professionnelle, apprentissage pratique, résultats en compétition et engagement dans la communauté cybersécurité.",
+    "eyebrow": "Réalisations",
+    "title": "Les preuves d'un apprentissage continu.",
+    "introduction": "Une certification professionnelle, des apprentissages pratiques en sécurité, une participation à une compétition et un engagement communautaire qui accompagnent le développement d'une pratique en cybersécurité.",
+    "certificationsEyebrow": "Certification professionnelle",
+    "certificationsTitle": "Une base vérifiée en cybersécurité.",
+    "learningEyebrow": "Apprentissage pratique",
+    "learningTitle": "Une pratique structurée au-delà d'une certification unique.",
+    "competitionEyebrow": "Compétition",
+    "competitionTitle": "Mettre ses compétences à l'épreuve.",
+    "communityEyebrow": "Engagement communautaire",
+    "communityTitle": "Apprendre avec la communauté SecOps de l'ENSA Fès.",
+    "professionalCertification": "CompTIA Security+",
+    "practicalLearning": "TryHackMe",
+    "competition": "CTF de l'ENSA Fès",
+    "communityInvolvement": "SecOps Club · ENSA Fès",
+    "entries": {
+      "securityPlusTitle": "CompTIA Security+ (SY0-701)",
+      "securityPlusDetail": "Certification professionnelle en cybersécurité. Examen réussi avec un score Pearson VUE de 795. Aucune date d'émission ou d'expiration n'est indiquée ici car elle n'a pas été fournie.",
+      "tryHackMePathsTitle": "Profil classé dans le Top 1%",
+      "tryHackMePathsDetail": "Parcours TryHackMe suivis : Jr Penetration Tester, Security Engineer et DevSecOps. Ils ont été délivrés en août 2026 et expirent en août 2029. Ils sont présentés comme des réalisations d'apprentissage sur la plateforme, et non comme des certifications professionnelles indépendantes.",
+      "ctfTitle": "2e place au CTF de l'ENSA Fès",
+      "ctfDetail": "Un résultat en compétition qui témoigne d'une participation à un challenge de cybersécurité. L'année, le nom de l'équipe, le nombre d'épreuves et les autres détails de classement ne sont pas supposés.",
+      "clubTitle": "Membre depuis octobre 2024",
+      "clubDetail": "Engagement communautaire autour de Wireshark, de la stéganographie, de la participation à des CTF et de l'exploitation binaire. Il s'agit d'apprentissage pratique et de participation, et non d'un emploi ou d'une qualification officielle."
+    }
+  },
   "About": {
     "metadataTitle": "À propos | Younass.me",
     "metadataDescription": "Parcours académique, orientation professionnelle et domaines techniques de Younass Ibn Abdeslam.",

@@ -73,6 +73,35 @@
       "completed": "Completed"
     }
   },
+  "Achievements": {
+    "metadataTitle": "Achievements | Younass.me",
+    "metadataDescription": "Professional certification, practical learning, competition results, and cybersecurity community involvement.",
+    "eyebrow": "Achievements",
+    "title": "Evidence of continuous learning.",
+    "introduction": "Professional certification, practical security learning, competition participation, and community involvement that support a growing cybersecurity practice.",
+    "certificationsEyebrow": "Professional certification",
+    "certificationsTitle": "A verified foundation in cybersecurity.",
+    "learningEyebrow": "Practical learning",
+    "learningTitle": "Structured practice beyond a single credential.",
+    "competitionEyebrow": "Competition",
+    "competitionTitle": "Applying skills under challenge conditions.",
+    "communityEyebrow": "Community involvement",
+    "communityTitle": "Learning with the SecOps community at ENSA Fès.",
+    "professionalCertification": "CompTIA Security+",
+    "practicalLearning": "TryHackMe",
+    "competition": "ENSA Fès CTF",
+    "communityInvolvement": "SecOps Club · ENSA Fès",
+    "entries": {
+      "securityPlusTitle": "CompTIA Security+ (SY0-701)",
+      "securityPlusDetail": "Professional cybersecurity certification. Exam passed with a Pearson VUE score of 795. No issue or expiration date is stated here because it has not been supplied.",
+      "tryHackMePathsTitle": "Top 1% profile achievement",
+      "tryHackMePathsDetail": "TryHackMe learning paths completed: Jr Penetration Tester, Security Engineer, and DevSecOps. These paths were issued in August 2026 and expire in August 2029. They are presented as platform learning achievements, not as independent professional certifications.",
+      "ctfTitle": "2nd place at the ENSA Fès CTF",
+      "ctfDetail": "A competition result reflecting participation in a cybersecurity challenge. No competition year, team name, challenge count, or additional ranking details are assumed.",
+      "clubTitle": "Member since October 2024",
+      "clubDetail": "Community involvement through Wireshark, steganography, CTF participation, and binary exploitation activities. This represents practical learning and participation, not employment or a formal qualification."
+    }
+  },
   "About": {
     "metadataTitle": "About | Younass.me",
     "metadataDescription": "Academic background, professional focus, and technical domains of Younass Ibn Abdeslam.",
