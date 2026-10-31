@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Younass.me",
-    "description": "Portfolio professionnel de Younass."
+    "description": "Portfolio professionnel de Younass Ibn Abdeslam."
   },
   "Navigation": {
     "home": "Accueil",
@@ -10,13 +10,48 @@
     "projects": "Projets",
     "achievements": "Réalisations",
     "contact": "Contact",
-    "switchLanguage": "English"
+    "switchLanguage": "English",
+    "primary": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "currentPage": "Page actuelle"
   },
-  "Foundation": {
-    "eyebrow": "Younass.me",
-    "title": "Un portfolio professionnel, conçu avec intention.",
-    "description": "La base bilingue est prête. Le contenu du portfolio sera ajouté lors de la prochaine phase.",
-    "primaryAction": "Découvrir le travail",
-    "secondaryAction": "Prendre contact"
+  "Home": {
+    "eyebrow": "Ingénierie de la cybersécurité et du développement numérique",
+    "title": "Younass Ibn Abdeslam",
+    "introduction": "Étudiant ingénieur à l'ENSA Fès, je m'intéresse à la conception de systèmes numériques sécurisés et au développement de compétences pratiques en cybersécurité et développement numérique.",
+    "certifications": "Certifié CompTIA Security+ · Top 1% sur TryHackMe",
+    "interests": "Intérêt pour la sécurité offensive, la sécurité des infrastructures, le DevSecOps et la gouvernance de la cybersécurité.",
+    "projectsCta": "Voir les projets",
+    "contactCta": "Me contacter",
+    "availabilityLabel": "Stage PFE",
+    "availabilityPeriod": "Février–juillet 2027 · Six mois",
+    "availabilityLocation": "Ouvert aux opportunités au Maroc et en France",
+    "previewEyebrow": "Découvrir",
+    "aboutTitle": "À propos",
+    "aboutDescription": "Découvrez le parcours académique et les centres d'intérêt professionnels de Younass.",
+    "experienceTitle": "Expérience",
+    "experienceDescription": "Un aperçu concis de l'expérience pratique et du développement technique.",
+    "projectsTitle": "Projets sélectionnés",
+    "projectsDescription": "Les travaux sélectionnés seront présentés ici à mesure que le contenu du portfolio sera ajouté.",
+    "achievementsTitle": "Réalisations",
+    "achievementsDescription": "Certifications et étapes vérifiées.",
+    "contactTitle": "Contact",
+    "contactDescription": "Échangeons au sujet d'une collaboration, d'un stage ou d'une opportunité professionnelle.",
+    "explore": "Découvrir la section",
+    "placeholder": "Le contenu détaillé sera ajouté lors d'une prochaine phase."
+  },
+  "Footer": {
+    "description": "Étudiant ingénieur en cybersécurité et développement numérique à l'ENSA Fès.",
+    "socials": "Les liens sociaux seront ajoutés lorsqu'ils seront confirmés.",
+    "copyright": "© {year} Younass Ibn Abdeslam. Tous droits réservés."
+  },
+  "PageStub": {
+    "about": "À propos",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "achievements": "Réalisations",
+    "contact": "Contact",
+    "description": "Cette section est en préparation et sera complétée lors d'une prochaine phase."
   }
 }

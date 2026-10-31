@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f6f2;
-  --surface: #fffefa;
-  --foreground: #17191c;
-  --foreground-muted: #5d6268;
-  --accent: #26445f;
-  --accent-hover: #1d354a;
-  --accent-foreground: #f7f6f2;
-  --border: #deded9;
-  --ring: #26445f;
+  --background: #f7f7f5;
+  --surface: #ffffff;
+  --foreground: #171717;
+  --foreground-muted: #737373;
+  --accent: #334e68;
+  --accent-hover: #273d52;
+  --accent-foreground: #f7f7f5;
+  --border: #e5e5e5;
+  --ring: #334e68;
 }
 
 @theme inline {
@@ -57,6 +57,10 @@ a {
   color: var(--accent);
 }
 
+.nav-link-active {
+  color: var(--accent);
+}
+
 .nav-link:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 4px;
@@ -64,6 +68,99 @@ a {
 
 .section-space {
   padding-block: clamp(5rem, 12vw, 10rem);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding-inline: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.button:focus-visible,
+.menu-button:focus-visible,
+.inline-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.button-primary:hover {
+  background: var(--accent-hover);
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.button-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.inline-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.inline-link:hover {
+  color: var(--accent-hover);
+}
+
+.menu-button {
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.menu-icon {
+  display: block;
+  font-size: 1.5rem;
+}
+
+.mobile-navigation {
+  position: absolute;
+  top: 5rem;
+  right: 1.5rem;
+  left: 1.5rem;
+  z-index: 10;
+  display: grid;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 1.25rem;
+  box-shadow: 0 12px 30px rgb(23 23 23 / 8%);
+}
+
+.mobile-nav-link {
+  color: var(--foreground-muted);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.mobile-nav-link:hover {
+  color: var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Younass.me",
-    "description": "Professional portfolio of Younass."
+    "description": "Professional portfolio of Younass Ibn Abdeslam."
   },
   "Navigation": {
     "home": "Home",
@@ -10,13 +10,48 @@
     "projects": "Projects",
     "achievements": "Achievements",
     "contact": "Contact",
-    "switchLanguage": "Français"
+    "switchLanguage": "Français",
+    "primary": "Primary navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "currentPage": "Current page"
   },
-  "Foundation": {
-    "eyebrow": "Younass.me",
-    "title": "A professional portfolio, thoughtfully built.",
-    "description": "The bilingual foundation is ready. Portfolio content will be added in the next phase.",
-    "primaryAction": "Explore the work",
-    "secondaryAction": "Get in touch"
+  "Home": {
+    "eyebrow": "Cybersecurity & digital development engineering",
+    "title": "Younass Ibn Abdeslam",
+    "introduction": "Engineering student at ENSA Fès, focused on building secure digital systems and developing practical expertise across cybersecurity and digital development.",
+    "certifications": "CompTIA Security+ certified · TryHackMe Top 1%",
+    "interests": "Interested in offensive security, infrastructure security, DevSecOps, and cybersecurity governance.",
+    "projectsCta": "View projects",
+    "contactCta": "Contact me",
+    "availabilityLabel": "PFE internship",
+    "availabilityPeriod": "February–July 2027 · Six months",
+    "availabilityLocation": "Open to opportunities in Morocco and France",
+    "previewEyebrow": "Explore",
+    "aboutTitle": "About",
+    "aboutDescription": "Learn more about Younass's academic path and professional focus.",
+    "experienceTitle": "Experience",
+    "experienceDescription": "A concise overview of practical experience and technical development.",
+    "projectsTitle": "Featured projects",
+    "projectsDescription": "Selected work will be presented here as the portfolio content is added.",
+    "achievementsTitle": "Achievements",
+    "achievementsDescription": "Certifications and verified milestones.",
+    "contactTitle": "Contact",
+    "contactDescription": "Get in touch about a collaboration, internship, or professional opportunity.",
+    "explore": "Explore section",
+    "placeholder": "Detailed content will be added in a later phase."
+  },
+  "Footer": {
+    "description": "Cybersecurity and digital development engineering student at ENSA Fès.",
+    "socials": "Social links will be added when confirmed.",
+    "copyright": "© {year} Younass Ibn Abdeslam. All rights reserved."
+  },
+  "PageStub": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "achievements": "Achievements",
+    "contact": "Contact",
+    "description": "This section is being prepared and will be completed in a later phase."
   }
 }
