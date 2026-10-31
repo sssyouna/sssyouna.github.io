@@ -1,0 +1,22 @@
+{
+  "Metadata": {
+    "title": "Younass.me",
+    "description": "Professional portfolio of Younass."
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "achievements": "Achievements",
+    "contact": "Contact",
+    "switchLanguage": "Français"
+  },
+  "Foundation": {
+    "eyebrow": "Younass.me",
+    "title": "A professional portfolio, thoughtfully built.",
+    "description": "The bilingual foundation is ready. Portfolio content will be added in the next phase.",
+    "primaryAction": "Explore the work",
+    "secondaryAction": "Get in touch"
+  }
+}
