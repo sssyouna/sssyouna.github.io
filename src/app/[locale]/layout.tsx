@@ -6,6 +6,7 @@ import {notFound} from 'next/navigation';
 import {routing, type Locale} from '@/i18n/routing';
 import {SiteHeader} from '@/components/layout/site-header';
 import {SiteFooter} from '@/components/layout/site-footer';
+import '../globals.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
