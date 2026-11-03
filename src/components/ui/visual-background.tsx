@@ -1,6 +1,7 @@
 'use client';
 
 import {useEffect, useRef, useState} from 'react';
+import {usePathname} from 'next/navigation';
 import type {AssetPath, BackgroundSection} from '@/content/assets';
 
 type VisualBackgroundProps = {
@@ -8,12 +9,16 @@ type VisualBackgroundProps = {
 };
 
 export function VisualBackground({backgrounds}: VisualBackgroundProps) {
-  const [activeSection, setActiveSection] = useState<BackgroundSection>('hero');
+  const [transition, setTransition] = useState<{from: BackgroundSection; to: BackgroundSection}>({
+    from: 'hero',
+    to: 'hero'
+  });
   const rootRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const root = rootRef.current;
-    if (!root || window.matchMedia('(pointer: coarse)').matches) return;
+    if (!root) return;
 
     const sections = Array.from(
       document.querySelectorAll<HTMLElement>('[data-background-section]')
@@ -27,13 +32,20 @@ export function VisualBackground({backgrounds}: VisualBackgroundProps) {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         const section = (visible?.target as HTMLElement | undefined)?.dataset
           .backgroundSection as BackgroundSection | undefined;
-        if (section) setActiveSection(section);
+        if (section) {
+          setTransition((current) =>
+            current.to === section ? current : {from: current.to, to: section}
+          );
+        }
       },
       {rootMargin: '-20% 0px -45% 0px', threshold: [0.1, 0.35, 0.6]}
     );
     sections.forEach((section) => observer.observe(section));
 
+    const canUsePointerMotion = window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const handlePointerMove = (event: PointerEvent) => {
+      if (!canUsePointerMotion || event.pointerType !== 'mouse') return;
       root.style.setProperty('--pointer-x', `${event.clientX}px`);
       root.style.setProperty('--pointer-y', `${event.clientY}px`);
       root.style.setProperty('--parallax-x', `${(event.clientX / window.innerWidth - 0.5) * 10}px`);
@@ -46,25 +58,31 @@ export function VisualBackground({backgrounds}: VisualBackgroundProps) {
       root.style.setProperty('--parallax-y', '0px');
     };
 
-    window.addEventListener('pointermove', handlePointerMove, {passive: true});
-    document.documentElement.addEventListener('mouseleave', handlePointerLeave);
+    if (canUsePointerMotion) {
+      window.addEventListener('pointermove', handlePointerMove, {passive: true});
+      document.documentElement.addEventListener('mouseleave', handlePointerLeave);
+    }
     return () => {
       observer.disconnect();
       window.removeEventListener('pointermove', handlePointerMove);
       document.documentElement.removeEventListener('mouseleave', handlePointerLeave);
     };
-  }, []);
+  }, [pathname]);
 
-  const images = backgrounds[activeSection] ?? [];
+  const renderLayer = (section: BackgroundSection, state: 'active' | 'previous') => {
+    const images = backgrounds[section] ?? [];
+    return images.slice(0, 2).map((src, index) => (
+      <div
+        key={`${section}-${src}`}
+        className={`visual-background-image ${state === 'active' ? 'visual-background-image-active' : 'visual-background-image-previous'} ${index === 1 ? 'visual-background-image-secondary' : ''}`}
+        style={{backgroundImage: `url("${src}")`}}
+      />
+    ));
+  };
   return (
-    <div ref={rootRef} className="visual-background" aria-hidden="true">
-      {images.slice(0, 2).map((src, index) => (
-        <div
-          key={src}
-          className={`visual-background-image ${index === 0 ? 'visual-background-image-active' : 'visual-background-image-secondary'}`}
-          style={{backgroundImage: `url("${src}")`, zIndex: index}}
-        />
-      ))}
+    <div ref={rootRef} className={`visual-background ${transition.to === 'contact' ? 'visual-background-contact' : ''} ${transition.to === 'hero' ? 'visual-background-hero' : ''}`} aria-hidden="true">
+      {transition.from !== transition.to && renderLayer(transition.from, 'previous')}
+      {renderLayer(transition.to, 'active')}
       <div className="visual-background-overlay" />
       <div className="visual-background-spotlight" />
     </div>

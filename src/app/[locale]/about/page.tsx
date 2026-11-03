@@ -67,11 +67,11 @@ export default async function AboutPage({
             {t('academicTitle')}
           </SectionHeading>
           <dl className="mt-10 grid gap-6 border-t border-border pt-8 sm:grid-cols-2">
-            <div>
+            <div className="education-card rounded-sm p-3">
               <dt className="text-sm text-foreground-muted">{t('institution')}</dt>
               <dd className="mt-2 text-lg font-medium text-foreground">{t('programme')}</dd>
             </div>
-            <div>
+            <div className="education-card rounded-sm p-3">
               <dt className="text-sm text-foreground-muted">{t('cycle')}</dt>
               <dd className="mt-2 text-lg font-medium text-foreground">{t('graduation')}</dd>
             </div>
@@ -84,7 +84,7 @@ export default async function AboutPage({
           <SectionHeading eyebrow={t('domainsEyebrow')}>{t('domainsTitle')}</SectionHeading>
           <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2">
             {skillGroups.map(({title, items}) => (
-              <article key={title} className="bg-background p-6 sm:p-8">
+              <article key={title} className="education-card bg-background p-6 sm:p-8">
                 <h3 className="text-xl font-semibold text-foreground">{t(title)}</h3>
                 <ul className="mt-5 space-y-3 text-foreground-muted">
                   {t(items).split('|').map((item) => (

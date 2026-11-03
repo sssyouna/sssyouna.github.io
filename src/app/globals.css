@@ -69,17 +69,29 @@ footer {
   background-size: cover;
   opacity: 0;
   transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(1.04);
-  transition: opacity 700ms ease, transform 1.2s ease;
+  transition: opacity 850ms cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   filter: saturate(0.65) contrast(0.9);
+  will-change: opacity, transform;
 }
 
 .visual-background-image-active {
   opacity: 0.28;
+  z-index: 1;
+}
+
+.visual-background-image-previous {
+  opacity: 0;
+  z-index: 0;
 }
 
 .visual-background-image-secondary {
-  opacity: 0.12;
+  opacity: 0;
   transform: translate3d(calc(var(--parallax-x) * -0.5), calc(var(--parallax-y) * -0.5), 0) scale(1.08);
+}
+
+.visual-background-image-active.visual-background-image-secondary {
+  opacity: 0.12;
+  z-index: 2;
 }
 
 .visual-background-overlay {
@@ -91,9 +103,18 @@ footer {
 .visual-background-spotlight {
   position: absolute;
   inset: 0;
-  opacity: 0.28;
+  opacity: 0.4;
   background: radial-gradient(circle 22rem at var(--pointer-x) var(--pointer-y), rgb(51 78 104 / 12%), transparent 72%);
   transition: opacity 300ms ease;
+}
+
+.visual-background-contact .visual-background-spotlight {
+  opacity: 0.52;
+  background: radial-gradient(circle 25rem at var(--pointer-x) var(--pointer-y), rgb(51 78 104 / 15%), transparent 74%);
+}
+
+.visual-background-hero .visual-background-spotlight {
+  opacity: 0.44;
 }
 
 .hero-section {
@@ -120,6 +141,16 @@ footer {
   transform: translateY(-0.2rem);
 }
 
+.education-card,
+.achievement-entry {
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 350ms ease, border-color 250ms ease;
+}
+
+.education-card:hover,
+.achievement-entry:hover {
+  transform: translateY(-0.2rem);
+}
+
 .project-card-interactive {
   transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
 }
@@ -127,6 +158,15 @@ footer {
 .project-card-interactive:hover {
   box-shadow: 0 1.5rem 3rem rgb(23 23 23 / 7%);
   transform: perspective(900px) rotateX(1deg) rotateY(-1deg) translateY(-0.25rem);
+}
+
+.project-card-interactive .inline-link span {
+  display: inline-block;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-interactive:hover .inline-link span {
+  transform: translateX(0.2rem);
 }
 
 .certificate-card {
@@ -140,6 +180,16 @@ footer {
   border-color: var(--accent);
   box-shadow: 0 1.25rem 2.5rem rgb(23 23 23 / 7%);
   transform: translateY(-0.25rem);
+}
+
+.certificate-preview {
+  transition: background-color 300ms ease, transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.certificate-card:hover .certificate-preview,
+.certificate-card:focus-within .certificate-preview {
+  transform: translateY(-0.1rem);
+  background-color: rgb(51 78 104 / 5%);
 }
 
 .certificate-preview {
@@ -248,6 +298,7 @@ a {
 }
 
 .inline-link {
+  position: relative;
   display: inline-flex;
   gap: 0.5rem;
   color: var(--accent);
@@ -257,6 +308,39 @@ a {
 
 .inline-link:hover {
   color: var(--accent-hover);
+}
+
+.inline-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.2rem;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.inline-link:hover::after,
+.inline-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.contact-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-section > div,
+.contact-section > div {
+  animation: editorial-arrive 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes editorial-arrive {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .timeline-dot {
@@ -383,4 +467,9 @@ a {
   .visual-background-image {
     transform: none;
   }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .visual-background-spotlight { opacity: 0; }
+  .visual-background-image { transform: none; }
 }
