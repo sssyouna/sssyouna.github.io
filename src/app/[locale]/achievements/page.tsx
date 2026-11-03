@@ -8,6 +8,8 @@ import {Container} from '@/components/ui/container';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {getAvailableCertificates} from '@/lib/assets';
+import {CertificateCard} from '@/components/achievements/certificate-card';
 
 export async function generateMetadata({
   params
@@ -44,10 +46,11 @@ export default async function AchievementsPage({
   const learning = byKind('learning');
   const competition = byKind('competition');
   const community = byKind('community');
+  const certificates = getAvailableCertificates();
 
   return (
     <main>
-      <section className="section-space border-b border-border">
+      <section data-background-section="ctf" className="section-space border-b border-border">
         <Container>
           <div className="max-w-3xl">
             <p className="eyebrow">{t('eyebrow')}</p>
@@ -61,12 +64,24 @@ export default async function AchievementsPage({
         </Container>
       </section>
 
-      <section className="section-space border-b border-border">
+      <section data-background-section="education" className="section-space border-b border-border">
         <Container>
           <SectionHeading eyebrow={t('certificationsEyebrow')}>
             {t('certificationsTitle')}
           </SectionHeading>
-          {certification ? (
+          {certificates.length > 0 ? (
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {certificates.map((certificate) => (
+                <CertificateCard
+                  key={certificate.id}
+                  certificate={certificate}
+                  title={t(`entries.${certificate.titleKey}`)}
+                  openLabel={t('openCertificate')}
+                  downloadLabel={t('downloadCertificate')}
+                />
+              ))}
+            </div>
+          ) : certification ? (
             <div className="mt-10">
               <AchievementEntry
                 title={t(`entries.${certification.titleKey}`)}
@@ -79,7 +94,7 @@ export default async function AchievementsPage({
         </Container>
       </section>
 
-      <section className="section-space border-b border-border">
+      <section data-background-section="ctf" className="section-space border-b border-border">
         <Container>
           <SectionHeading eyebrow={t('learningEyebrow')}>{t('learningTitle')}</SectionHeading>
           {learning ? (
@@ -94,7 +109,7 @@ export default async function AchievementsPage({
         </Container>
       </section>
 
-      <section className="section-space border-b border-border">
+      <section data-background-section="gitex" className="section-space border-b border-border">
         <Container>
           <SectionHeading eyebrow={t('competitionEyebrow')}>{t('competitionTitle')}</SectionHeading>
           {competition ? (
@@ -109,7 +124,7 @@ export default async function AchievementsPage({
         </Container>
       </section>
 
-      <section className="section-space">
+      <section data-background-section="education" className="section-space">
         <Container>
           <SectionHeading eyebrow={t('communityEyebrow')}>{t('communityTitle')}</SectionHeading>
           {community ? (

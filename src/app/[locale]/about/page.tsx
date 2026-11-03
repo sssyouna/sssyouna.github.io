@@ -46,7 +46,7 @@ export default async function AboutPage({
 
   return (
     <main>
-      <section className="section-space border-b border-border">
+      <section data-background-section="education" className="section-space border-b border-border">
         <Container>
           <div className="max-w-3xl">
             <p className="eyebrow">{t('eyebrow')}</p>

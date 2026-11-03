@@ -7,6 +7,8 @@ import {routing, type Locale} from '@/i18n/routing';
 import {SiteHeader} from '@/components/layout/site-header';
 import {SiteFooter} from '@/components/layout/site-footer';
 import {localizedMetadata} from '@/lib/metadata';
+import {assets} from '@/content/assets';
+import {VisualBackground} from '@/components/ui/visual-background';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -55,6 +57,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <VisualBackground backgrounds={assets.backgrounds} />
           <SiteHeader locale={locale as Locale} />
           {children}
           <SiteFooter />

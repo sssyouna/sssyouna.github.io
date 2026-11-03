@@ -7,6 +7,7 @@ import {Container} from '@/components/ui/container';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {MagneticLink} from '@/components/ui/magnetic-link';
 
 const previews = [
   {href: '/about', title: 'aboutTitle', description: 'aboutDescription'},
@@ -59,7 +60,7 @@ export default async function HomePage({
 
   return (
     <main>
-      <section className="section-space border-b border-border">
+      <section data-background-section="hero" className="section-space hero-section border-b border-border">
         <Container>
           <div className="max-w-4xl">
             <p className="eyebrow">{t('eyebrow')}</p>
@@ -79,15 +80,17 @@ export default async function HomePage({
               <Link href="/projects" className="button button-primary">
                 {t('projectsCta')}
               </Link>
-              <Link href="/contact" className="button button-secondary">
-                {t('contactCta')}
-              </Link>
+              <MagneticLink>
+                <Link href="/contact" className="button button-secondary">
+                  {t('contactCta')}
+                </Link>
+              </MagneticLink>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="border-b border-border py-8">
+      <section data-background-section="education" className="border-b border-border py-8">
         <Container>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm font-semibold text-accent">{t('availabilityLabel')}</p>

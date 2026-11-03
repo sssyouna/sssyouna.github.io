@@ -20,7 +20,7 @@ export function ProjectCaseStudy({
 }: ProjectCaseStudyProps) {
   return (
     <main>
-      <section className="section-space border-b border-border">
+      <section data-background-section="projects" className="section-space border-b border-border">
         <div className="mx-auto w-full max-w-4xl px-6 sm:px-8 lg:px-10">
           <Link href="/projects" className="inline-link">
             <span aria-hidden="true">←</span> {backLabel}
@@ -43,7 +43,7 @@ export function ProjectCaseStudy({
         </div>
       </section>
 
-      <section className="section-space">
+      <section data-background-section="projects" className="section-space">
         <div className="mx-auto grid w-full max-w-4xl gap-12 px-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_12rem] lg:px-10">
           <div className="space-y-12">
             {project.sections.map((section) => (

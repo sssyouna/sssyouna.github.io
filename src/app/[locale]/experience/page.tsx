@@ -37,7 +37,7 @@ export default async function ExperiencePage({
 
   return (
     <main>
-      <section className="section-space border-b border-border">
+      <section data-background-section="cimar" className="section-space border-b border-border">
         <Container>
           <div className="max-w-3xl">
             <p className="eyebrow">{t('eyebrow')}</p>
@@ -51,10 +51,10 @@ export default async function ExperiencePage({
         </Container>
       </section>
 
-      <section className="section-space">
+      <section data-background-section="macobate" className="section-space">
         <Container>
           <div className="relative space-y-14 border-l border-border pl-6 sm:pl-10">
-            <article className="relative">
+            <article className="relative experience-card">
               <span className="timeline-dot" aria-hidden="true" />
               <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                 <div>
@@ -88,7 +88,7 @@ export default async function ExperiencePage({
               </p>
             </article>
 
-            <article className="relative">
+            <article className="relative experience-card">
               <span className="timeline-dot" aria-hidden="true" />
               <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                 <div>

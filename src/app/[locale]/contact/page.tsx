@@ -38,7 +38,7 @@ export default async function ContactPage({
 
   return (
     <main>
-      <section className="section-space border-b border-border">
+      <section data-background-section="contact" className="section-space border-b border-border">
         <Container>
           <div className="max-w-3xl">
             <p className="eyebrow">{t('eyebrow')}</p>
@@ -52,7 +52,7 @@ export default async function ContactPage({
         </Container>
       </section>
 
-      <section className="section-space">
+      <section data-background-section="contact" className="section-space contact-section">
         <Container>
           <div className="grid gap-12 md:grid-cols-2">
             <div>

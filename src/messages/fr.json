@@ -91,8 +91,12 @@
     "practicalLearning": "TryHackMe",
     "competition": "CTF de l'ENSA Fès",
     "communityInvolvement": "SecOps Club · ENSA Fès",
+    "openCertificate": "Ouvrir le PDF",
+    "downloadCertificate": "Télécharger",
     "entries": {
       "securityPlusTitle": "CompTIA Security+ (SY0-701)",
+      "tryHackMeJrPentesterTitle": "Parcours Jr Penetration Tester",
+      "tryHackMeDevSecOpsTitle": "Parcours DevSecOps",
       "securityPlusDetail": "Certification professionnelle en cybersécurité. Examen réussi avec un score Pearson VUE de 795. Aucune date d'émission ou d'expiration n'est indiquée ici car elle n'a pas été fournie.",
       "tryHackMePathsTitle": "Profil classé dans le Top 1%",
       "tryHackMePathsDetail": "Parcours TryHackMe suivis : Jr Penetration Tester, Security Engineer et DevSecOps. Ils ont été délivrés en août 2026 et expirent en août 2029. Ils sont présentés comme des réalisations d'apprentissage sur la plateforme, et non comme des certifications professionnelles indépendantes.",

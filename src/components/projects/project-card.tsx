@@ -28,7 +28,7 @@ const categoryLabels = {
 
 export function ProjectCard({project, locale}: ProjectCardProps) {
   return (
-    <article className="project-card">
+    <article className="project-card project-card-interactive">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <span className="eyebrow">{categoryLabels[project.category][locale]}</span>
         <span className="status-label">{statusLabels[project.status][locale]}</span>

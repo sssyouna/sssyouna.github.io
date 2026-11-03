@@ -1,5 +1,33 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Portfolio assets
+
+Visual assets are centralized under `public/images/`. The typed mapping in
+`src/content/assets.ts` is the source of truth for section backgrounds and
+certificate documents:
+
+```text
+public/images/
+├── background/hero-bg.jpg
+├── education/ensa-campus.jpg
+├── education/education-extra.jpg
+├── events/ctf-01.jpg
+├── events/ctf-02.jpg
+├── events/gitex-01.jpg
+├── events/gitex-02.jpg
+├── certifications/security-plus.pdf
+├── certifications/tryhackme-jr-pentester.pdf
+├── certifications/tryhackme-devsecops.pdf
+├── experience/cimar-01.jpg
+├── experience/cimar-02.jpg
+├── experience/macobate-01.jpg
+└── experience/macobate-02.jpg
+```
+
+The repository intentionally does not fabricate missing photographs or
+certificates. Replace a file while keeping its name, or update the matching
+entry in `src/content/assets.ts`; missing files are ignored safely.
+
 ## Getting Started
 
 First, run the development server:
