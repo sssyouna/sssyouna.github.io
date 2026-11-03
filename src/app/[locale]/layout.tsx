@@ -7,13 +7,15 @@ import {routing, type Locale} from '@/i18n/routing';
 import {SiteHeader} from '@/components/layout/site-header';
 import {SiteFooter} from '@/components/layout/site-footer';
 import {localizedMetadata} from '@/lib/metadata';
-import {assets} from '@/content/assets';
 import {VisualBackground} from '@/components/ui/visual-background';
+import {getAvailableBackgrounds, hasResume} from '@/lib/assets';
 import '../globals.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params
@@ -56,9 +58,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <VisualBackground backgrounds={assets.backgrounds} />
-          <SiteHeader locale={locale as Locale} />
+        <NextIntlClientProvider
+          locale={locale}
+          messages={{Navigation: messages.Navigation}}
+        >
+          <VisualBackground backgrounds={getAvailableBackgrounds()} />
+          <SiteHeader locale={locale as Locale} hasResume={hasResume()} />
           {children}
           <SiteFooter />
         </NextIntlClientProvider>

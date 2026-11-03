@@ -7,12 +7,16 @@ export function MagneticLink({children, className = ''}: {children: React.ReactN
   const ref = useRef<HTMLSpanElement>(null);
 
   function handleMove(event: React.PointerEvent<HTMLSpanElement>) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (
+      event.pointerType !== 'mouse' ||
+      !window.matchMedia('(hover: hover) and (pointer: fine)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) return;
     const element = ref.current;
     if (!element) return;
     const bounds = element.getBoundingClientRect();
-    const x = (event.clientX - bounds.left - bounds.width / 2) * 0.12;
-    const y = (event.clientY - bounds.top - bounds.height / 2) * 0.12;
+    const x = Math.max(-7, Math.min(7, (event.clientX - bounds.left - bounds.width / 2) * 0.1));
+    const y = Math.max(-7, Math.min(7, (event.clientY - bounds.top - bounds.height / 2) * 0.1));
     element.style.setProperty('--magnetic-x', `${x}px`);
     element.style.setProperty('--magnetic-y', `${y}px`);
   }

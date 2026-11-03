@@ -79,6 +79,18 @@ export default async function AboutPage({
         </Container>
       </section>
 
+      <section data-background-section="education" className="border-b border-border py-20 sm:py-24">
+        <Container className="about-approach-layout">
+          <p className="eyebrow">{t('approachEyebrow')}</p>
+          <div>
+            <SectionHeading>{t('approachTitle')}</SectionHeading>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground-muted">
+              {t('approachDescription')}
+            </p>
+          </div>
+        </Container>
+      </section>
+
       <section className="section-space">
         <Container>
           <SectionHeading eyebrow={t('domainsEyebrow')}>{t('domainsTitle')}</SectionHeading>

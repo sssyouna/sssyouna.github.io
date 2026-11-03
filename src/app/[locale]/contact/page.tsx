@@ -3,9 +3,11 @@ import {hasLocale} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {Container} from '@/components/ui/container';
+import {Link} from '@/i18n/navigation';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {profile} from '@/content/profile';
 
 export async function generateMetadata({
   params
@@ -74,9 +76,22 @@ export default async function ContactPage({
               </div>
             </dl>
           </div>
-          <p className="mt-12 border-t border-border pt-6 text-sm text-foreground-muted">
-            {t('contactDetailsNote')}
-          </p>
+          <div className="contact-channel mt-16">
+            <div>
+              <p className="eyebrow">{t('contactChannelTitle')}</p>
+              <p className="mt-4 max-w-lg leading-7 text-foreground-muted">
+                {t('contactChannelDescription')}
+              </p>
+            </div>
+            <div className="contact-channel-actions">
+              <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
+                {t('githubLabel')} <span aria-hidden="true">↗</span>
+              </a>
+              <Link href="/projects" className="inline-link">
+                {t('projectsLink')} <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
     </main>

@@ -8,6 +8,7 @@ type ProjectCaseStudyProps = {
   categoryLabel: string;
   statusLabel: string;
   technologiesLabel: string;
+  repositoryLabel: string;
 };
 
 export function ProjectCaseStudy({
@@ -16,7 +17,8 @@ export function ProjectCaseStudy({
   backLabel,
   categoryLabel,
   statusLabel,
-  technologiesLabel
+  technologiesLabel,
+  repositoryLabel
 }: ProjectCaseStudyProps) {
   return (
     <main>
@@ -40,14 +42,20 @@ export function ProjectCaseStudy({
               </span>
             ))}
           </div>
+          {project.repository ? (
+            <a className="inline-link mt-8" href={project.repository} target="_blank" rel="noreferrer">
+              {repositoryLabel} <span aria-hidden="true">↗</span>
+            </a>
+          ) : null}
         </div>
       </section>
 
       <section data-background-section="projects" className="section-space">
         <div className="mx-auto grid w-full max-w-4xl gap-12 px-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_12rem] lg:px-10">
           <div className="space-y-12">
-            {project.sections.map((section) => (
-              <section key={section.title.en}>
+            {project.sections.map((section, index) => (
+              <section key={section.title.en} className="case-study-section">
+                <p className="case-study-index">{String(index + 1).padStart(2, '0')}</p>
                 <h2 className="text-2xl font-semibold tracking-tight text-foreground">
                   {section.title[locale]}
                 </h2>
