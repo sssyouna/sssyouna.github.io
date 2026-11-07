@@ -9,6 +9,7 @@ import {SiteFooter} from '@/components/layout/site-footer';
 import {localizedMetadata} from '@/lib/metadata';
 import {VisualBackground} from '@/components/ui/visual-background';
 import {getAvailableBackgrounds, hasResume} from '@/lib/assets';
+import {DesktopShell} from '@/components/layout/desktop-shell';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -63,9 +64,11 @@ export default async function LocaleLayout({
           messages={{Navigation: messages.Navigation}}
         >
           <VisualBackground backgrounds={getAvailableBackgrounds()} />
-          <SiteHeader locale={locale as Locale} hasResume={hasResume()} />
-          {children}
-          <SiteFooter />
+          <DesktopShell locale={locale as Locale}>
+            <SiteHeader locale={locale as Locale} hasResume={hasResume()} />
+            {children}
+            <SiteFooter />
+          </DesktopShell>
         </NextIntlClientProvider>
       </body>
     </html>

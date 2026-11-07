@@ -15,7 +15,15 @@
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "currentPage": "Page actuelle",
-    "downloadCv": "Télécharger le CV"
+    "downloadCv": "Télécharger le CV",
+    "desktopShortcuts": "Raccourcis du bureau",
+    "start": "Démarrer",
+    "startMenu": "Menu du portfolio",
+    "closeStartMenu": "Fermer le menu du portfolio",
+    "desktopPortfolio": "Portfolio cybersécurité",
+    "portfolioWindow": "Younass.me",
+    "minimizeWindow": "Réduire la fenêtre du portfolio",
+    "restoreWindow": "Restaurer la fenêtre du portfolio"
   },
   "Home": {
     "eyebrow": "Cybersécurité · Ingénierie · Développement",

@@ -15,7 +15,15 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "currentPage": "Current page",
-    "downloadCv": "Download CV"
+    "downloadCv": "Download CV",
+    "desktopShortcuts": "Desktop shortcuts",
+    "start": "Start",
+    "startMenu": "Portfolio menu",
+    "closeStartMenu": "Close portfolio menu",
+    "desktopPortfolio": "Cybersecurity portfolio",
+    "portfolioWindow": "Younass.me",
+    "minimizeWindow": "Minimize portfolio window",
+    "restoreWindow": "Restore portfolio window"
   },
   "Home": {
     "eyebrow": "Cybersecurity · Engineering · Development",
