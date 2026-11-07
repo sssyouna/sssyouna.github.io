@@ -4,12 +4,16 @@ import type {Project} from '@/content/projects';
 type ProjectCardProps = {
   project: Project;
   locale: 'en' | 'fr';
+  index?: string;
+  readLabel?: string;
+  repositoryLabel?: string;
 };
 
 const statusLabels = {
   experimental: {en: 'Experimental', fr: 'Expérimental'},
   'in-progress': {en: 'In progress', fr: 'En cours'},
-  completed: {en: 'Completed', fr: 'Terminé'}
+  completed: {en: 'Completed', fr: 'Terminé'},
+  prototype: {en: 'Prototype', fr: 'Prototype'}
 } as const;
 
 const categoryLabels = {
@@ -22,14 +26,20 @@ const categoryLabels = {
     en: 'Security Engineering / DevSecOps',
     fr: 'Ingénierie sécurité / DevSecOps'
   },
-  'application-security': {en: 'Application Security', fr: 'Sécurité applicative'},
-  cryptography: {en: 'Cryptography', fr: 'Cryptographie'}
+  'application-security': {en: 'Application Security', fr: 'Sécurité applicative'}
 } as const;
 
-export function ProjectCard({project, locale}: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  locale,
+  index,
+  readLabel = locale === 'en' ? 'Read case study' : 'Lire l’étude de cas',
+  repositoryLabel = 'GitHub'
+}: ProjectCardProps) {
   return (
     <article className="project-card project-card-interactive">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="project-card-topline">
+        {index ? <span className="project-index">{index}</span> : null}
         <span className="eyebrow">{categoryLabels[project.category][locale]}</span>
         <span className="status-label">{statusLabels[project.status][locale]}</span>
       </div>
@@ -44,9 +54,16 @@ export function ProjectCard({project, locale}: ProjectCardProps) {
           </li>
         ))}
       </ul>
-      <Link href={`/projects/${project.slug}`} className="inline-link mt-8">
-        {locale === 'en' ? 'Read case study' : 'Lire l’étude de cas'} <span aria-hidden="true">→</span>
-      </Link>
+      <div className="project-card-actions">
+        <Link href={`/projects/${project.slug}`} className="inline-link">
+          {readLabel} <span aria-hidden="true">→</span>
+        </Link>
+        {project.repository ? (
+          <a className="project-repository-link" href={project.repository} target="_blank" rel="noreferrer">
+            {repositoryLabel} <span aria-hidden="true">↗</span>
+          </a>
+        ) : null}
+      </div>
     </article>
   );
 }

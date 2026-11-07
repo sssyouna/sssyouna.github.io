@@ -14,37 +14,55 @@
     "primary": "Navigation principale",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "currentPage": "Page actuelle"
+    "currentPage": "Page actuelle",
+    "downloadCv": "Télécharger le CV"
   },
   "Home": {
-    "eyebrow": "Ingénierie de la cybersécurité et du développement numérique",
+    "eyebrow": "Cybersécurité · Ingénierie · Développement",
     "title": "Younass Ibn Abdeslam",
-    "introduction": "Étudiant ingénieur à l'ENSA Fès, je m'intéresse à la conception de systèmes numériques sécurisés et au développement de compétences pratiques en cybersécurité et développement numérique.",
-    "certifications": "Certifié CompTIA Security+ · Top 1% sur TryHackMe",
-    "interests": "Intérêt pour la sécurité offensive, la sécurité des infrastructures, le DevSecOps et la gouvernance de la cybersécurité.",
-    "projectsCta": "Voir les projets",
-    "contactCta": "Me contacter",
-    "availabilityLabel": "Stage PFE",
-    "availabilityPeriod": "Février–juillet 2027 · Six mois",
-    "availabilityLocation": "Ouvert aux opportunités au Maroc et en France",
-    "previewEyebrow": "Découvrir",
-    "aboutTitle": "À propos",
-    "aboutDescription": "Découvrez le parcours académique et les centres d'intérêt professionnels de Younass.",
-    "experienceTitle": "Expérience",
-    "experienceDescription": "Un aperçu concis de l'expérience pratique et du développement technique.",
-    "projectsTitle": "Projets sélectionnés",
-    "projectsDescription": "Les travaux sélectionnés seront présentés ici à mesure que le contenu du portfolio sera ajouté.",
-    "achievementsTitle": "Réalisations",
-    "achievementsDescription": "Certifications et étapes vérifiées.",
-    "contactTitle": "Contact",
-    "contactDescription": "Échangeons au sujet d'une collaboration, d'un stage ou d'une opportunité professionnelle.",
-    "explore": "Découvrir la section",
-    "placeholder": "Le contenu détaillé sera ajouté lors d'une prochaine phase."
+    "introduction": "Je suis étudiant ingénieur en cybersécurité et développement numérique à l’ENSA Fès. Je m’intéresse au fonctionnement des logiciels et des infrastructures, à leurs points de défaillance et aux moyens de les rendre plus sûrs par une ingénierie réfléchie.",
+    "interests": "Mes centres d’intérêt actuels incluent la sécurité applicative, la sécurité des infrastructures, la sécurité offensive et l’ingénierie sécurité.",
+    "projectsCta": "Découvrir une sélection de projets",
+    "contactCta": "Prendre contact",
+    "availabilityLabel": "Ouvert à un stage PFE de 6 mois",
+    "availabilityPeriod": "Février–juillet 2027",
+    "availabilityLocation": "Maroc · France",
+    "experienceTitle": "Apprendre par la pratique et les responsabilités.",
+    "experienceDescription": "Stages en évaluation de la sécurité applicative, gouvernance cybersécurité et développement logiciel.",
+    "achievementsTitle": "Une base construite par l’étude et la pratique.",
+    "contactTitle": "Intéressé par les systèmes sécurisés et une ingénierie réfléchie ?",
+    "downloadCv": "Télécharger le CV",
+    "profileSummaryLabel": "Profil / 2026",
+    "profileSummaryTitle": "Une ingénierie attentive à la sécurité, ancrée dans la pratique.",
+    "disciplineOne": "Sécurité applicative",
+    "disciplineTwo": "Infrastructures et supervision",
+    "disciplineThree": "Développement sécurisé",
+    "credentials": "CompTIA Security+ · Top 1% sur TryHackMe",
+    "credentialsLink": "Voir les réalisations",
+    "selectedWorkEyebrow": "Projets sélectionnés",
+    "selectedWorkTitle": "Explorer les enjeux de sécurité par l’ingénierie.",
+    "allProjects": "Tous les projets",
+    "experienceEyebrow": "Expérience",
+    "cimarRole": "Stagiaire cybersécurité & GRC",
+    "cimarCompany": "Heidelberg Materials – CIMAR",
+    "macobateRole": "Stagiaire en développement logiciel",
+    "macobateCompany": "Macobate",
+    "fullExperience": "Détails de l’expérience",
+    "achievementsEyebrow": "Réalisations sélectionnées",
+    "allAchievements": "Toutes les réalisations",
+    "securityPlusLabel": "Certification professionnelle",
+    "securityPlus": "CompTIA Security+ · SY0-701",
+    "learningLabel": "TryHackMe",
+    "tryHackMe": "Top 1% · Parcours en sécurité",
+    "competitionLabel": "Compétition",
+    "ctf": "2e place · CTF de l’ENSA Fès",
+    "contactEyebrow": "Contact",
+    "githubProfile": "Profil GitHub"
   },
   "Footer": {
     "description": "Étudiant ingénieur en cybersécurité et développement numérique à l'ENSA Fès.",
-    "socials": "Les liens sociaux seront ajoutés lorsqu'ils seront confirmés.",
-    "copyright": "© {year} Younass Ibn Abdeslam. Tous droits réservés."
+    "copyright": "© {year} Younass Ibn Abdeslam. Tous droits réservés.",
+    "github": "Profil GitHub"
   },
   "Projects": {
     "metadataTitle": "Projets | Younass.me",
@@ -64,14 +82,17 @@
       "offensive-security": "Sécurité offensive",
       "network-infrastructure-security": "Sécurité réseau et infrastructure",
       "security-engineering": "Ingénierie sécurité / DevSecOps",
-      "application-security": "Sécurité applicative",
-      "cryptography": "Cryptographie"
+      "application-security": "Sécurité applicative"
     },
     "statuses": {
       "experimental": "Expérimental",
       "in-progress": "En cours",
-      "completed": "Terminé"
-    }
+      "completed": "Terminé",
+      "prototype": "Prototype"
+    },
+    "scopeNote": "Les descriptions s’appuient sur la documentation des dépôts et les notes de projet disponibles. Les travaux expérimentaux et en cours sont indiqués ; les dépôts constituent la source principale.",
+    "readCaseStudy": "Lire l’étude de cas",
+    "repository": "Voir le dépôt"
   },
   "Achievements": {
     "metadataTitle": "Réalisations | Younass.me",
@@ -119,7 +140,10 @@
     "period": "Février–juillet 2027 · Six mois",
     "locationLabel": "Localisation",
     "location": "Maroc et France",
-    "contactDetailsNote": "Les coordonnées professionnelles et les profils vérifiés seront ajoutés dès confirmation."
+    "contactChannelTitle": "Me contacter sur GitHub",
+    "contactChannelDescription": "GitHub est le profil public vérifié actuellement disponible pour discuter de projets et prendre contact à titre professionnel.",
+    "githubLabel": "Ouvrir le profil GitHub",
+    "projectsLink": "Voir mes projets"
   },
   "About": {
     "metadataTitle": "À propos | Younass.me",
@@ -146,7 +170,10 @@
     "governanceItems": "NIST Cybersecurity Framework 2.0|Évaluation des cyber-risques|Audits de sécurité|Risque cybersécurité fournisseurs",
     "programming": "Programmation et développement",
     "programmingItems": "Python|C|C++|PHP|JavaScript|SQL|Bash",
-    "skillNote": "Ces domaines représentent des pratiques et un développement continu, sans prétendre à un niveau d'expertise avancé dans chaque technologie listée."
+    "skillNote": "Ces domaines représentent des pratiques et un développement continu, sans prétendre à un niveau d'expertise avancé dans chaque technologie listée.",
+    "approachEyebrow": "Ma méthode",
+    "approachTitle": "Comprendre le système avant de chercher à le sécuriser.",
+    "approachDescription": "J’aime cartographier les liens entre les composants, comprendre ce à quoi chacun fait confiance, puis vérifier les hypothèses dans un périmètre maîtrisé. En cybersécurité comme en développement logiciel, j’accorde de l’importance aux preuves claires, à une documentation soignée et aux changements qui peuvent être expliqués et examinés."
   },
   "Experience": {
     "metadataTitle": "Expérience | Younass.me",
@@ -176,13 +203,5 @@
     "macobateDetailsTitle": "Travail de développement",
     "macobateDetails": "Utilisation de DeepFace et MediaPipe, avec intégration de l'application à l'ERP Odoo.",
     "macobateScopeNote": "La description reprend les travaux vérifiés du stage, sans ajouter d'affirmation non confirmée sur le déploiement ou les performances."
-  },
-  "PageStub": {
-    "about": "À propos",
-    "experience": "Expérience",
-    "projects": "Projets",
-    "achievements": "Réalisations",
-    "contact": "Contact",
-    "description": "Cette section est en préparation et sera complétée lors d'une prochaine phase."
   }
 }

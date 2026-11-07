@@ -38,7 +38,9 @@ export default async function ProjectsPage({
   const t = await getTranslations('Projects');
   const filters = [
     {value: 'all' as const, label: t('allCategories')},
-    ...projectCategories.map((value) => ({value, label: t(`categories.${value}`)}))
+    ...projectCategories
+      .filter((category) => projects.some((project) => project.category === category))
+      .map((value) => ({value, label: t(`categories.${value}`)}))
   ];
 
   return (
@@ -56,6 +58,9 @@ export default async function ProjectsPage({
             <p className="mt-6 text-sm font-medium text-accent">
               {t('projectCount', {count: projects.length})}
             </p>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-foreground-muted">
+              {t('scopeNote')}
+            </p>
           </div>
         </Container>
       </section>
@@ -66,6 +71,8 @@ export default async function ProjectsPage({
             filters={filters}
             allLabel={t('filterLabel')}
             emptyLabel={t('emptyFilter')}
+            readLabel={t('readCaseStudy')}
+            repositoryLabel={t('repository')}
             locale={locale as Locale}
           />
         </Container>

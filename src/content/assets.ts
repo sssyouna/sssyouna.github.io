@@ -44,3 +44,7 @@ export const assets = {
 } as const;
 
 export type CertificateAsset = (typeof assets.certifications)[number];
+
+export const portfolioFiles = {
+  resume: '/cv.pdf'
+} as const;

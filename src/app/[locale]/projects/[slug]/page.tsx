@@ -51,6 +51,7 @@ export default async function ProjectPage({
       categoryLabel={t(`categories.${project.category}`)}
       statusLabel={t(`statuses.${project.status}`)}
       technologiesLabel={t('technologies')}
+      repositoryLabel={t('repository')}
     />
   );
 }

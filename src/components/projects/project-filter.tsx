@@ -14,6 +14,8 @@ type ProjectFilterProps = {
   filters: FilterOption[];
   allLabel: string;
   emptyLabel: string;
+  readLabel: string;
+  repositoryLabel: string;
   locale: 'en' | 'fr';
 };
 
@@ -22,6 +24,8 @@ export function ProjectFilter({
   filters,
   allLabel,
   emptyLabel,
+  readLabel,
+  repositoryLabel,
   locale
 }: ProjectFilterProps) {
   const [selected, setSelected] = useState<FilterOption['value']>('all');
@@ -50,8 +54,15 @@ export function ProjectFilter({
       </div>
       {filteredProjects.length ? (
         <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} locale={locale} />
+          {filteredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              locale={locale}
+              index={String(index + 1).padStart(2, '0')}
+              readLabel={readLabel}
+              repositoryLabel={repositoryLabel}
+            />
           ))}
         </div>
       ) : (
