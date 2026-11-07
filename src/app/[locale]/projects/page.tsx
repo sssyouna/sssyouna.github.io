@@ -7,6 +7,7 @@ import {Container} from '@/components/ui/container';
 import {projects, projectCategories} from '@/content/projects';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {TemplateWindow} from '@/components/layout/template-window';
 
 export async function generateMetadata({
   params
@@ -44,6 +45,7 @@ export default async function ProjectsPage({
   ];
 
   return (
+    <TemplateWindow title={t('title')} icon="📁" statusLeft={t('projectCount', {count: projects.length})}>
     <main>
       <section data-background-section="projects" className="section-space border-b border-border">
         <Container>
@@ -78,5 +80,6 @@ export default async function ProjectsPage({
         </Container>
       </section>
     </main>
+    </TemplateWindow>
   );
 }

@@ -1,12 +1,9 @@
 import type {Metadata} from 'next';
+import Image from 'next/image';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {Link} from '@/i18n/navigation';
-import {Container} from '@/components/ui/container';
-import {SectionHeading} from '@/components/ui/section-heading';
-import {ProjectCard} from '@/components/projects/project-card';
-import {MagneticLink} from '@/components/ui/magnetic-link';
 import {projects} from '@/content/projects';
 import {profile} from '@/content/profile';
 import {portfolioFiles} from '@/content/assets';
@@ -42,161 +39,131 @@ export default async function HomePage({
 
   setRequestLocale(locale as Locale);
   const t = await getTranslations('Home');
-  const p = await getTranslations('Projects');
+  const about = await getTranslations('About');
+  const projectsText = await getTranslations('Projects');
+  const desktop = await getTranslations('Desktop');
   const resumeAvailable = hasResume();
+  const skills = [
+    {title: about('offensiveSecurity'), description: about('offensiveSecurityItems')},
+    {title: about('systemsNetwork'), description: about('systemsNetworkItems')},
+    {title: about('securityEngineering'), description: about('securityEngineeringItems')}
+  ];
 
   return (
-    <main>
-      <section data-background-section="hero" className="hero-section border-b border-border">
-        <Container className="hero-layout">
-          <div className="hero-copy">
-            <p className="eyebrow">{t('eyebrow')}</p>
-            <h1 className="hero-title">{t('title')}</h1>
-            <p className="hero-introduction">{t('introduction')}</p>
-            <p className="hero-interests">{t('interests')}</p>
-            <div className="hero-actions">
-              <Link href="/projects" className="button button-primary">
-                {t('projectsCta')} <span aria-hidden="true">↘</span>
-              </Link>
-              <MagneticLink>
-                <Link href="/contact" className="button button-secondary">
-                  {t('contactCta')} <span aria-hidden="true">↗</span>
-                </Link>
-              </MagneticLink>
-              {resumeAvailable ? (
-                <a href={portfolioFiles.resume} download className="button button-text">
-                  {t('downloadCv')} <span aria-hidden="true">↓</span>
-                </a>
-              ) : null}
+    <>
+      <header>
+        <div className="window hero-window">
+          <div className="window-header">
+            <span>👤 YOUNASS.ME · {t('eyebrow')}</span>
+            <div className="window-controls" aria-hidden="true">
+              <span>_</span><span>□</span><span>×</span>
             </div>
           </div>
-
-          <aside className="hero-aside" aria-label={t('profileSummaryLabel')}>
-            <div className="hero-aside-topline">
-              <span>{t('profileSummaryLabel')}</span>
-              <span>01 / 04</span>
-            </div>
-            <p className="hero-aside-title">{t('profileSummaryTitle')}</p>
-            <ul className="hero-disciplines">
-              <li>{t('disciplineOne')}</li>
-              <li>{t('disciplineTwo')}</li>
-              <li>{t('disciplineThree')}</li>
-            </ul>
-            <div className="hero-credentials">
-              <p>{t('credentials')}</p>
-              <Link href="/achievements" className="inline-link">
-                {t('credentialsLink')} <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </aside>
-        </Container>
-      </section>
-
-      <section data-background-section="education" className="availability-strip border-b border-border">
-        <Container className="availability-layout">
-          <p className="availability-status"><span aria-hidden="true" />{t('availabilityLabel')}</p>
-          <p>{t('availabilityPeriod')}</p>
-          <p>{t('availabilityLocation')}</p>
-        </Container>
-      </section>
-
-      <section data-background-section="projects" className="section-space">
-        <Container>
-          <div className="section-heading-row">
-            <SectionHeading eyebrow={t('selectedWorkEyebrow')}>{t('selectedWorkTitle')}</SectionHeading>
-            <Link href="/projects" className="inline-link section-heading-link">
-              {t('allProjects')} <span aria-hidden="true">↗</span>
-            </Link>
+          <div className="menu-bar">
+            <span><u>F</u>ile</span>
+            <span><u>E</u>dit</span>
+            <span><u>V</u>iew</span>
+            <span><u>H</u>elp</span>
           </div>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {projects.slice(0, 3).map((project, index) => (
-              <ProjectCard
+          <div className="hero-content">
+            <div className="profile-frame">
+              <Image src="/images/profile-pixelated.png" alt={profile.name} width={928} height={1152} unoptimized className="profile-img" />
+            </div>
+            <div>
+              <h1 className="hero-title">
+                {profile.name}
+                <br />
+                {t('eyebrow')}
+              </h1>
+              <p className="hero-description">{t('introduction')}</p>
+              <p className="hero-description">{t('interests')}</p>
+              <div className="tag-container">
+                <span className="tag">{t('disciplineOne')}</span>
+                <span className="tag">{t('disciplineTwo')}</span>
+                <span className="tag">{t('disciplineThree')}</span>
+                <span className="tag">CompTIA Security+</span>
+              </div>
+              <div className="hero-actions">
+                <Link href="/projects" className="button-retro">{t('projectsCta')} →</Link>
+                <Link href="/contact" className="button-retro">{t('contactCta')} ↗</Link>
+                {resumeAvailable ? (
+                  <a href={portfolioFiles.resume} download className="button-retro">{t('downloadCv')} ↓</a>
+                ) : null}
+              </div>
+            </div>
+          </div>
+          <div className="status-bar">
+            <span>{t('availabilityPeriod')} · {t('availabilityLocation')}</span>
+            <span className="blink">● {t('availabilityLabel')}</span>
+          </div>
+        </div>
+      </header>
+
+      <main className="main-container">
+        <div className="window">
+          <div className="window-header">
+            <span>📁 {t('selectedWorkTitle')}</span>
+            <div className="window-controls" aria-hidden="true">
+              <span>_</span><span>□</span><span>×</span>
+            </div>
+          </div>
+          <div className="project-grid">
+            {projects.slice(0, 2).map((project) => (
+              <Link
                 key={project.slug}
-                project={project}
-                locale={locale as Locale}
-                index={String(index + 1).padStart(2, '0')}
-                readLabel={p('readCaseStudy')}
-                repositoryLabel={p('repository')}
-              />
+                href={`/projects/${project.slug}`}
+                className="project-card"
+                style={{textDecoration: 'none', color: 'inherit'}}
+              >
+                <div className="project-img project-img-placeholder" role="img" aria-label={`${project.title[locale as Locale]}: ${desktop('previewUnavailable')}`}>
+                  <span>{desktop('previewUnavailable')}</span>
+                </div>
+                <div className="project-info">
+                  <h3 className="project-title">{project.title[locale as Locale]}</h3>
+                  <div>
+                    {project.technologies.slice(0, 3).map((technology) => (
+                      <span className="tag" key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
-        </Container>
-      </section>
+          <div className="status-bar">
+            <span>{projectsText('projectCount', {count: 2})}</span>
+            <Link href="/projects" className="inline-link">{t('allProjects')} ↗</Link>
+          </div>
+        </div>
 
-      <section data-background-section="cimar" className="editorial-band border-y border-border">
-        <Container className="editorial-band-layout">
-          <div>
-            <p className="eyebrow">{t('experienceEyebrow')}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{t('experienceTitle')}</h2>
-            <p className="mt-5 max-w-xl leading-7 text-foreground-muted">{t('experienceDescription')}</p>
+        <div className="window">
+          <div className="window-header">
+            <span>💡 {about('eyebrow')}</span>
+            <div className="window-controls" aria-hidden="true">
+              <span>_</span><span>□</span><span>×</span>
+            </div>
           </div>
-          <div className="experience-preview-list">
-            <article className="experience-preview-item">
-              <span className="experience-preview-date">2026</span>
-              <div>
-                <h3>{t('cimarRole')}</h3>
-                <p>{t('cimarCompany')}</p>
-              </div>
-              <span className="experience-preview-arrow" aria-hidden="true">↗</span>
-            </article>
-            <article className="experience-preview-item">
-              <span className="experience-preview-date">2025</span>
-              <div>
-                <h3>{t('macobateRole')}</h3>
-                <p>{t('macobateCompany')}</p>
-              </div>
-              <span className="experience-preview-arrow" aria-hidden="true">↗</span>
-            </article>
-            <Link href="/experience" className="inline-link mt-4">
-              {t('fullExperience')} <span aria-hidden="true">→</span>
-            </Link>
+          <div className="about-content">
+            <h2 className="about-title">{about('academicTitle')}</h2>
+            <p className="about-description">{about('introduction')}</p>
+            <div className="skills-grid">
+              {skills.map((skill, index) => (
+                <div className="skill-card" key={skill.title}>
+                  <h3 className="skill-title">{['🔎', '🖧', '🛡️'][index]} {skill.title}</h3>
+                  <p className="skill-description">{skill.description.split('|').join(' · ')}</p>
+                </div>
+              ))}
+            </div>
+            <div className="home-window-links">
+              <Link href="/about" className="button-retro">{about('approachEyebrow')} →</Link>
+              <a href={profile.github} target="_blank" rel="noreferrer" className="inline-link">GitHub ↗</a>
+            </div>
           </div>
-        </Container>
-      </section>
-
-      <section data-background-section="ctf" className="section-space">
-        <Container>
-          <div className="section-heading-row">
-            <SectionHeading eyebrow={t('achievementsEyebrow')}>{t('achievementsTitle')}</SectionHeading>
-            <Link href="/achievements" className="inline-link section-heading-link">
-              {t('allAchievements')} <span aria-hidden="true">↗</span>
-            </Link>
+          <div className="status-bar">
+            <span>{about('credentials')}</span>
+            <Link href="/achievements" className="inline-link">{t('credentialsLink')} ↗</Link>
           </div>
-          <div className="achievement-preview-grid mt-10">
-            <article className="achievement-preview-item">
-              <span className="achievement-index">01</span>
-              <div><p>{t('securityPlusLabel')}</p><h3>{t('securityPlus')}</h3></div>
-            </article>
-            <article className="achievement-preview-item">
-              <span className="achievement-index">02</span>
-              <div><p>{t('learningLabel')}</p><h3>{t('tryHackMe')}</h3></div>
-            </article>
-            <article className="achievement-preview-item">
-              <span className="achievement-index">03</span>
-              <div><p>{t('competitionLabel')}</p><h3>{t('ctf')}</h3></div>
-            </article>
-          </div>
-        </Container>
-      </section>
-
-      <section data-background-section="contact" className="home-contact border-t border-border">
-        <Container className="home-contact-layout">
-          <div>
-            <p className="eyebrow">{t('contactEyebrow')}</p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">{t('contactTitle')}</h2>
-          </div>
-          <div className="home-contact-actions">
-            <MagneticLink>
-              <Link href="/contact" className="button button-primary">
-                {t('contactCta')} <span aria-hidden="true">↗</span>
-              </Link>
-            </MagneticLink>
-            <a href={profile.github} target="_blank" rel="noreferrer" className="inline-link">
-              GitHub <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </Container>
-      </section>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

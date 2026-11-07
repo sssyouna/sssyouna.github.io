@@ -10,6 +10,7 @@ import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
 import {getAvailableCertificates} from '@/lib/assets';
 import {CertificateCard} from '@/components/achievements/certificate-card';
+import {TemplateWindow} from '@/components/layout/template-window';
 
 export async function generateMetadata({
   params
@@ -49,6 +50,7 @@ export default async function AchievementsPage({
   const certificates = getAvailableCertificates();
 
   return (
+    <TemplateWindow title={t('title')} icon="🏆" statusLeft={t('communityInvolvement')}>
     <main>
       <section data-background-section="ctf" className="section-space border-b border-border">
         <Container>
@@ -139,5 +141,6 @@ export default async function AchievementsPage({
         </Container>
       </section>
     </main>
+    </TemplateWindow>
   );
 }

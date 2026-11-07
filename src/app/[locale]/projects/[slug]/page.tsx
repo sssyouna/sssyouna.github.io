@@ -6,6 +6,7 @@ import {ProjectCaseStudy} from '@/components/projects/project-case-study';
 import {getProject, projects} from '@/content/projects';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {TemplateWindow} from '@/components/layout/template-window';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -44,14 +45,20 @@ export default async function ProjectPage({
   setRequestLocale(locale as Locale);
   const t = await getTranslations('Projects');
   return (
-    <ProjectCaseStudy
-      project={project}
-      locale={locale as Locale}
-      backLabel={t('backToProjects')}
-      categoryLabel={t(`categories.${project.category}`)}
-      statusLabel={t(`statuses.${project.status}`)}
-      technologiesLabel={t('technologies')}
-      repositoryLabel={t('repository')}
-    />
+    <TemplateWindow
+      title={project.title[locale as Locale]}
+      icon="📄"
+      statusLeft={t(`statuses.${project.status}`)}
+    >
+      <ProjectCaseStudy
+        project={project}
+        locale={locale as Locale}
+        backLabel={t('backToProjects')}
+        categoryLabel={t(`categories.${project.category}`)}
+        statusLabel={t(`statuses.${project.status}`)}
+        technologiesLabel={t('technologies')}
+        repositoryLabel={t('repository')}
+      />
+    </TemplateWindow>
   );
 }

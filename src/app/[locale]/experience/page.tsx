@@ -5,6 +5,7 @@ import {notFound} from 'next/navigation';
 import {Container} from '@/components/ui/container';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {TemplateWindow} from '@/components/layout/template-window';
 
 export async function generateMetadata({
   params
@@ -36,6 +37,7 @@ export default async function ExperiencePage({
   const t = await getTranslations('Experience');
 
   return (
+    <TemplateWindow title={t('title')} icon="💼" statusLeft={t('eyebrow')}>
     <main>
       <section data-background-section="cimar" className="section-space border-b border-border">
         <Container>
@@ -114,5 +116,6 @@ export default async function ExperiencePage({
         </Container>
       </section>
     </main>
+    </TemplateWindow>
   );
 }

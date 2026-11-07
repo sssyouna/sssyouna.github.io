@@ -4,13 +4,11 @@ import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing, type Locale} from '@/i18n/routing';
-import {SiteHeader} from '@/components/layout/site-header';
-import {SiteFooter} from '@/components/layout/site-footer';
 import {localizedMetadata} from '@/lib/metadata';
-import {VisualBackground} from '@/components/ui/visual-background';
-import {getAvailableBackgrounds, hasResume} from '@/lib/assets';
 import {DesktopShell} from '@/components/layout/desktop-shell';
+import {projects} from '@/content/projects';
 import '../globals.css';
+import '../windows98.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -58,16 +56,24 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body className="font-sans antialiased">
         <NextIntlClientProvider
           locale={locale}
-          messages={{Navigation: messages.Navigation}}
+          messages={{
+            Navigation: messages.Navigation,
+            Desktop: messages.Desktop,
+            About: messages.About,
+            Achievements: messages.Achievements
+          }}
         >
-          <VisualBackground backgrounds={getAvailableBackgrounds()} />
-          <DesktopShell locale={locale as Locale}>
-            <SiteHeader locale={locale as Locale} hasResume={hasResume()} />
+          <DesktopShell
+            locale={locale as Locale}
+            projects={projects.map((project) => ({
+              slug: project.slug,
+              title: project.title[locale as Locale]
+            }))}
+          >
             {children}
-            <SiteFooter />
           </DesktopShell>
         </NextIntlClientProvider>
       </body>
