@@ -9,12 +9,31 @@ type SiteHeaderProps = {
 
 export function SiteHeader({locale, hasResume}: SiteHeaderProps) {
   return (
-    <header className="border-b border-border">
-      <div className="mx-auto flex min-h-20 w-full max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-10">
+    <header className="retro-header">
+      <div className="retro-window retro-header-window">
+        <div className="retro-titlebar">
+          <Link
+            href="/"
+            aria-label={locale === 'fr' ? 'Younass, accueil' : 'Younass, home'}
+            className="retro-brand"
+          >
+            YOUNASS.ME
+          </Link>
+          <div className="retro-window-controls" aria-hidden="true">
+            <span>_</span><span>□</span><span>×</span>
+          </div>
+        </div>
+        <div className="retro-menu-bar">
+          <span><u>F</u>ile</span>
+          <span><u>V</u>iew</span>
+          <span><u>H</u>elp</span>
+        </div>
+      </div>
+      <div className="retro-nav-wrap">
         <Link
           href="/"
           aria-label={locale === 'fr' ? 'Younass, accueil' : 'Younass, home'}
-          className="font-semibold tracking-[0.18em] text-foreground transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          className="retro-nav-brand"
         >
           YOUNASS
         </Link>

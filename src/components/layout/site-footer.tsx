@@ -16,10 +16,10 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border">
+    <footer className="retro-footer">
       <div className="footer-layout mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10">
         <div>
-          <Link href="/" className="font-semibold tracking-[0.18em] text-foreground">
+          <Link href="/" className="retro-footer-brand">
             YOUNASS
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-6 text-foreground-muted">
@@ -38,7 +38,7 @@ export function SiteFooter() {
         </nav>
       </div>
       <div className="border-t border-border">
-        <div className="footer-copyright mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10">
+        <div className="footer-copyright retro-statusbar mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10">
           {t('Footer.copyright', {year})}
         </div>
       </div>
