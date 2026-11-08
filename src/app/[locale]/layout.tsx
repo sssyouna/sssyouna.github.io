@@ -9,6 +9,7 @@ import {DesktopShell} from '@/components/layout/desktop-shell';
 import {projects} from '@/content/projects';
 import '../globals.css';
 import '../windows98.css';
+import '../desktop.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -63,6 +64,9 @@ export default async function LocaleLayout({
             Navigation: messages.Navigation,
             Desktop: messages.Desktop,
             About: messages.About,
+            Home: messages.Home,
+            Contact: messages.Contact,
+            Experience: messages.Experience,
             Achievements: messages.Achievements
           }}
         >
@@ -70,7 +74,14 @@ export default async function LocaleLayout({
             locale={locale as Locale}
             projects={projects.map((project) => ({
               slug: project.slug,
-              title: project.title[locale as Locale]
+              title: project.title[locale as Locale],
+              summary: project.summary[locale as Locale],
+              technologies: project.technologies,
+              repository: project.repository,
+              sections: project.sections.map((section) => ({
+                title: section.title[locale as Locale],
+                body: section.body[locale as Locale]
+              }))
             }))}
           >
             {children}

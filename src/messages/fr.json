@@ -47,7 +47,132 @@
     "documentsCount": "{count, plural, =1 {# élément} other {# éléments}}",
     "achievementCount": "{count, plural, =1 {# réalisation} other {# réalisations}}",
     "previewUnavailable": "Aucun aperçu disponible",
-    "audioUnavailable": "La lecture audio est désactivée"
+    "audioUnavailable": "La lecture audio est désactivée",
+    "folders": {
+      "projects": "Projets",
+      "profile": "Qui est Younass ?",
+      "education": "Formation",
+      "events": "Événements",
+      "documents": "Documents et certifications",
+      "experience": "Expériences professionnelles"
+    },
+    "folderDescriptions": {
+      "projects": "Aperçus des projets, notes techniques et dépôts.",
+      "profile": "Présentation, intérêts, objectifs et parcours technique.",
+      "education": "ENSA Fès et une archive de formation évolutive.",
+      "events": "Participations vérifiées et activités communautaires.",
+      "documents": "Certification professionnelle et apprentissages.",
+      "experience": "Responsabilités et contributions vérifiées en stage."
+    },
+    "computer": {"drives": "Disques durs"},
+    "storage": {
+      "driveName": "Stockage du portfolio",
+      "driveDescription": "Fichiers du portfolio (simulé)",
+      "simulated": "Indication illustrative uniquement — pas une mesure réelle d'un disque.",
+      "used": "18 Go utilisés",
+      "total": "128 Go au total"
+    },
+    "toolbar": {"back": "Précédent", "forward": "Suivant", "up": "Dossier parent", "address": "Adresse"},
+    "projectDetails": "Détails du projet",
+    "projectOverview": "Présentation",
+    "projectTechnologies": "Technologies",
+    "openCaseStudy": "Ouvrir l'étude de cas complète",
+    "repository": "Dépôt GitHub",
+    "welcome": {
+      "title": "Bienvenue sur Younass.me",
+      "tagline": "Cybersécurité · Ingénierie · Développement",
+      "openComputer": "Ouvrir le poste de travail"
+    },
+    "profile": {
+      "journeyTitle": "Parcours technique",
+      "files": {
+        "introduction": {"title": "Présentation", "summary": "Profil et orientation actuelle."},
+        "about": {"title": "À propos", "summary": "Approche de la sécurité et de l'ingénierie."},
+        "interests": {"title": "Intérêts et spécialisations", "summary": "Domaines techniques présentés dans le portfolio."},
+        "career": {"title": "Objectif professionnel", "summary": "Disponibilité PFE et objectif actuel vérifiés."},
+        "journey": {"title": "Parcours technique", "summary": "Chronologie fondée sur les études et expériences documentées."}
+      }
+    },
+    "education": {
+      "items": {
+        "highSchool": {"title": "Lycée", "summary": "Les détails de scolarité ne figurent pas dans les informations du portfolio.", "notProvided": "Le nom du lycée, le diplôme et les dates n'ont pas encore été fournis."},
+        "ensa": {"title": "Cycle ingénieur de l'ENSA Fès", "summary": "Ingénierie Cybersécurité & Développement Numérique."},
+        "learningArchive": {"title": "Archive d'apprentissage", "summary": "Un espace structuré pour ajouter les cours, TP, laboratoires et projets vérifiés."}
+      },
+      "institution": "Établissement",
+      "programme": "Programme",
+      "cycle": "Cycle et diplomation prévue",
+      "learningArchive": "Archive d'apprentissage",
+      "officialWebsite": "Site officiel de l'ENSA Fès",
+      "archive": {
+        "academicYear": "Années universitaires",
+        "semester": "Semestres",
+        "modules": "Modules",
+        "courses": "Cours",
+        "practicalWork": "Travaux pratiques (TP)",
+        "labs": "Laboratoires",
+        "projects": "Projets académiques",
+        "skills": "Compétences techniques acquises",
+        "empty": "Aucune entrée vérifiée pour le moment."
+      }
+    },
+    "events": {
+      "noPhotos": "Aucune photo personnelle d'événement n'est présente dans les fichiers du portfolio.",
+      "items": {
+        "gitex": {"title": "Participation à GITEX", "summary": "Les détails de participation ne sont pas encore documentés.", "detail": "La participation à GITEX a été indiquée pour ce portfolio. L'année, le rôle et les autres détails n'ont pas été fournis.", "details": "Aucune photo personnelle de l'événement n'est disponible pour le moment."},
+        "ctf": {"title": "CTF de l'ENSA Fès", "summary": "Deuxième place à un CTF de cybersécurité.", "details": "L'année de la compétition et les détails supplémentaires du classement ne sont pas documentés."},
+        "community": {"title": "Activités du SecOps Club", "summary": "Apprentissage communautaire et participation vérifiés.", "details": "Les activités documentées comprennent Wireshark, la stéganographie, la participation à des CTF et l'exploitation binaire."}
+      }
+    },
+    "documents": {
+      "issuer": "Organisme émetteur",
+      "date": "Date",
+      "dateNotProvided": "Non communiquée",
+      "tryHackMeDates": "Délivrés en août 2026 · expiration en août 2029",
+      "verification": "Lien de vérification",
+      "verificationNotProvided": "Aucune URL de vérification fournie",
+      "fileNotAvailable": "Aucun fichier de certificat n'est présent dans les ressources locales du portfolio.",
+      "notProvided": "Détails du document non communiqués",
+      "items": {
+        "securityPlus": {"title": "CompTIA Security+ SY0-701", "summary": "Certification professionnelle en cybersécurité."},
+        "jrPentester": {"title": "Jr Penetration Tester", "summary": "Parcours d'apprentissage TryHackMe."},
+        "securityEngineer": {"title": "Security Engineer", "summary": "Parcours d'apprentissage TryHackMe."},
+        "devSecOps": {"title": "DevSecOps", "summary": "Parcours d'apprentissage TryHackMe."},
+        "ctf": {"title": "CTF de l'ENSA Fès", "summary": "Résultat de deuxième place en compétition."},
+        "secOps": {"title": "SecOps Club", "summary": "Apprentissage et activités communautaires."}
+      }
+    },
+    "experience": {
+      "items": {
+        "cimar": {"title": "Heidelberg Materials – CIMAR", "summary": "Stage en cybersécurité et GRC."},
+        "macobate": {"title": "Macobate", "summary": "Stage en développement logiciel."}
+      }
+    },
+    "settings": {
+      "title": "Paramètres",
+      "language": "Langue",
+      "languageDescription": "Choisir la langue du portfolio ouvre la route localisée correspondante.",
+      "english": "English",
+      "french": "Français",
+      "theme": "Thème",
+      "themeDescription": "Choisir les couleurs du bureau. Le fond d'écran reste identique.",
+      "themes": {"blue": "Bleu", "white": "Blanc", "dark": "Sombre"},
+      "selected": "Sélectionné",
+      "wallpaperUnchanged": "Le thème est mémorisé sur cet appareil."
+    },
+    "startLinks": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "website": "Mon site web",
+      "ensa": "Site web de l'ENSA Fès",
+      "tryHackMe": "TryHackMe",
+      "unavailable": "URL du profil personnel non fournie",
+      "shutdown": "Arrêter",
+      "shutdownMessage": "Le bureau est arrêté. Vous pouvez fermer cet onglet ou redémarrer le bureau.",
+      "restart": "Redémarrer"
+    },
+    "taskbar": {"openWindows": "Fenêtres ouvertes", "systemTray": "Zone de notification"},
+    "window": {"minimize": "Réduire", "maximize": "Agrandir", "restore": "Restaurer", "close": "Fermer"}
   },
   "Home": {
     "eyebrow": "Cybersécurité · Ingénierie · Développement",
