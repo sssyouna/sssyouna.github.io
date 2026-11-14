@@ -3,7 +3,9 @@
 import {useCallback, useEffect, useState, type ReactNode} from 'react';
 import Image from 'next/image';
 import {useTranslations} from 'next-intl';
-import {usePathname} from '@/i18n/navigation';
+import {usePathname, useRouter} from '@/i18n/navigation';
+import {WindowFrame} from '@/components/desktop/window-frame';
+import {DesktopWindowContext} from '@/components/desktop/window-context';
 import {Link} from '@/i18n/navigation';
 import type {Locale} from '@/i18n/routing';
 import {profile} from '@/content/profile';
@@ -17,7 +19,7 @@ import {
 } from '@/components/desktop/explorer-window';
 
 type Theme = 'blue' | 'white' | 'dark';
-type WindowKind = 'welcome' | 'explorer' | 'settings';
+type WindowKind = 'welcome' | 'explorer' | 'settings' | 'route';
 type DesktopWindowState = {
   id: string;
   kind: WindowKind;
@@ -26,6 +28,8 @@ type DesktopWindowState = {
   location?: ExplorerLocation;
   history?: ExplorerLocation[];
   future?: ExplorerLocation[];
+  title?: string;
+  icon?: string;
 };
 
 type IconSpec = {
@@ -74,6 +78,10 @@ function DesktopIcon({
       onClick={(event) => {
         event.stopPropagation();
         onSelect();
+        if (event.detail === 0 || ('pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'touch')) {
+          onOpen();
+          return;
+        }
         const now = Date.now();
         if (now - lastTapAt < 550) {
           onOpen();
@@ -81,11 +89,6 @@ function DesktopIcon({
         } else {
           setLastTapAt(now);
         }
-      }}
-      onDoubleClick={(event) => {
-        event.preventDefault();
-        onOpen();
-        setLastTapAt(0);
       }}
       onKeyDown={(event) => {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -100,9 +103,15 @@ function DesktopIcon({
   );
 }
 
-function windowTitle(window: DesktopWindowState, desktop: ReturnType<typeof useTranslations<'Desktop'>>) {
+function windowTitle(window: DesktopWindowState, desktop: ReturnType<typeof useTranslations<'Desktop'>>, projects: DesktopProject[]) {
+  if (window.kind === 'route') return window.title ?? '';
   if (window.kind === 'welcome') return desktop('welcome.title');
   if (window.kind === 'settings') return desktop('settings.title');
+  if (window.location?.type === 'project') {
+    const slug = window.location.slug;
+    const project = projects.find((project) => project.slug === slug);
+    return project ? `${project.title} · ${desktop('projectDetails')}` : desktop('projectDetails');
+  }
   return window.location ? explorerLocationTitle(window.location, desktop) : desktop('myComputer');
 }
 
@@ -130,6 +139,7 @@ export function DesktopShell({
   const home = useTranslations('Home');
   const about = useTranslations('About');
   const pathname = usePathname();
+  const router = useRouter();
   const [theme, setTheme] = useState<Theme>('blue');
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -138,14 +148,14 @@ export function DesktopShell({
   const [windows, setWindows] = useState<DesktopWindowState[]>(() => pathname === '/'
     ? [{id: 'welcome', kind: 'welcome', minimized: false, maximized: false}]
     : []);
-  const [activeWindowId, setActiveWindowId] = useState(() => pathname === '/' ? 'welcome' : '');
-
-  const activeWindow = windows.find((window) => window.id === activeWindowId && !window.minimized);
-  const activeWindowPosition = activeWindow ? windows.filter((window) => !window.minimized).indexOf(activeWindow) + 10 : 1;
+  const windowList = windows.filter((item) => item.kind !== 'route' || item.id === `route:${pathname}`);
+  const activeWindowId = windowList.filter((item) => !item.minimized).at(-1)?.id ?? '';
+  const routeWindow = windowList.find((item) => item.kind === 'route');
   const currentLocale = locale === 'en' ? 'en' : 'fr';
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
+    let stored: string | null = null;
+    try { stored = window.localStorage.getItem(STORAGE_KEY); } catch { /* Storage can be disabled. */ }
     queueMicrotask(() => {
       if (stored === 'blue' || stored === 'white' || stored === 'dark') setTheme(stored);
       setThemeLoaded(true);
@@ -164,27 +174,40 @@ export function DesktopShell({
 
   const setThemePreference = (nextTheme: Theme) => {
     setTheme(nextTheme);
-    window.localStorage.setItem(STORAGE_KEY, nextTheme);
+    try { window.localStorage.setItem(STORAGE_KEY, nextTheme); } catch { /* Keep the in-memory preference. */ }
   };
 
   const bringToFront = useCallback((id: string) => {
     setWindows((current) => {
       const found = current.find((item) => item.id === id);
-      if (!found) return current;
+      if (!found || (current.at(-1)?.id === id && !found.minimized)) return current;
       return [...current.filter((item) => item.id !== id), {...found, minimized: false}];
     });
-    setActiveWindowId(id);
   }, []);
 
   const openExplorer = useCallback((location: ExplorerLocation) => {
+    const id = location.type === 'project' ? `project:${location.slug}`
+      : location.type === 'content' ? `content:${location.key}`
+      : location.type === 'folder' ? `folder:${location.folder}` : `explorer:${location.type}`;
     setWindows((current) => {
-      const existing = current.find((item) => item.id === 'explorer');
-      const next = existing
-        ? {...existing, kind: 'explorer' as const, location, history: [], future: [], minimized: false}
-        : {id: 'explorer', kind: 'explorer' as const, location, history: [], future: [], minimized: false, maximized: false};
-      return [...current.filter((item) => item.id !== 'explorer'), next];
+      const existing = current.find((item) => item.id === id);
+      const next: DesktopWindowState = existing
+        ? {...existing, minimized: false, location,
+          history: JSON.stringify(existing.location) === JSON.stringify(location)
+            ? existing.history : [...(existing.history ?? []), ...(existing.location ? [existing.location] : [])],
+          future: JSON.stringify(existing.location) === JSON.stringify(location) ? existing.future : []}
+        : {id, kind: 'explorer', location, history: [], future: [], minimized: false, maximized: false};
+      return [...current.filter((item) => item.id !== id), next];
     });
-    setActiveWindowId('explorer');
+    setIsStartMenuOpen(false);
+  }, []);
+
+  const registerRoute = useCallback((id: string, title: string, icon: string) => {
+    setWindows((current) => {
+      const existing = current.find((item) => item.id === id);
+      return [...current.filter((item) => item.kind !== 'route'),
+        {id, kind: 'route', title, icon, minimized: false, maximized: existing?.maximized ?? false}];
+    });
     setIsStartMenuOpen(false);
   }, []);
 
@@ -194,25 +217,20 @@ export function DesktopShell({
       const next = existing ? {...existing, minimized: false} : {id: 'settings', kind: 'settings' as const, minimized: false, maximized: false};
       return [...current.filter((item) => item.id !== 'settings'), next];
     });
-    setActiveWindowId('settings');
     setIsStartMenuOpen(false);
   }, []);
 
   const closeWindow = useCallback((id: string) => {
-    const next = windows.filter((item) => item.id !== id);
-    setWindows(next);
-    if (id === activeWindowId) setActiveWindowId(next.filter((item) => !item.minimized).at(-1)?.id ?? '');
-  }, [activeWindowId, windows]);
+    setWindows((current) => current.filter((item) => item.id !== id));
+    if (id.startsWith('route:')) router.push('/');
+  }, [router]);
 
   const prepareRouteNavigation = useCallback(() => {
-    setWindows((current) => current.filter((item) => item.kind === 'welcome'));
-    setActiveWindowId(windows.some((item) => item.kind === 'welcome') ? 'welcome' : '');
     setIsStartMenuOpen(false);
-  }, [windows]);
+  }, []);
 
   const minimizeWindow = (id: string) => {
     setWindows((current) => current.map((item) => item.id === id ? {...item, minimized: true} : item));
-    if (activeWindowId === id) setActiveWindowId(windows.filter((item) => item.id !== id && !item.minimized).at(-1)?.id ?? '');
   };
 
   const toggleMaximize = (id: string) => {
@@ -220,6 +238,10 @@ export function DesktopShell({
   };
 
   const navigateExplorer = (id: string, nextLocation: ExplorerLocation) => {
+    if (nextLocation.type === 'project' || nextLocation.type === 'content') {
+      openExplorer(nextLocation);
+      return;
+    }
     setWindows((current) => current.map((item) => item.id === id && item.location
       ? {...item, history: [...(item.history ?? []), item.location], future: [], location: nextLocation}
       : item));
@@ -251,7 +273,8 @@ export function DesktopShell({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
+      if (event.key !== 'Escape' || event.defaultPrevented) return;
+      event.preventDefault();
       if (isStartMenuOpen) {
         setIsStartMenuOpen(false);
         return;
@@ -269,12 +292,14 @@ export function DesktopShell({
     else if (spec.folder) openExplorer({type: 'folder', folder: spec.folder});
   };
 
-  const windowList = windows.filter((item) => item.id !== 'welcome' || pathname === '/');
 
   return (
+    <DesktopWindowContext.Provider value={{
+      routeWindow: routeWindow ? {...routeWindow, title: routeWindow.title ?? '', icon: routeWindow.icon ?? ''} : undefined,
+      activeId: activeWindowId, order: routeWindow ? windowList.indexOf(routeWindow) : 0,
+      registerRoute, focus: bringToFront, close: closeWindow, minimize: minimizeWindow, maximize: toggleMaximize
+    }}>
     <div className="portfolio-desktop" data-theme={theme} data-theme-ready={themeLoaded} onClick={(event) => {
-      const target = event.target as HTMLElement;
-      if (target.closest('.template-window-home')) prepareRouteNavigation();
       if (event.target === event.currentTarget) {
         setSelectedIcon(null);
         setIsStartMenuOpen(false);
@@ -287,7 +312,7 @@ export function DesktopShell({
           <DesktopIcon
             key={spec.id}
             spec={spec}
-            label={spec.labelKey.includes('.') ? desktop(spec.labelKey) : desktop(spec.labelKey)}
+            label={desktop(spec.labelKey)}
             selected={selectedIcon === spec.id}
             onSelect={() => setSelectedIcon(spec.id)}
             onOpen={() => openDesktopIcon(spec)}
@@ -295,37 +320,20 @@ export function DesktopShell({
         ))}
       </nav>
 
-      <div className="desktop-route-layer">{children}</div>
+      <div className="desktop-route-layer" hidden={isShutdown}>{children}</div>
 
       {!isShutdown ? (
         <div className="desktop-window-layer">
-          {windowList.filter((item) => !item.minimized).map((item, index) => {
+          {windowList.filter((item) => item.kind !== 'route').map((item) => {
             const focused = item.id === activeWindowId;
-            const title = windowTitle(item, desktop);
+            const title = windowTitle(item, desktop, projects);
             const icon = windowIcon(item);
             return (
-              <section
-                key={item.id}
-                className={`window desktop-managed-window${item.maximized ? ' desktop-window-maximized' : ''}${focused ? ' desktop-window-focused' : ''}`}
-                role="dialog"
-                aria-label={title}
-                aria-modal="false"
-                data-active={focused}
-                style={{zIndex: focused ? activeWindowPosition + 50 : index + 2}}
-                onMouseDown={() => bringToFront(item.id)}
-              >
-                <div className="window-header desktop-window-titlebar" onDoubleClick={() => toggleMaximize(item.id)}>
-                  <span className="desktop-window-title">
-                  <Image src={iconAsset(icon)} alt="" width={18} height={18} unoptimized />
-                    {title}
-                  </span>
-                  <div className="window-controls desktop-window-controls">
-                    <button type="button" aria-label={desktop('window.minimize')} title={desktop('window.minimize')} onClick={() => minimizeWindow(item.id)}>_</button>
-                    <button type="button" aria-label={item.maximized ? desktop('window.restore') : desktop('window.maximize')} title={item.maximized ? desktop('window.restore') : desktop('window.maximize')} onClick={() => toggleMaximize(item.id)}>{item.maximized ? '❐' : '□'}</button>
-                    <button type="button" aria-label={desktop('window.close')} title={desktop('window.close')} onClick={() => closeWindow(item.id)}>×</button>
-                  </div>
-                </div>
-
+              <WindowFrame key={item.id} title={title}
+                icon={<Image src={iconAsset(icon)} alt="" width={18} height={18} unoptimized />}
+                state={item} focused={focused} order={windowList.indexOf(item)}
+                onFocus={() => bringToFront(item.id)} onClose={() => closeWindow(item.id)}
+                onMinimize={() => minimizeWindow(item.id)} onMaximize={() => toggleMaximize(item.id)}>
                 {item.kind === 'explorer' && item.location ? (
                   <ExplorerWindow
                     location={item.location}
@@ -387,7 +395,7 @@ export function DesktopShell({
                     </section>
                   </div>
                 ) : null}
-              </section>
+              </WindowFrame>
             );
           })}
         </div>
@@ -396,16 +404,16 @@ export function DesktopShell({
       {!isShutdown ? (
         <>
           <div className="taskbar desktop-taskbar">
-            <button className={`start-btn${isStartMenuOpen ? ' start-btn-open' : ''}`} type="button" aria-expanded={isStartMenuOpen} onClick={() => setIsStartMenuOpen((open) => !open)}>
+            <button className={`start-btn${isStartMenuOpen ? ' start-btn-open' : ''}`} type="button" aria-label={navigation('start')} aria-expanded={isStartMenuOpen} onClick={() => setIsStartMenuOpen((open) => !open)}>
               <Image src={iconPath('windows-0')} alt="" width={24} height={24} unoptimized />
               <span className="start-text">{navigation('start')}</span>
             </button>
 
             <div className="taskbar-windows" aria-label={desktop('taskbar.openWindows')}>
               {windowList.map((item) => (
-                <button key={item.id} className={`taskbar-window-button${item.id === activeWindowId && !item.minimized ? ' taskbar-window-button-active' : ''}`} type="button" aria-pressed={item.id === activeWindowId && !item.minimized} onClick={() => bringToFront(item.id)}>
+                <button key={item.id} aria-label={windowTitle(item, desktop, projects)} title={windowTitle(item, desktop, projects)} className={`taskbar-window-button${item.id === activeWindowId && !item.minimized ? ' taskbar-window-button-active' : ''}`} type="button" aria-pressed={item.id === activeWindowId && !item.minimized} onClick={() => bringToFront(item.id)}>
                   <Image src={iconAsset(windowIcon(item))} alt="" width={18} height={18} unoptimized />
-                  <span>{windowTitle(item, desktop)}</span>
+                  <span>{windowTitle(item, desktop, projects)}</span>
                 </button>
               ))}
             </div>
@@ -433,7 +441,7 @@ export function DesktopShell({
 
             <div className="taskbar-time" aria-label={desktop('taskbar.systemTray')}>
               <Image src={iconPath('loudspeaker_muted-0')} alt="" width={16} height={16} unoptimized title={desktop('audioUnavailable')} />
-              <span className="time-text">{new Intl.DateTimeFormat(currentLocale === 'fr' ? 'fr-FR' : 'en-US', {hour: '2-digit', minute: '2-digit'}).format(new Date())}</span>
+              <span className="time-text" suppressHydrationWarning>{new Intl.DateTimeFormat(currentLocale === 'fr' ? 'fr-FR' : 'en-US', {hour: '2-digit', minute: '2-digit'}).format(new Date())}</span>
             </div>
           </div>
         </>
@@ -445,5 +453,6 @@ export function DesktopShell({
         </div>
       )}
     </div>
+    </DesktopWindowContext.Provider>
   );
 }

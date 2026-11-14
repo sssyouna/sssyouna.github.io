@@ -7,6 +7,7 @@ import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
 import {DesktopShell} from '@/components/layout/desktop-shell';
 import {projects} from '@/content/projects';
+import {getProjectReports} from '@/lib/project-reports';
 import '../globals.css';
 import '../windows98.css';
 import '../desktop.css';
@@ -78,6 +79,7 @@ export default async function LocaleLayout({
               summary: project.summary[locale as Locale],
               technologies: project.technologies,
               repository: project.repository,
+              reports: getProjectReports(project.slug),
               sections: project.sections.map((section) => ({
                 title: section.title[locale as Locale],
                 body: section.body[locale as Locale]

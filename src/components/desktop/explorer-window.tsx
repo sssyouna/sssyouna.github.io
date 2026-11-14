@@ -2,8 +2,11 @@
 
 import {useState} from 'react';
 import Image from 'next/image';
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
+import {ReportActions} from '@/components/projects/report-actions';
+import type {AcademicReport} from '@/content/project-reports';
+import {gdncModules} from '@/content/education';
 
 export type DesktopFolderId = 'projects' | 'profile' | 'education' | 'events' | 'documents' | 'experience';
 
@@ -20,6 +23,7 @@ export type DesktopProject = {
   summary: string;
   technologies: string[];
   repository?: string;
+  reports: AcademicReport[];
   sections: {title: string; body: string}[];
 };
 
@@ -181,7 +185,10 @@ export function ExplorerWindow({
           type="button"
           role="listitem"
           className={`explorer-item${selectedId === entry.id ? ' explorer-item-selected' : ''}`}
-          onClick={(event) => selectEntry(entry, event.timeStamp)}
+          onClick={(event) => {
+            if (event.detail === 0 || ('pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'touch')) openEntry(entry);
+            else selectEntry(entry, event.timeStamp);
+          }}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               event.preventDefault();
@@ -260,6 +267,7 @@ export function ExplorerWindow({
               <Link className="button-retro" href={`/projects/${currentProject.slug}`} onClick={() => onOpenCaseStudy?.(currentProject.slug)}>{t('openCaseStudy')} ↗</Link>
               {currentProject.repository ? <a className="button-retro" href={currentProject.repository} target="_blank" rel="noopener noreferrer">{t('repository')} ↗</a> : null}
             </div>
+            <ReportActions reports={currentProject.reports} />
           </article>
         ) : null}
 
@@ -320,6 +328,7 @@ export function ExplorerWindow({
 }
 
 function EducationDetail({locationKey, t, about}: {locationKey: string; t: ReturnType<typeof useTranslations<'Desktop'>>; about: ReturnType<typeof useTranslations<'About'>>}) {
+  const locale = useLocale() === 'fr' ? 'fr' : 'en';
   const key = locationKey.split(':')[1];
   if (key === 'highSchool') return <article className="explorer-detail"><h2>{t('education.items.highSchool.title')}</h2><p>{t('education.items.highSchool.notProvided')}</p></article>;
   if (key === 'learningArchive') return (
@@ -344,6 +353,15 @@ function EducationDetail({locationKey, t, about}: {locationKey: string; t: Retur
         </dl>
       </DetailBlock>
       <DetailBlock title={t('education.learningArchive')}><p>{t('education.items.learningArchive.summary')}</p></DetailBlock>
+      <DetailBlock title={t('education.officialProgramme')}>
+        <p>{t('education.officialProgrammeDescription')}</p>
+        <a className="button-retro" href="https://ensaf.ac.ma/fil-gdnc.php" target="_blank" rel="noopener noreferrer">{t('education.viewProgramme')} ↗</a>
+        <h3 className="curriculum-heading">{t('education.selectedModules')}</h3>
+        <dl className="explorer-definition-list">
+          {gdncModules.map((module) => <div key={module.code}><dt>{module.code}</dt><dd>{module[locale]}</dd></div>)}
+        </dl>
+        <p className="explorer-note">{t('education.curriculumNote')}</p>
+      </DetailBlock>
       <a className="button-retro" href="https://www.ensaf.ac.ma/" target="_blank" rel="noopener noreferrer">{t('education.officialWebsite')} ↗</a>
     </article>
   );

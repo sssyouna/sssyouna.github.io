@@ -76,6 +76,11 @@
     "projectDetails": "Project details",
     "projectOverview": "Overview",
     "projectTechnologies": "Technologies",
+    "reports": {
+      "view": "View Academic Report",
+      "download": "Download Report",
+      "docxHelp": "DOCX opens in a compatible document app after downloading. Browser preview is not available."
+    },
     "openCaseStudy": "Open full case study",
     "repository": "GitHub repository",
     "welcome": {
@@ -103,6 +108,11 @@
       "programme": "Program",
       "cycle": "Cycle and expected completion",
       "learningArchive": "Learning archive",
+      "selectedModules": "Selected official modules",
+      "curriculumNote": "Module codes follow the official curriculum. English names are translations. See the official page for the complete list and teaching hours; semester assignments are not inferred.",
+      "officialProgramme": "Official GDNC program",
+      "officialProgrammeDescription": "The ENSA Fès program in Digital Development and Cybersecurity Engineering covers software development, systems and networks, cryptography, cybersecurity, cloud computing, and DevSecOps. The official page provides the module list and teaching hours.",
+      "viewProgramme": "View the official GDNC curriculum",
       "officialWebsite": "Official ENSA Fès website",
       "archive": {
         "academicYear": "Academic years",

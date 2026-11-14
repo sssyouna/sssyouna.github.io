@@ -1,5 +1,7 @@
 import {Link} from '@/i18n/navigation';
 import type {Project} from '@/content/projects';
+import type {AcademicReport} from '@/content/project-reports';
+import {ReportActions} from './report-actions';
 
 type ProjectCaseStudyProps = {
   project: Project;
@@ -9,6 +11,7 @@ type ProjectCaseStudyProps = {
   statusLabel: string;
   technologiesLabel: string;
   repositoryLabel: string;
+  reports: AcademicReport[];
 };
 
 export function ProjectCaseStudy({
@@ -18,7 +21,8 @@ export function ProjectCaseStudy({
   categoryLabel,
   statusLabel,
   technologiesLabel,
-  repositoryLabel
+  repositoryLabel,
+  reports
 }: ProjectCaseStudyProps) {
   return (
     <main>
@@ -47,6 +51,7 @@ export function ProjectCaseStudy({
               {repositoryLabel} <span aria-hidden="true">↗</span>
             </a>
           ) : null}
+          <ReportActions reports={reports} />
         </div>
       </section>
 

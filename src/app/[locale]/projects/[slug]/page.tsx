@@ -7,6 +7,7 @@ import {getProject, projects} from '@/content/projects';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
 import {TemplateWindow} from '@/components/layout/template-window';
+import {getProjectReports} from '@/lib/project-reports';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -58,6 +59,7 @@ export default async function ProjectPage({
         statusLabel={t(`statuses.${project.status}`)}
         technologiesLabel={t('technologies')}
         repositoryLabel={t('repository')}
+        reports={getProjectReports(project.slug)}
       />
     </TemplateWindow>
   );

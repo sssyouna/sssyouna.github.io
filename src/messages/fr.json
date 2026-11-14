@@ -76,6 +76,11 @@
     "projectDetails": "Détails du projet",
     "projectOverview": "Présentation",
     "projectTechnologies": "Technologies",
+    "reports": {
+      "view": "Consulter le rapport académique",
+      "download": "Télécharger le rapport",
+      "docxHelp": "Le DOCX s’ouvre dans une application compatible après téléchargement. L’aperçu dans le navigateur n’est pas disponible."
+    },
     "openCaseStudy": "Ouvrir l'étude de cas complète",
     "repository": "Dépôt GitHub",
     "welcome": {
@@ -103,6 +108,11 @@
       "programme": "Programme",
       "cycle": "Cycle et diplomation prévue",
       "learningArchive": "Archive d'apprentissage",
+      "selectedModules": "Sélection de modules officiels",
+      "curriculumNote": "Les codes suivent le programme officiel. Consultez la page officielle pour la liste complète et les volumes horaires ; aucune affectation par semestre n’est déduite.",
+      "officialProgramme": "Formation officielle GDNC",
+      "officialProgrammeDescription": "La formation en Génie du Développement Numérique et Cybersécurité de l’ENSA Fès couvre le développement logiciel, les systèmes et réseaux, la cryptographie, la cybersécurité, le cloud computing et le DevSecOps. La page officielle présente les modules et leurs volumes horaires.",
+      "viewProgramme": "Consulter le programme officiel GDNC",
       "officialWebsite": "Site officiel de l'ENSA Fès",
       "archive": {
         "academicYear": "Années universitaires",

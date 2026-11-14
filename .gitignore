@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# Private report inbox; originals require review before public distribution.
+/to paste/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
