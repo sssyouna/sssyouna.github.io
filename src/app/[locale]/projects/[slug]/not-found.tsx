@@ -1,9 +1,11 @@
 import {getTranslations} from 'next-intl/server';
 import {Container} from '@/components/ui/container';
+import {TemplateWindow} from '@/components/layout/template-window';
 
 export default async function ProjectNotFound() {
   const t = await getTranslations('Projects');
   return (
+    <TemplateWindow title={t('notFoundTitle')} icon="📄" statusLeft="404">
     <main>
       <section className="section-space">
         <Container>
@@ -17,5 +19,6 @@ export default async function ProjectNotFound() {
         </Container>
       </section>
     </main>
+    </TemplateWindow>
   );
 }

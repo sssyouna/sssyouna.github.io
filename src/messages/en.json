@@ -20,10 +20,175 @@
     "start": "Start",
     "startMenu": "Portfolio menu",
     "closeStartMenu": "Close portfolio menu",
+    "closeWindow": "Close window",
     "desktopPortfolio": "Cybersecurity portfolio",
     "portfolioWindow": "Younass.me",
     "minimizeWindow": "Minimize portfolio window",
     "restoreWindow": "Restore portfolio window"
+  },
+  "Desktop": {
+    "myComputer": "My Computer",
+    "myDocuments": "My Documents",
+    "achievementsShortcut": "Achievements",
+    "windowFile": "File",
+    "windowEdit": "Edit",
+    "windowView": "View",
+    "windowHelp": "Help",
+    "startMenuTitle": "Windows",
+    "startMenuVersion": "95",
+    "ready": "Ready",
+    "profileDrive": "Profile",
+    "educationDrive": "Education",
+    "credentialsDrive": "Credentials",
+    "profileDriveName": "Younass Ibn Abdeslam",
+    "educationDriveName": "ENSA Fès / USMBA",
+    "credentialDriveName": "CompTIA Security+ · TryHackMe Top 1%",
+    "computerCount": "{count, plural, =1 {# object} other {# objects}}",
+    "documentsCount": "{count, plural, =1 {# item} other {# items}}",
+    "achievementCount": "{count, plural, =1 {# achievement} other {# achievements}}",
+    "previewUnavailable": "Preview unavailable",
+    "audioUnavailable": "Audio playback is disabled",
+    "folders": {
+      "projects": "Projects",
+      "profile": "Who is Younass?",
+      "education": "Education",
+      "events": "Events",
+      "documents": "Documents & Certifications",
+      "experience": "Professional Experiences"
+    },
+    "folderDescriptions": {
+      "projects": "Project overviews, technical notes, and repositories.",
+      "profile": "Introduction, interests, goals, and technical journey.",
+      "education": "ENSA Fès and the expandable learning archive.",
+      "events": "Verified participation and community activities.",
+      "documents": "Professional certification and learning achievements.",
+      "experience": "Verified internship responsibilities and contributions."
+    },
+    "computer": {"drives": "Hard Disk Drives"},
+    "storage": {
+      "driveName": "Portfolio Storage",
+      "driveDescription": "Portfolio files (simulated)",
+      "simulated": "Illustrative storage only — not a real disk measurement.",
+      "used": "18 GB used",
+      "total": "128 GB total"
+    },
+    "toolbar": {"back": "Back", "forward": "Forward", "up": "Up one level", "address": "Address"},
+    "projectDetails": "Project details",
+    "projectOverview": "Overview",
+    "projectTechnologies": "Technologies",
+    "reports": {
+      "view": "View Academic Report",
+      "download": "Download Report",
+      "docxHelp": "DOCX opens in a compatible document app after downloading. Browser preview is not available."
+    },
+    "openCaseStudy": "Open full case study",
+    "repository": "GitHub repository",
+    "welcome": {
+      "title": "Welcome to Younass.me",
+      "tagline": "Cybersecurity · Engineering · Development",
+      "openComputer": "Open My Computer"
+    },
+    "profile": {
+      "journeyTitle": "Technical journey",
+      "files": {
+        "introduction": {"title": "Introduction", "summary": "A short profile and current direction."},
+        "about": {"title": "About me", "summary": "How I approach security and engineering."},
+        "interests": {"title": "Interests & specializations", "summary": "Technical domains from the portfolio."},
+        "career": {"title": "Career objective", "summary": "Verified PFE availability and current objective."},
+        "journey": {"title": "Technical journey", "summary": "A timeline using documented study and experience."}
+      }
+    },
+    "education": {
+      "items": {
+        "highSchool": {"title": "High School", "summary": "Education details are not in the current portfolio records.", "notProvided": "High school name, qualification, and dates have not been provided yet."},
+        "ensa": {"title": "ENSA Fès Engineering Program", "summary": "Cybersecurity & Digital Development Engineering."},
+        "learningArchive": {"title": "Learning Archive", "summary": "A structured place for future verified course, lab, and project notes."}
+      },
+      "institution": "Institution",
+      "programme": "Program",
+      "cycle": "Cycle and expected completion",
+      "learningArchive": "Learning archive",
+      "selectedModules": "Selected official modules",
+      "curriculumNote": "Module codes follow the official curriculum. English names are translations. See the official page for the complete list and teaching hours; semester assignments are not inferred.",
+      "officialProgramme": "Official GDNC program",
+      "officialProgrammeDescription": "The ENSA Fès program in Digital Development and Cybersecurity Engineering covers software development, systems and networks, cryptography, cybersecurity, cloud computing, and DevSecOps. The official page provides the module list and teaching hours.",
+      "viewProgramme": "View the official GDNC curriculum",
+      "officialWebsite": "Official ENSA Fès website",
+      "archive": {
+        "academicYear": "Academic years",
+        "semester": "Semesters",
+        "modules": "Modules",
+        "courses": "Courses",
+        "practicalWork": "Practical work (TPs)",
+        "labs": "Labs",
+        "projects": "Academic projects",
+        "skills": "Technical skills acquired",
+        "empty": "No verified entries added yet."
+      }
+    },
+    "events": {
+      "viewFullSize": "View full-size photo",
+      "openPhoto": "Open the full-size photo: {event} (new tab)",
+      "photos": {
+        "gitex": "Conference audience on the GITEX exhibition floor.",
+        "secops": "Group award photograph from the SecOps competition."
+      },
+      "noPhotos": "No photo has been provided for this activity.",
+      "items": {
+        "gitex": {"title": "GITEX participation", "summary": "Participation details are not documented yet.", "detail": "GITEX participation was listed for this portfolio. The year, role, and other details have not been provided.", "details": "A photograph of the conference audience is included below."},
+        "ctf": {"title": "SecOps Competition", "summary": "Second-place cybersecurity CTF achievement.", "details": "The competition year and additional ranking details are not documented."},
+        "community": {"title": "SecOps Club activities", "summary": "Verified community learning and participation.", "details": "Activities documented in the portfolio include Wireshark, steganography, CTF participation, and binary exploitation."}
+      }
+    },
+    "documents": {
+      "issuer": "Issuer",
+      "date": "Date",
+      "dateNotProvided": "Not provided",
+      "tryHackMeDates": "Issued August 2026 · expires August 2029",
+      "verification": "Verification link",
+      "verificationNotProvided": "No verification URL supplied",
+      "fileNotAvailable": "A certificate file is not present in the local portfolio assets.",
+      "notProvided": "Document details not provided",
+      "items": {
+        "securityPlus": {"title": "CompTIA Security+ SY0-701", "summary": "Professional cybersecurity certification."},
+        "jrPentester": {"title": "Jr Penetration Tester", "summary": "TryHackMe learning path."},
+        "securityEngineer": {"title": "Security Engineer", "summary": "TryHackMe learning path."},
+        "devSecOps": {"title": "DevSecOps", "summary": "TryHackMe learning path."},
+        "ctf": {"title": "ENSA Fès CTF", "summary": "Second-place competition achievement."},
+        "secOps": {"title": "SecOps Club", "summary": "Community learning and activities."}
+      }
+    },
+    "experience": {
+      "items": {
+        "cimar": {"title": "Heidelberg Materials – CIMAR", "summary": "Cybersecurity and GRC internship."},
+        "macobate": {"title": "Macobate", "summary": "Software development internship."}
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "language": "Language",
+      "languageDescription": "Choose the portfolio language. This opens the matching localized route.",
+      "english": "English",
+      "french": "Français",
+      "theme": "Theme",
+      "themeDescription": "Choose the desktop interface colors. The wallpaper remains the same.",
+      "themes": {"blue": "Blue", "white": "White", "dark": "Dark"},
+      "selected": "Selected",
+      "wallpaperUnchanged": "Theme preference is saved on this device."
+    },
+    "startLinks": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "website": "My Website",
+      "ensa": "ENSA Fès website",
+      "tryHackMe": "TryHackMe",
+      "unavailable": "Personal profile URL not provided",
+      "shutdown": "Shut Down",
+      "shutdownMessage": "The desktop is shut down. You can close this tab or restart the desktop.",
+      "restart": "Restart"
+    },
+    "taskbar": {"openWindows": "Open windows", "systemTray": "System tray"},
+    "window": {"minimize": "Minimize", "maximize": "Maximize", "restore": "Restore", "close": "Close"}
   },
   "Home": {
     "eyebrow": "Cybersecurity · Engineering · Development",

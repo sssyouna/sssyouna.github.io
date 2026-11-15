@@ -8,6 +8,7 @@ import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
 import {profile} from '@/content/profile';
+import {TemplateWindow} from '@/components/layout/template-window';
 
 export async function generateMetadata({
   params
@@ -39,6 +40,7 @@ export default async function ContactPage({
   const t = await getTranslations('Contact');
 
   return (
+    <TemplateWindow title={t('title')} icon="✉️" statusLeft={t('availabilityTitle')}>
     <main>
       <section data-background-section="contact" className="section-space border-b border-border">
         <Container>
@@ -95,5 +97,6 @@ export default async function ContactPage({
         </Container>
       </section>
     </main>
+    </TemplateWindow>
   );
 }

@@ -6,6 +6,8 @@ import {Container} from '@/components/ui/container';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
+import {TemplateWindow} from '@/components/layout/template-window';
+import {ProfilePortrait} from '@/components/profile/profile-portrait';
 
 const skillGroups = [
   {title: 'offensiveSecurity', items: 'offensiveSecurityItems'},
@@ -45,18 +47,22 @@ export default async function AboutPage({
   const t = await getTranslations('About');
 
   return (
+    <TemplateWindow title={t('title')} icon="💡" statusLeft={t('credentials')}>
     <main>
       <section data-background-section="education" className="section-space border-b border-border">
         <Container>
-          <div className="max-w-3xl">
-            <p className="eyebrow">{t('eyebrow')}</p>
-            <h1 className="mt-5 text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-6xl">
-              {t('title')}
-            </h1>
-            <p className="mt-8 text-lg leading-8 text-foreground-muted sm:text-xl">
-              {t('introduction')}
-            </p>
-            <p className="mt-6 text-sm font-medium text-accent">{t('credentials')}</p>
+          <div className="about-profile-header">
+            <ProfilePortrait className="about-profile-portrait" sizes="(max-width: 768px) 96px, 160px" />
+            <div className="max-w-3xl">
+              <p className="eyebrow">{t('eyebrow')}</p>
+              <h1 className="mt-5 text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-6xl">
+                {t('title')}
+              </h1>
+              <p className="mt-8 text-lg leading-8 text-foreground-muted sm:text-xl">
+                {t('introduction')}
+              </p>
+              <p className="mt-6 text-sm font-medium text-accent">{t('credentials')}</p>
+            </div>
           </div>
         </Container>
       </section>
@@ -110,5 +116,6 @@ export default async function AboutPage({
         </Container>
       </section>
     </main>
+    </TemplateWindow>
   );
 }
