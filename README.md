@@ -60,5 +60,5 @@ download action appears only when that file exists.
 ## Deployment
 
 The project’s current deployment setup and domain guidance are in
-[`DEPLOYMENT.md`](./DEPLOYMENT.md). The application uses `https://younass.me` for
+[`DEPLOYMENT.md`](./DEPLOYMENT.md). The application uses `https://www.younass.me` for
 canonical metadata, localized alternates, the sitemap, and robots metadata.

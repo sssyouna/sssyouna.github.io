@@ -1,7 +1,7 @@
 import type {MetadataRoute} from 'next';
 import {projects} from '@/content/projects';
+import {siteUrl} from '@/lib/metadata';
 
-const siteUrl = 'https://younass.me';
 const locales = ['en', 'fr'] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

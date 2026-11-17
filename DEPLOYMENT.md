@@ -20,14 +20,16 @@ Vercel's native Git integration handles both preview and production deployments.
 
 ## Runtime and build requirements
 
-- The project uses Next.js `16.4.3`, next-intl, App Router server rendering, dynamic project routes, and the `src/proxy.ts` locale router. Vercel's native Next.js support runs these without a static-export adapter.
+- The project uses Next.js `16.4.5`, next-intl, App Router server rendering, dynamic project routes, and the `src/proxy.ts` locale router. Vercel's native Next.js support runs these without a static-export adapter.
 - `next.config.ts` applies security response headers and the Tailwind Turbopack CSS loader. Keep the standard `next build` command used by `npm run build`.
 - The only application environment reference is Next.js's `NODE_ENV`, used to select production security headers. Next.js/Vercel set this automatically. No custom Vercel environment variables are currently required; do not add placeholder values or secrets.
-- The current CI workflow uses Node.js 22. Next.js 16.4.3 requires Node.js 20.9 or newer. Set Vercel's Node.js version to 22.x if you want it to match CI.
+- The current CI workflow uses Node.js 22. Next.js 16.4.5 requires Node.js 20.9 or newer. Set Vercel's Node.js version to 22.x if you want it to match CI.
+
+Next.js and `eslint-config-next` are pinned to `16.4.5`, the first patched release for [GHSA-mfr8-8qww-v76h](https://github.com/vercel/next.js/security/advisories/GHSA-mfr8-8qww-v76h). The advisory affects Next.js `16.3.0` through `16.4.4` and describes cached data crossing root-parameter boundaries when `use cache` is nested inside `unstable_cache`. Keep `package.json` and `package-lock.json` synchronized and run `npm audit --omit=dev` after dependency changes.
 
 ## Domain and HTTPS
 
-The application metadata, sitemap, and robots metadata use `https://younass.me` as the canonical origin. Add `younass.me` in Vercel's **Project Settings → Domains** after importing the project. You may also add `www.younass.me` and configure it to redirect to the canonical host if you want the `www` alias.
+The application metadata, sitemap, and robots metadata use `https://www.younass.me` as the canonical origin. In Vercel's **Project Settings → Domains**, assign `www.younass.me` to the production deployment and configure `younass.me` to redirect permanently (308) to `https://www.younass.me`, preserving paths and query strings. The production domain configuration already followed this redirect direction during the LinkedIn preview audit; retain it.
 
 Copy the exact DNS records Vercel displays into the domain provider yourself. This repository does not contain DNS records, and no domain configuration is performed by these files. After DNS resolves, verify Vercel has issued the HTTPS certificate and that the canonical host works. Do not enable HSTS preload or `includeSubDomains` until every relevant hostname is HTTPS-ready.
 
@@ -46,3 +48,5 @@ npm run build
 ```
 
 After the first Vercel deployment, verify `/en` and `/fr`, project case studies, `sitemap.xml`, `robots.txt`, canonical URLs, language alternates, security headers, and mobile navigation. Check the Vercel deployment logs and GitHub Actions checks; this repository does not claim a deployment is complete until Vercel reports it as ready.
+
+For social previews, verify that `/en` and `/fr` return their localized title, description, canonical URL, Open Graph tags, and Twitter tags in the HTML `<head>` without JavaScript. `/images/og/portfolio.png` must return `200` with `Content-Type: image/png`; the shared preview is a 1200 × 630 capture of the actual portfolio desktop with a readable name and cybersecurity label. Then inspect `https://www.younass.me/en` at [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) to request a fresh crawl and review the preview before re-adding the Featured link. A successful local check alone does not verify LinkedIn's preview.

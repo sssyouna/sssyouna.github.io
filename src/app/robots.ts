@@ -1,6 +1,5 @@
 import type {MetadataRoute} from 'next';
-
-const siteUrl = 'https://younass.me';
+import {siteUrl} from '@/lib/metadata';
 
 export default function robots(): MetadataRoute.Robots {
   return {

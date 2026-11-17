@@ -1,7 +1,7 @@
 import type {Metadata} from 'next';
 import type {Locale} from '@/i18n/routing';
 
-const siteUrl = 'https://younass.me';
+export const siteUrl = 'https://www.younass.me';
 
 export function localizedMetadata({
   locale,
@@ -17,6 +17,15 @@ export function localizedMetadata({
   const localizedPath = `/${locale}${path}`;
   const englishPath = `/en${path}`;
   const frenchPath = `/fr${path}`;
+  const image = {
+    url: `${siteUrl}/images/og/portfolio.png`,
+    width: 1200,
+    height: 630,
+    type: 'image/png',
+    alt: locale === 'fr'
+      ? 'Younass Ibn Abdeslam — Portfolio cybersécurité, bureau interactif inspiré de Windows'
+      : 'Younass Ibn Abdeslam — Cybersecurity portfolio, interactive Windows-inspired desktop'
+  };
 
   return {
     metadataBase: new URL(siteUrl),
@@ -36,12 +45,14 @@ export function localizedMetadata({
       url: localizedPath,
       siteName: 'Younass.me',
       title,
-      description
+      description,
+      images: [image]
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
-      description
+      description,
+      images: [{url: image.url, alt: image.alt}]
     }
   };
 }
