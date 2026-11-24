@@ -59,7 +59,7 @@
     "folderDescriptions": {
       "projects": "Project overviews, technical notes, and repositories.",
       "profile": "Introduction, interests, goals, and technical journey.",
-      "education": "ENSA Fès and the expandable learning archive.",
+      "education": "ENSA Fès engineering education and official GDNC coursework.",
       "events": "Verified participation and community activities.",
       "documents": "Professional certification and learning achievements.",
       "experience": "Verified internship responsibilities and contributions."
@@ -100,31 +100,20 @@
     },
     "education": {
       "items": {
-        "highSchool": {"title": "High School", "summary": "Education details are not in the current portfolio records.", "notProvided": "High school name, qualification, and dates have not been provided yet."},
-        "ensa": {"title": "ENSA Fès Engineering Program", "summary": "Cybersecurity & Digital Development Engineering."},
-        "learningArchive": {"title": "Learning Archive", "summary": "A structured place for future verified course, lab, and project notes."}
+        "ensa": {
+          "title": "ENSA Fès Engineering Program",
+          "summary": "Cybersecurity & Digital Development Engineering."
+        }
       },
       "institution": "Institution",
       "programme": "Program",
       "cycle": "Cycle and expected completion",
-      "learningArchive": "Learning archive",
       "selectedModules": "Selected official modules",
       "curriculumNote": "Module codes follow the official curriculum. English names are translations. See the official page for the complete list and teaching hours; semester assignments are not inferred.",
       "officialProgramme": "Official GDNC program",
       "officialProgrammeDescription": "The ENSA Fès program in Digital Development and Cybersecurity Engineering covers software development, systems and networks, cryptography, cybersecurity, cloud computing, and DevSecOps. The official page provides the module list and teaching hours.",
       "viewProgramme": "View the official GDNC curriculum",
-      "officialWebsite": "Official ENSA Fès website",
-      "archive": {
-        "academicYear": "Academic years",
-        "semester": "Semesters",
-        "modules": "Modules",
-        "courses": "Courses",
-        "practicalWork": "Practical work (TPs)",
-        "labs": "Labs",
-        "projects": "Academic projects",
-        "skills": "Technical skills acquired",
-        "empty": "No verified entries added yet."
-      }
+      "officialWebsite": "Official ENSA Fès website"
     },
     "events": {
       "viewFullSize": "View full-size photo",
@@ -142,18 +131,12 @@
     },
     "documents": {
       "issuer": "Issuer",
-      "date": "Date",
-      "dateNotProvided": "Not provided",
-      "tryHackMeDates": "Issued August 2026 · expires August 2029",
-      "verification": "Verification link",
-      "verificationNotProvided": "No verification URL supplied",
-      "fileNotAvailable": "A certificate file is not present in the local portfolio assets.",
       "notProvided": "Document details not provided",
       "items": {
         "securityPlus": {"title": "CompTIA Security+ SY0-701", "summary": "Professional cybersecurity certification."},
         "jrPentester": {"title": "Jr Penetration Tester", "summary": "TryHackMe learning path."},
         "securityEngineer": {"title": "Security Engineer", "summary": "TryHackMe learning path."},
-        "devSecOps": {"title": "DevSecOps", "summary": "TryHackMe learning path."},
+        "cyberSecurity101": {"title": "Cyber Security 101", "summary": "TryHackMe learning path."},
         "ctf": {"title": "ENSA Fès CTF", "summary": "Second-place competition achievement."},
         "secOps": {"title": "SecOps Club", "summary": "Community learning and activities."}
       }
@@ -182,7 +165,8 @@
       "website": "My Website",
       "ensa": "ENSA Fès website",
       "tryHackMe": "TryHackMe",
-      "unavailable": "Personal profile URL not provided",
+      "email": "Email",
+      "phone": "Phone",
       "shutdown": "Shut Down",
       "shutdownMessage": "The desktop is shut down. You can close this tab or restart the desktop.",
       "restart": "Restart"
@@ -273,8 +257,8 @@
     "eyebrow": "Achievements",
     "title": "Evidence of continuous learning.",
     "introduction": "Professional certification, practical security learning, competition participation, and community involvement that support a growing cybersecurity practice.",
-    "certificationsEyebrow": "Professional certification",
-    "certificationsTitle": "A verified foundation in cybersecurity.",
+    "certificationsEyebrow": "Certifications & learning paths",
+    "certificationsTitle": "Verified certificates and completed learning paths.",
     "learningEyebrow": "Practical learning",
     "learningTitle": "Structured practice beyond a single credential.",
     "competitionEyebrow": "Competition",
@@ -287,17 +271,26 @@
     "communityInvolvement": "SecOps Club · ENSA Fès",
     "openCertificate": "Open PDF",
     "downloadCertificate": "Download",
+    "issued": "Issued",
+    "expires": "Expires",
+    "openFullSize": "Open full-size certificate",
+    "verifyCertificate": "Verify certificate",
+    "privacyNote": "Public copy: private candidate ID removed. Use the verification code printed on the certificate at the official CompTIA verification portal.",
     "entries": {
       "securityPlusTitle": "CompTIA Security+ (SY0-701)",
-      "tryHackMeJrPentesterTitle": "Jr Penetration Tester path",
-      "tryHackMeDevSecOpsTitle": "DevSecOps path",
-      "securityPlusDetail": "Professional cybersecurity certification. Exam passed with a Pearson VUE score of 795. No issue or expiration date is stated here because it has not been supplied.",
+      "tryHackMeJrPentesterTitle": "Jr Penetration Tester",
+      "securityPlusDetail": "CompTIA Security+ professional certification, earned through the SY0-701 exam.",
       "tryHackMePathsTitle": "Top 1% profile achievement",
-      "tryHackMePathsDetail": "TryHackMe learning paths completed: Jr Penetration Tester, Security Engineer, and DevSecOps. These paths were issued in August 2026 and expire in August 2029. They are presented as platform learning achievements, not as independent professional certifications.",
+      "tryHackMePathsDetail": "TryHackMe Top 1% profile achievement. Completed learning paths: Jr Penetration Tester, Security Engineer, and Cyber Security 101. These are platform learning achievements, not independent professional certifications.",
       "ctfTitle": "2nd place at the ENSA Fès CTF",
       "ctfDetail": "A competition result reflecting participation in a cybersecurity challenge. No competition year, team name, challenge count, or additional ranking details are assumed.",
       "clubTitle": "Member since October 2024",
-      "clubDetail": "Community involvement through Wireshark, steganography, CTF participation, and binary exploitation activities. This represents practical learning and participation, not employment or a formal qualification."
+      "clubDetail": "Community involvement through Wireshark, steganography, CTF participation, and binary exploitation activities. This represents practical learning and participation, not employment or a formal qualification.",
+      "tryHackMeSecurityEngineerTitle": "Security Engineer",
+      "tryHackMeCyberSecurity101Title": "Cyber Security 101",
+      "tryHackMeJrPentesterDetail": "Completed TryHackMe’s Jr Penetration Tester learning path, covering reconnaissance, web and network testing, and penetration testing methodology.",
+      "tryHackMeSecurityEngineerDetail": "Completed TryHackMe’s Security Engineer learning path, covering network, system and software security engineering.",
+      "tryHackMeCyberSecurity101Detail": "Completed TryHackMe’s Cyber Security 101 learning path, covering foundations of offensive and defensive cybersecurity."
     }
   },
   "Contact": {
@@ -313,10 +306,11 @@
     "period": "February–July 2027 · Six months",
     "locationLabel": "Location",
     "location": "Morocco and France",
-    "contactChannelTitle": "Connect through GitHub",
-    "contactChannelDescription": "GitHub is the verified public profile currently available for project discussions and professional contact.",
+    "contactChannelTitle": "Get in touch",
+    "contactChannelDescription": "Contact me by email or phone for professional enquiries, or explore my profiles and projects.",
     "githubLabel": "Open GitHub profile",
-    "projectsLink": "Review my projects"
+    "projectsLink": "Review my projects",
+    "linksLabel": "Contact details and social profiles"
   },
   "About": {
     "metadataTitle": "About | Younass.me",
@@ -327,8 +321,8 @@
     "credentials": "CompTIA Security+ certified · TryHackMe Top 1%",
     "academicEyebrow": "Academic background",
     "academicTitle": "Engineering studies focused on cybersecurity and digital development.",
-    "institution": "ENSA Fès / USMBA",
-    "programme": "Cybersecurity & Digital Development Engineering",
+    "institution": "École Nationale des Sciences Appliquées de Fès (ENSA Fès), USMBA",
+    "programme": "Digital Development and Cybersecurity Engineering (GDNC)",
     "cycle": "Engineering cycle",
     "graduation": "Expected graduation: 2027",
     "domainsEyebrow": "Technical domains",

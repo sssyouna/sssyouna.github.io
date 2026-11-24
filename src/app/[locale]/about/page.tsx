@@ -8,6 +8,7 @@ import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
 import {TemplateWindow} from '@/components/layout/template-window';
 import {ProfilePortrait} from '@/components/profile/profile-portrait';
+import {ContactLinks} from '@/components/profile/contact-links';
 
 const skillGroups = [
   {title: 'offensiveSecurity', items: 'offensiveSecurityItems'},
@@ -62,6 +63,7 @@ export default async function AboutPage({
                 {t('introduction')}
               </p>
               <p className="mt-6 text-sm font-medium text-accent">{t('credentials')}</p>
+              <ContactLinks />
             </div>
           </div>
         </Container>

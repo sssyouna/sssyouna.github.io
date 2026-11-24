@@ -237,10 +237,6 @@ body {
 .explorer-timeline strong,.explorer-timeline span { display: block; }
 .explorer-timeline strong { font-size: 13px; }
 .explorer-timeline span { margin-top: 3px; font-size: 11px; line-height: 1.5; }
-.archive-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
-.archive-folder { min-height: 75px; padding: 10px; border: 2px outset var(--win-white); background: var(--win-gray); }
-.archive-folder h3 { margin: 0 0 5px; font-size: 11px; }
-.archive-folder p { margin: 0; font-size: 10px; }
 .event-photo-placeholder { display: flex; min-height: 105px; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; border: 2px inset var(--win-gray); background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--win-gray) 50%, transparent) 0 8px, transparent 8px 16px); font-size: 11px; text-align: center; }
 .event-photo { margin: 16px 0 0; }
 .event-photo-link { display: block; color: var(--text-dark); text-decoration: none; }
@@ -358,7 +354,6 @@ body {
   .explorer-item-description { font-size: 11px; }
   .drive-card { grid-template-columns: 48px minmax(0, 1fr); }
   .drive-card img { width: 46px; height: 46px; }
-  .archive-grid { grid-template-columns: 1fr; }
   .explorer-detail h2 { font-size: 18px; }
   .explorer-detail p { font-size: 13px; }
   .explorer-definition-list div { grid-template-columns: 1fr; gap: 3px; }
@@ -402,3 +397,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.contact-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.contact-links .button-retro { width: auto; max-width: 100%; margin: 0; padding: 7px 10px; overflow-wrap: anywhere; font-size: 11px; }
+
+.certificate-preview-link { display: block; margin: 14px 0; }
+.certificate-preview-link img { display: block; width: 100%; height: auto; border: 2px inset var(--win-gray); }
+.certificate-evidence .explorer-detail-actions { flex-wrap: wrap; }

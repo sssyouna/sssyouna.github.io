@@ -1,3 +1,6 @@
+import {certifications} from './certifications';
+export type {CertificateAsset} from './certifications';
+
 export type AssetPath = `/images/${string}`;
 
 export type BackgroundSection =
@@ -21,29 +24,8 @@ export const assets = {
     projects: [],
     contact: []
   } satisfies Record<BackgroundSection, AssetPath[]>,
-  certifications: [
-    {
-      id: 'security-plus',
-      titleKey: 'securityPlusTitle',
-      organization: 'CompTIA',
-      path: '/images/certifications/security-plus.pdf' as AssetPath
-    },
-    {
-      id: 'tryhackme-jr-pentester',
-      titleKey: 'tryHackMeJrPentesterTitle',
-      organization: 'TryHackMe',
-      path: '/images/certifications/tryhackme-jr-pentester.pdf' as AssetPath
-    },
-    {
-      id: 'tryhackme-devsecops',
-      titleKey: 'tryHackMeDevSecOpsTitle',
-      organization: 'TryHackMe',
-      path: '/images/certifications/tryhackme-devsecops.pdf' as AssetPath
-    }
-  ]
+  certifications
 } as const;
-
-export type CertificateAsset = (typeof assets.certifications)[number];
 
 export const portfolioFiles = {
   resume: '/cv.pdf'

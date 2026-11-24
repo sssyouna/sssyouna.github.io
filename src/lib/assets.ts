@@ -7,7 +7,10 @@ function publicAssetExists(assetPath: string) {
 }
 
 export function getAvailableCertificates(): CertificateAsset[] {
-  return assets.certifications.filter((certificate) => publicAssetExists(certificate.path));
+  return assets.certifications.filter((certificate) =>
+    (!certificate.path || publicAssetExists(certificate.path)) &&
+    (!certificate.preview || publicAssetExists(certificate.preview.src))
+  );
 }
 
 export function getAvailableBackgrounds() {

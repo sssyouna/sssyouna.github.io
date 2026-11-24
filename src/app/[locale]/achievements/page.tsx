@@ -78,8 +78,7 @@ export default async function AchievementsPage({
                   key={certificate.id}
                   certificate={certificate}
                   title={t(`entries.${certificate.titleKey}`)}
-                  openLabel={t('openCertificate')}
-                  downloadLabel={t('downloadCertificate')}
+                  detail={t(`entries.${certificate.detailKey}`)}
                 />
               ))}
             </div>

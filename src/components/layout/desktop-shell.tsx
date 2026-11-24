@@ -7,9 +7,11 @@ import {usePathname, useRouter} from '@/i18n/navigation';
 import {WindowFrame} from '@/components/desktop/window-frame';
 import {DesktopWindowContext} from '@/components/desktop/window-context';
 import {ProfilePortrait} from '@/components/profile/profile-portrait';
+import {ContactLinks} from '@/components/profile/contact-links';
 import {Link} from '@/i18n/navigation';
 import type {Locale} from '@/i18n/routing';
 import {profile} from '@/content/profile';
+import type {CertificateAsset} from '@/content/certifications';
 import {
   ExplorerWindow,
   explorerLocationTitle,
@@ -129,10 +131,12 @@ function windowIcon(window: DesktopWindowState) {
 export function DesktopShell({
   children,
   locale,
+  certificates,
   projects
 }: {
   children: ReactNode;
   locale: Locale;
+  certificates: CertificateAsset[];
   projects: DesktopProject[];
 }) {
   const navigation = useTranslations('Navigation');
@@ -337,6 +341,7 @@ export function DesktopShell({
                 onMinimize={() => minimizeWindow(item.id)} onMaximize={() => toggleMaximize(item.id)}>
                 {item.kind === 'explorer' && item.location ? (
                   <ExplorerWindow
+                    certificates={certificates}
                     location={item.location}
                     projects={projects}
                     onNavigate={(location) => navigateExplorer(item.id, location)}
@@ -360,6 +365,7 @@ export function DesktopShell({
                         <p>{home('interests')}</p>
                         <p className="welcome-focus">{home('profileSummaryTitle')} · {home('disciplineOne')} · {home('disciplineTwo')} · {home('disciplineThree')}</p>
                         <p className="welcome-availability">● {home('availabilityLabel')} · {home('availabilityPeriod')} · {home('availabilityLocation')}</p>
+                        <ContactLinks />
                       </div>
                     </div>
                     <div className="welcome-actions">
@@ -424,7 +430,9 @@ export function DesktopShell({
                 <div className="start-menu-header"><span className="windows-logo">Windows</span><span className="windows-version">XP</span></div>
                 <div className="start-menu-items">
                   <a className="start-menu-item" href={profile.github} target="_blank" rel="noopener noreferrer"><Image src={iconPath('computer_explorer-5')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.github')}</span></a>
-                  <button className="start-menu-item" type="button" disabled title={desktop('startLinks.unavailable')}><Image src={iconPath('help_book_big-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.linkedin')}<small>{desktop('startLinks.unavailable')}</small></span></button>
+                  <a className="start-menu-item" href={profile.linkedin} target="_blank" rel="noopener noreferrer"><Image src={iconPath('help_book_big-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.linkedin')}</span></a>
+                  <a className="start-menu-item" href={`mailto:${profile.email}`}><Image src={iconPath('html-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.email')}</span></a>
+                  <a className="start-menu-item" href={`tel:${profile.phone}`}><Image src={iconPath('help_book_big-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.phone')}</span></a>
                   <Link className="start-menu-item" href="/" onClick={prepareRouteNavigation}><Image src={iconPath('windows-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.website')}</span></Link>
                   <Link className="start-menu-item" href="/about" onClick={prepareRouteNavigation}><Image src={iconPath('directory_open_file_mydocs-4')} alt="" width={32} height={32} unoptimized /><span>{navigation('about')}</span></Link>
                   <Link className="start-menu-item" href="/projects" onClick={prepareRouteNavigation}><Image src={iconPath('html-0')} alt="" width={32} height={32} unoptimized /><span>{navigation('projects')}</span></Link>
@@ -432,7 +440,7 @@ export function DesktopShell({
                   <Link className="start-menu-item" href="/achievements" onClick={prepareRouteNavigation}><Image src={iconPath('help_book_big-0')} alt="" width={32} height={32} unoptimized /><span>{navigation('achievements')}</span></Link>
                   <Link className="start-menu-item" href="/contact" onClick={prepareRouteNavigation}><Image src={iconPath('computer_explorer-5')} alt="" width={32} height={32} unoptimized /><span>{navigation('contact')}</span></Link>
                   <a className="start-menu-item" href="https://www.ensaf.ac.ma/" target="_blank" rel="noopener noreferrer"><Image src={iconPath('directory_open_file_mydocs-4')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.ensa')}</span></a>
-                  <button className="start-menu-item" type="button" disabled title={desktop('startLinks.unavailable')}><Image src={iconPath('help_book_big-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.tryHackMe')}<small>{desktop('startLinks.unavailable')}</small></span></button>
+                  <a className="start-menu-item" href={profile.tryHackMe} target="_blank" rel="noopener noreferrer"><Image src={iconPath('help_book_big-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.tryHackMe')}</span></a>
                   <button className="start-menu-item" type="button" onClick={openSettings}><Image src={iconPath('settings_gear-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('settings.title')}</span></button>
                   <div className="start-menu-separator" />
                   <button className="start-menu-item start-menu-shutdown" type="button" onClick={() => {setIsStartMenuOpen(false); setIsShutdown(true);}}><Image src={iconPath('shut_down_with_computer-0')} alt="" width={32} height={32} unoptimized /><span>{desktop('startLinks.shutdown')}</span></button>

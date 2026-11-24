@@ -1,6 +1,6 @@
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
-import {profile} from '@/content/profile';
+import {ContactLinks} from '@/components/profile/contact-links';
 
 const navigation = [
   {href: '/', key: 'home'},
@@ -25,9 +25,7 @@ export function SiteFooter() {
           <p className="mt-4 max-w-sm text-sm leading-6 text-foreground-muted">
             {t('Footer.description')}
           </p>
-          <a className="inline-link mt-5" href={profile.github} target="_blank" rel="noreferrer">
-            {t('Footer.github')} <span aria-hidden="true">↗</span>
-          </a>
+          <ContactLinks />
         </div>
         <nav aria-label={t('Navigation.primary')} className="footer-navigation">
           {navigation.map(({href, key}) => (

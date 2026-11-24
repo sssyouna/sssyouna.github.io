@@ -59,7 +59,7 @@
     "folderDescriptions": {
       "projects": "Aperçus des projets, notes techniques et dépôts.",
       "profile": "Présentation, intérêts, objectifs et parcours technique.",
-      "education": "ENSA Fès et une archive de formation évolutive.",
+      "education": "Formation d'ingénieur à l'ENSA Fès et enseignements officiels GDNC.",
       "events": "Participations vérifiées et activités communautaires.",
       "documents": "Certification professionnelle et apprentissages.",
       "experience": "Responsabilités et contributions vérifiées en stage."
@@ -100,31 +100,20 @@
     },
     "education": {
       "items": {
-        "highSchool": {"title": "Lycée", "summary": "Les détails de scolarité ne figurent pas dans les informations du portfolio.", "notProvided": "Le nom du lycée, le diplôme et les dates n'ont pas encore été fournis."},
-        "ensa": {"title": "Cycle ingénieur de l'ENSA Fès", "summary": "Ingénierie Cybersécurité & Développement Numérique."},
-        "learningArchive": {"title": "Archive d'apprentissage", "summary": "Un espace structuré pour ajouter les cours, TP, laboratoires et projets vérifiés."}
+        "ensa": {
+          "title": "Cycle ingénieur de l'ENSA Fès",
+          "summary": "Ingénierie Cybersécurité & Développement Numérique."
+        }
       },
       "institution": "Établissement",
       "programme": "Programme",
       "cycle": "Cycle et diplomation prévue",
-      "learningArchive": "Archive d'apprentissage",
       "selectedModules": "Sélection de modules officiels",
       "curriculumNote": "Les codes suivent le programme officiel. Consultez la page officielle pour la liste complète et les volumes horaires ; aucune affectation par semestre n’est déduite.",
       "officialProgramme": "Formation officielle GDNC",
       "officialProgrammeDescription": "La formation en Génie du Développement Numérique et Cybersécurité de l’ENSA Fès couvre le développement logiciel, les systèmes et réseaux, la cryptographie, la cybersécurité, le cloud computing et le DevSecOps. La page officielle présente les modules et leurs volumes horaires.",
       "viewProgramme": "Consulter le programme officiel GDNC",
-      "officialWebsite": "Site officiel de l'ENSA Fès",
-      "archive": {
-        "academicYear": "Années universitaires",
-        "semester": "Semestres",
-        "modules": "Modules",
-        "courses": "Cours",
-        "practicalWork": "Travaux pratiques (TP)",
-        "labs": "Laboratoires",
-        "projects": "Projets académiques",
-        "skills": "Compétences techniques acquises",
-        "empty": "Aucune entrée vérifiée pour le moment."
-      }
+      "officialWebsite": "Site officiel de l'ENSA Fès"
     },
     "events": {
       "viewFullSize": "Voir la photo en taille réelle",
@@ -142,18 +131,12 @@
     },
     "documents": {
       "issuer": "Organisme émetteur",
-      "date": "Date",
-      "dateNotProvided": "Non communiquée",
-      "tryHackMeDates": "Délivrés en août 2026 · expiration en août 2029",
-      "verification": "Lien de vérification",
-      "verificationNotProvided": "Aucune URL de vérification fournie",
-      "fileNotAvailable": "Aucun fichier de certificat n'est présent dans les ressources locales du portfolio.",
       "notProvided": "Détails du document non communiqués",
       "items": {
         "securityPlus": {"title": "CompTIA Security+ SY0-701", "summary": "Certification professionnelle en cybersécurité."},
         "jrPentester": {"title": "Jr Penetration Tester", "summary": "Parcours d'apprentissage TryHackMe."},
         "securityEngineer": {"title": "Security Engineer", "summary": "Parcours d'apprentissage TryHackMe."},
-        "devSecOps": {"title": "DevSecOps", "summary": "Parcours d'apprentissage TryHackMe."},
+        "cyberSecurity101": {"title": "Cyber Security 101", "summary": "Parcours de formation TryHackMe."},
         "ctf": {"title": "CTF de l'ENSA Fès", "summary": "Résultat de deuxième place en compétition."},
         "secOps": {"title": "SecOps Club", "summary": "Apprentissage et activités communautaires."}
       }
@@ -182,7 +165,8 @@
       "website": "Mon site web",
       "ensa": "Site web de l'ENSA Fès",
       "tryHackMe": "TryHackMe",
-      "unavailable": "URL du profil personnel non fournie",
+      "email": "E-mail",
+      "phone": "Téléphone",
       "shutdown": "Arrêter",
       "shutdownMessage": "Le bureau est arrêté. Vous pouvez fermer cet onglet ou redémarrer le bureau.",
       "restart": "Redémarrer"
@@ -273,8 +257,8 @@
     "eyebrow": "Réalisations",
     "title": "Les preuves d'un apprentissage continu.",
     "introduction": "Une certification professionnelle, des apprentissages pratiques en sécurité, une participation à une compétition et un engagement communautaire qui accompagnent le développement d'une pratique en cybersécurité.",
-    "certificationsEyebrow": "Certification professionnelle",
-    "certificationsTitle": "Une base vérifiée en cybersécurité.",
+    "certificationsEyebrow": "Certifications et parcours de formation",
+    "certificationsTitle": "Certificats vérifiables et parcours de formation terminés.",
     "learningEyebrow": "Apprentissage pratique",
     "learningTitle": "Une pratique structurée au-delà d'une certification unique.",
     "competitionEyebrow": "Compétition",
@@ -287,17 +271,26 @@
     "communityInvolvement": "SecOps Club · ENSA Fès",
     "openCertificate": "Ouvrir le PDF",
     "downloadCertificate": "Télécharger",
+    "issued": "Délivré le",
+    "expires": "Expire le",
+    "openFullSize": "Ouvrir le certificat en taille réelle",
+    "verifyCertificate": "Vérifier le certificat",
+    "privacyNote": "Copie publique : identifiant de candidat privé supprimé. Utilisez le code de vérification imprimé sur le certificat sur le portail officiel de CompTIA.",
     "entries": {
       "securityPlusTitle": "CompTIA Security+ (SY0-701)",
-      "tryHackMeJrPentesterTitle": "Parcours Jr Penetration Tester",
-      "tryHackMeDevSecOpsTitle": "Parcours DevSecOps",
-      "securityPlusDetail": "Certification professionnelle en cybersécurité. Examen réussi avec un score Pearson VUE de 795. Aucune date d'émission ou d'expiration n'est indiquée ici car elle n'a pas été fournie.",
+      "tryHackMeJrPentesterTitle": "Jr Penetration Tester",
+      "securityPlusDetail": "Certification professionnelle CompTIA Security+, obtenue à l’issue de l’examen SY0-701.",
       "tryHackMePathsTitle": "Profil classé dans le Top 1%",
-      "tryHackMePathsDetail": "Parcours TryHackMe suivis : Jr Penetration Tester, Security Engineer et DevSecOps. Ils ont été délivrés en août 2026 et expirent en août 2029. Ils sont présentés comme des réalisations d'apprentissage sur la plateforme, et non comme des certifications professionnelles indépendantes.",
+      "tryHackMePathsDetail": "Profil TryHackMe classé dans le Top 1 %. Parcours terminés : Jr Penetration Tester, Security Engineer et Cyber Security 101. Ces réalisations de formation sur la plateforme ne sont pas des certifications professionnelles indépendantes.",
       "ctfTitle": "2e place au CTF de l'ENSA Fès",
       "ctfDetail": "Un résultat en compétition qui témoigne d'une participation à un challenge de cybersécurité. L'année, le nom de l'équipe, le nombre d'épreuves et les autres détails de classement ne sont pas supposés.",
       "clubTitle": "Membre depuis octobre 2024",
-      "clubDetail": "Engagement communautaire autour de Wireshark, de la stéganographie, de la participation à des CTF et de l'exploitation binaire. Il s'agit d'apprentissage pratique et de participation, et non d'un emploi ou d'une qualification officielle."
+      "clubDetail": "Engagement communautaire autour de Wireshark, de la stéganographie, de la participation à des CTF et de l'exploitation binaire. Il s'agit d'apprentissage pratique et de participation, et non d'un emploi ou d'une qualification officielle.",
+      "tryHackMeSecurityEngineerTitle": "Security Engineer",
+      "tryHackMeCyberSecurity101Title": "Cyber Security 101",
+      "tryHackMeJrPentesterDetail": "Parcours Jr Penetration Tester de TryHackMe terminé : reconnaissance, tests web et réseau et méthodologie des tests d’intrusion.",
+      "tryHackMeSecurityEngineerDetail": "Parcours Security Engineer de TryHackMe terminé : ingénierie de la sécurité des réseaux, des systèmes et des logiciels.",
+      "tryHackMeCyberSecurity101Detail": "Parcours Cyber Security 101 de TryHackMe terminé : bases de la cybersécurité offensive et défensive."
     }
   },
   "Contact": {
@@ -313,10 +306,11 @@
     "period": "Février–juillet 2027 · Six mois",
     "locationLabel": "Localisation",
     "location": "Maroc et France",
-    "contactChannelTitle": "Me contacter sur GitHub",
-    "contactChannelDescription": "GitHub est le profil public vérifié actuellement disponible pour discuter de projets et prendre contact à titre professionnel.",
+    "contactChannelTitle": "Me contacter",
+    "contactChannelDescription": "Contactez-moi par e-mail ou par téléphone pour une demande professionnelle, ou découvrez mes profils et mes projets.",
     "githubLabel": "Ouvrir le profil GitHub",
-    "projectsLink": "Voir mes projets"
+    "projectsLink": "Voir mes projets",
+    "linksLabel": "Coordonnées et profils publics"
   },
   "About": {
     "metadataTitle": "À propos | Younass.me",
@@ -327,8 +321,8 @@
     "credentials": "Certifié CompTIA Security+ · Top 1% sur TryHackMe",
     "academicEyebrow": "Parcours académique",
     "academicTitle": "Une formation d'ingénieur orientée vers la cybersécurité et le développement numérique.",
-    "institution": "ENSA Fès / USMBA",
-    "programme": "Ingénierie Cybersécurité & Développement Numérique",
+    "institution": "École Nationale des Sciences Appliquées de Fès (ENSA Fès), USMBA",
+    "programme": "Génie du Développement Numérique et Cybersécurité (GDNC)",
     "cycle": "Cycle ingénieur",
     "graduation": "Diplôme prévu en 2027",
     "domainsEyebrow": "Domaines techniques",

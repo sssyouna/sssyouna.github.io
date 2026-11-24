@@ -7,7 +7,7 @@ import {Link} from '@/i18n/navigation';
 import {SectionHeading} from '@/components/ui/section-heading';
 import {routing, type Locale} from '@/i18n/routing';
 import {localizedMetadata} from '@/lib/metadata';
-import {profile} from '@/content/profile';
+import {ContactLinks} from '@/components/profile/contact-links';
 import {TemplateWindow} from '@/components/layout/template-window';
 
 export async function generateMetadata({
@@ -86,9 +86,7 @@ export default async function ContactPage({
               </p>
             </div>
             <div className="contact-channel-actions">
-              <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
-                {t('githubLabel')} <span aria-hidden="true">↗</span>
-              </a>
+              <ContactLinks />
               <Link href="/projects" className="inline-link">
                 {t('projectsLink')} <span aria-hidden="true">→</span>
               </Link>

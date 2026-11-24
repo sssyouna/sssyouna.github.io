@@ -9,6 +9,9 @@ import type {AcademicReport} from '@/content/project-reports';
 import {gdncModules} from '@/content/education';
 import {portfolioImages} from '@/content/images';
 import {ProfilePortrait} from '@/components/profile/profile-portrait';
+import {ContactLinks} from '@/components/profile/contact-links';
+import type {CertificateAsset} from '@/content/certifications';
+import {CertificateDates, CertificateEvidence} from '@/components/achievements/certificate-evidence';
 
 export type DesktopFolderId = 'projects' | 'profile' | 'education' | 'events' | 'documents' | 'experience';
 
@@ -30,6 +33,7 @@ export type DesktopProject = {
 };
 
 type ExplorerWindowProps = {
+  certificates: CertificateAsset[];
   location: ExplorerLocation;
   projects: DesktopProject[];
   onNavigate: (location: ExplorerLocation) => void;
@@ -67,7 +71,7 @@ export function explorerLocationTitle(location: ExplorerLocation, t: ReturnType<
   if (location.key.startsWith('event:')) return t(`events.items.${key}.title`);
   if (location.key.startsWith('document:')) return t(`documents.items.${key}.title`);
   if (location.key.startsWith('experience:')) return t(`experience.items.${key}.title`);
-  return t('learningArchive');
+  return t('myDocuments');
 }
 
 export function parentExplorerLocation(location: ExplorerLocation): ExplorerLocation | null {
@@ -88,6 +92,7 @@ function DetailBlock({title, children}: {title?: string; children: React.ReactNo
 }
 
 export function ExplorerWindow({
+  certificates,
   location,
   projects,
   onNavigate,
@@ -131,7 +136,7 @@ export function ExplorerWindow({
             location: {type: 'content', key: `profile:${key}`}
           }))
         : location.type === 'folder' && location.folder === 'education'
-          ? (['highSchool', 'ensa', 'learningArchive'] as const).map((key) => ({
+          ? (['ensa'] as const).map((key) => ({
               id: `education:${key}`,
               label: t(`education.items.${key}.title`),
               description: t(`education.items.${key}.summary`),
@@ -147,9 +152,11 @@ export function ExplorerWindow({
                 location: {type: 'content', key: `event:${key}`}
               }))
             : location.type === 'folder' && location.folder === 'documents'
-              ? (['securityPlus', 'jrPentester', 'securityEngineer', 'devSecOps', 'ctf', 'secOps'] as const).map((key) => ({
+              ? (['securityPlus', 'jrPentester', 'securityEngineer', 'cyberSecurity101', 'ctf', 'secOps'] as const).map((key) => ({
                   id: `document:${key}`,
-                  label: achievements(`entries.${key === 'securityPlus' ? 'securityPlusTitle' : key === 'jrPentester' ? 'tryHackMeJrPentesterTitle' : key === 'securityEngineer' ? 'tryHackMePathsTitle' : key === 'devSecOps' ? 'tryHackMeDevSecOpsTitle' : key === 'ctf' ? 'ctfTitle' : 'clubTitle'}`),
+                  label: key === 'ctf' || key === 'secOps'
+                    ? achievements(`entries.${key === 'ctf' ? 'ctfTitle' : 'clubTitle'}`)
+                    : t(`documents.items.${key}.title`),
                   description: t(`documents.items.${key}.summary`),
                   icon: 'html-0',
                   location: {type: 'content', key: `document:${key}`}
@@ -257,6 +264,7 @@ export function ExplorerWindow({
                 <ProfilePortrait className="explorer-profile-portrait" sizes="(max-width: 768px) 76px, 112px" />
               </div>
             ) : <h2 className="explorer-section-heading">{t(`folders.${location.folder}`)}</h2>}
+            {location.folder === 'profile' ? <ContactLinks /> : null}
             {location.folder === 'experience' ? <p className="explorer-folder-introduction">{experience('introduction')}</p> : null}
             {renderEntries(entries)}
           </>
@@ -285,6 +293,7 @@ export function ExplorerWindow({
               {location.key === 'profile:introduction' || location.key === 'profile:about'
                 ? <ProfilePortrait className="explorer-profile-portrait" sizes="(max-width: 768px) 76px, 112px" /> : null}
             </div>
+            {location.key === 'profile:introduction' || location.key === 'profile:about' ? <ContactLinks /> : null}
             {location.key === 'profile:introduction' ? <DetailBlock><p>{about('introduction')}</p></DetailBlock> : null}
             {location.key === 'profile:about' ? <DetailBlock title={about('approachTitle')}><p>{about('approachDescription')}</p></DetailBlock> : null}
             {location.key === 'profile:interests' ? (
@@ -314,7 +323,7 @@ export function ExplorerWindow({
         ) : null}
 
         {location.type === 'content' && location.key.startsWith('education:') ? (
-          <EducationDetail locationKey={location.key} t={t} about={about} />
+          <EducationDetail t={t} about={about} />
         ) : null}
 
         {location.type === 'content' && location.key.startsWith('event:') ? (
@@ -322,7 +331,7 @@ export function ExplorerWindow({
         ) : null}
 
         {location.type === 'content' && location.key.startsWith('document:') ? (
-          <DocumentDetail locationKey={location.key} t={t} achievements={achievements} />
+          <DocumentDetail locationKey={location.key} certificates={certificates} t={t} achievements={achievements} />
         ) : null}
 
         {location.type === 'content' && location.key.startsWith('experience:') ? (
@@ -338,21 +347,8 @@ export function ExplorerWindow({
   );
 }
 
-function EducationDetail({locationKey, t, about}: {locationKey: string; t: ReturnType<typeof useTranslations<'Desktop'>>; about: ReturnType<typeof useTranslations<'About'>>}) {
+function EducationDetail({t, about}: {t: ReturnType<typeof useTranslations<'Desktop'>>; about: ReturnType<typeof useTranslations<'About'>>}) {
   const locale = useLocale() === 'fr' ? 'fr' : 'en';
-  const key = locationKey.split(':')[1];
-  if (key === 'highSchool') return <article className="explorer-detail"><h2>{t('education.items.highSchool.title')}</h2><p>{t('education.items.highSchool.notProvided')}</p></article>;
-  if (key === 'learningArchive') return (
-    <article className="explorer-detail">
-      <h2>{t('education.items.learningArchive.title')}</h2>
-      <p>{t('education.items.learningArchive.summary')}</p>
-      <div className="archive-grid">
-        {(['academicYear', 'semester', 'modules', 'courses', 'practicalWork', 'labs', 'projects', 'skills'] as const).map((item) => (
-          <section className="archive-folder" key={item}><h3>{t(`education.archive.${item}`)}</h3><p>{t('education.archive.empty')}</p></section>
-        ))}
-      </div>
-    </article>
-  );
   return (
     <article className="explorer-detail">
       <h2>{about('institution')}</h2>
@@ -363,7 +359,6 @@ function EducationDetail({locationKey, t, about}: {locationKey: string; t: Retur
           <div><dt>{t('education.cycle')}</dt><dd>{about('cycle')} · {about('graduation')}</dd></div>
         </dl>
       </DetailBlock>
-      <DetailBlock title={t('education.learningArchive')}><p>{t('education.items.learningArchive.summary')}</p></DetailBlock>
       <DetailBlock title={t('education.officialProgramme')}>
         <p>{t('education.officialProgrammeDescription')}</p>
         <a className="button-retro" href="https://ensaf.ac.ma/fil-gdnc.php" target="_blank" rel="noopener noreferrer">{t('education.viewProgramme')} ↗</a>
@@ -397,45 +392,43 @@ function EventDetail({locationKey, t, achievements}: {locationKey: string; t: Re
           </a>
           <figcaption>{t(`events.photos.${photoKey}`)}</figcaption>
         </figure>
-      ) : <div className="event-photo-placeholder" role="img" aria-label={t('events.noPhotos')}>
+      ) : key !== 'community' ? <div className="event-photo-placeholder" role="img" aria-label={t('events.noPhotos')}>
         <Image src={iconUrl('help_book_big-0')} alt="" width={48} height={48} unoptimized />
         <span>{t('events.noPhotos')}</span>
-      </div>}
+      </div> : null}
     </article>
   );
 }
 
-function DocumentDetail({locationKey, t, achievements}: {locationKey: string; t: ReturnType<typeof useTranslations<'Desktop'>>; achievements: ReturnType<typeof useTranslations<'Achievements'>>}) {
+function DocumentDetail({locationKey, certificates, t, achievements}: {locationKey: string; certificates: CertificateAsset[]; t: ReturnType<typeof useTranslations<'Desktop'>>; achievements: ReturnType<typeof useTranslations<'Achievements'>>}) {
   const key = locationKey.split(':')[1];
+  const certificate = certificates.find((item) => item.documentKey === key);
   const titles: Record<string, string> = {
     securityPlus: achievements('entries.securityPlusTitle'),
     jrPentester: achievements('entries.tryHackMeJrPentesterTitle'),
     securityEngineer: t('documents.items.securityEngineer.title'),
-    devSecOps: achievements('entries.tryHackMeDevSecOpsTitle'),
+    cyberSecurity101: achievements('entries.tryHackMeCyberSecurity101Title'),
     ctf: achievements('entries.ctfTitle'),
     secOps: achievements('entries.clubTitle')
   };
-  const isTryHackMe = ['jrPentester', 'securityEngineer', 'devSecOps'].includes(key);
-  const detail = key === 'securityPlus'
-    ? achievements('entries.securityPlusDetail')
-    : isTryHackMe
-      ? achievements('entries.tryHackMePathsDetail')
-      : key === 'ctf'
-        ? achievements('entries.ctfDetail')
-        : key === 'secOps'
-          ? achievements('entries.clubDetail')
-          : '';
+  const isTryHackMe = ['jrPentester', 'securityEngineer', 'cyberSecurity101'].includes(key);
+  const detail = certificate
+    ? achievements(`entries.${certificate.detailKey}`)
+    : key === 'ctf'
+      ? achievements('entries.ctfDetail')
+      : key === 'secOps'
+        ? achievements('entries.clubDetail')
+        : '';
   const issuer = key === 'securityPlus' ? 'CompTIA' : isTryHackMe ? 'TryHackMe' : key === 'ctf' ? 'ENSA Fès CTF' : 'SecOps Club · ENSA Fès';
-  const date = isTryHackMe ? t('documents.tryHackMeDates') : t('documents.dateNotProvided');
   return (
     <article className="explorer-detail">
       <h2>{titles[key] ?? t('documents.notProvided')}</h2>
       <dl className="explorer-definition-list metadata-list">
         <div><dt>{t('documents.issuer')}</dt><dd>{issuer}</dd></div>
-        <div><dt>{t('documents.date')}</dt><dd>{date}</dd></div>
-        <div><dt>{t('documents.verification')}</dt><dd>{t('documents.verificationNotProvided')}</dd></div>
       </dl>
-      <DetailBlock><p>{detail}</p><p className="explorer-note">{t('documents.fileNotAvailable')}</p></DetailBlock>
+      {certificate ? <CertificateDates certificate={certificate} /> : null}
+      <DetailBlock><p>{detail}</p></DetailBlock>
+      {certificate ? <CertificateEvidence certificate={certificate} title={titles[key]} /> : null}
     </article>
   );
 }

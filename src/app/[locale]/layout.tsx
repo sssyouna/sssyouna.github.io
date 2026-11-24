@@ -8,6 +8,7 @@ import {localizedMetadata} from '@/lib/metadata';
 import {DesktopShell} from '@/components/layout/desktop-shell';
 import {projects} from '@/content/projects';
 import {getProjectReports} from '@/lib/project-reports';
+import {getAvailableCertificates} from '@/lib/assets';
 import '../globals.css';
 import '../windows98.css';
 import '../desktop.css';
@@ -73,6 +74,7 @@ export default async function LocaleLayout({
         >
           <DesktopShell
             locale={locale as Locale}
+            certificates={getAvailableCertificates()}
             projects={projects.map((project) => ({
               slug: project.slug,
               title: project.title[locale as Locale],
