@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import type {Project} from '@/content/projects';
 import type {AcademicReport} from '@/content/project-reports';
@@ -52,10 +53,35 @@ export function ProjectCaseStudy({
             </a>
           ) : null}
           <ReportActions reports={reports} />
+          {project.externalReports?.length ? (
+            <div className="mt-6 flex flex-col gap-4">
+              {project.externalReports.map((report) => (
+                <div key={report.title.en}>
+                  <p className="mb-2 text-sm font-semibold text-foreground">{report.title[locale]}</p>
+                  <div className="flex flex-wrap gap-2">
+                    <a className="button-retro" href={report.viewUrl} target="_blank" rel="noopener noreferrer">{locale === 'fr' ? 'Voir le rapport' : 'View Report'} ↗</a>
+                    <a className="button-retro" href={report.downloadUrl} download>{locale === 'fr' ? 'Télécharger' : 'Download'} ↓</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
 
       <section data-background-section="projects" className="section-space">
+        {project.images?.length ? (
+          <div className="mx-auto mb-12 w-full max-w-4xl px-6 sm:px-8 lg:px-10">
+            <div className="grid gap-6 sm:grid-cols-2">
+              {project.images.map((image) => (
+                <figure key={image.src} className={image.src.includes('general-architecture') ? 'sm:col-span-2' : ''}>
+                  <Image src={image.src} alt={image.alt[locale]} width={1200} height={800} sizes="(max-width: 640px) 100vw, 50vw" className="h-auto w-full border border-border object-contain" />
+                  <figcaption className="mt-3 text-sm leading-6 text-foreground-muted">{image.caption[locale]}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ) : null}
         <div className="mx-auto grid w-full max-w-4xl gap-12 px-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_12rem] lg:px-10">
           <div className="space-y-12">
             {project.sections.map((section, index) => (

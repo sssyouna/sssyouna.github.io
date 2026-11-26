@@ -7,24 +7,28 @@ export function localizedMetadata({
   locale,
   path,
   title,
-  description
+  description,
+  imagePath,
+  imageAlt
 }: {
   locale: Locale;
   path: string;
   title: string;
   description: string;
+  imagePath?: string;
+  imageAlt?: {en:string;fr:string};
 }): Metadata {
   const localizedPath = `/${locale}${path}`;
   const englishPath = `/en${path}`;
   const frenchPath = `/fr${path}`;
   const image = {
-    url: `${siteUrl}/images/og/portfolio.png`,
+    url: `${siteUrl}${imagePath ?? '/images/og/portfolio.png'}`,
     width: 1200,
     height: 630,
     type: 'image/png',
-    alt: locale === 'fr'
+    alt: imageAlt?.[locale] ?? (locale === 'fr'
       ? 'Younass Ibn Abdeslam — Portfolio cybersécurité, bureau interactif inspiré de Windows'
-      : 'Younass Ibn Abdeslam — Cybersecurity portfolio, interactive Windows-inspired desktop'
+      : 'Younass Ibn Abdeslam — Cybersecurity portfolio, interactive Windows-inspired desktop')
   };
 
   return {
