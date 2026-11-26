@@ -120,12 +120,12 @@
       "openPhoto": "Open the full-size photo: {event} (new tab)",
       "photos": {
         "gitex": "Conference audience on the GITEX exhibition floor.",
-        "secops": "Group award photograph from the SecOps competition."
+        "secops": "Group award photograph from the ENSA Fès CTF."
       },
       "noPhotos": "No photo has been provided for this activity.",
       "items": {
         "gitex": {"title": "GITEX participation", "summary": "Participation details are not documented yet.", "detail": "GITEX participation was listed for this portfolio. The year, role, and other details have not been provided.", "details": "A photograph of the conference audience is included below."},
-        "ctf": {"title": "SecOps Competition", "summary": "Second-place cybersecurity CTF achievement.", "details": "The competition year and additional ranking details are not documented."},
+        "ctf": {"title": "ENSA Fès CTF", "summary": "Second place in 2025.", "details": "Second-place team result with Brahim Elfarroud."},
         "community": {"title": "SecOps Club activities", "summary": "Verified community learning and participation.", "details": "Activities documented in the portfolio include Wireshark, steganography, CTF participation, and binary exploitation."}
       }
     },
@@ -137,7 +137,7 @@
         "jrPentester": {"title": "Jr Penetration Tester", "summary": "TryHackMe learning path."},
         "securityEngineer": {"title": "Security Engineer", "summary": "TryHackMe learning path."},
         "cyberSecurity101": {"title": "Cyber Security 101", "summary": "TryHackMe learning path."},
-        "ctf": {"title": "ENSA Fès CTF", "summary": "Second-place competition achievement."},
+        "ctf": {"title": "ENSA Fès CTF", "summary": "Second place in 2025."},
         "secOps": {"title": "SecOps Club", "summary": "Community learning and activities."}
       }
     },
@@ -157,9 +157,9 @@
       "themeDescription": "Choose the desktop interface style.",
       "themes": {"professional": "Windows Professional", "terminal": "Cyber Terminal"},
       "selected": "Selected",
-      "wallpaper": "Wallpaper",
-      "wallpaperDescription": "Choose an original, animated pixel-art, or solid background.",
-      "wallpapers": {"original": "Original", "animated": "Animated pixel art", "solid": "Solid"},
+      "wallpaper": "Background",
+      "wallpaperDescription": "Choose the classic wallpaper, animated pixel art, or a solid color.",
+      "wallpapers": {"classic": "Classic wallpaper", "animated": "Animated pixel art", "solid": "Solid color"},
       "animation": "Animation intensity",
       "animationDescription": "Control the speed and motion of animated backgrounds.",
       "animations": {"off": "Off", "subtle": "Subtle", "normal": "Normal"},
@@ -289,7 +289,7 @@
       "tryHackMePathsTitle": "Top 1% profile achievement",
       "tryHackMePathsDetail": "TryHackMe Top 1% profile achievement. Completed learning paths: Jr Penetration Tester, Security Engineer, and Cyber Security 101. These are platform learning achievements, not independent professional certifications.",
       "ctfTitle": "2nd place at the ENSA Fès CTF",
-      "ctfDetail": "A competition result reflecting participation in a cybersecurity challenge. No competition year, team name, challenge count, or additional ranking details are assumed.",
+      "ctfDetail": "Second-place CTF result in 2025, alongside teammate Brahim Elfarroud.",
       "clubTitle": "Member since October 2024",
       "clubDetail": "Community involvement through Wireshark, steganography, CTF participation, and binary exploitation activities. This represents practical learning and participation, not employment or a formal qualification.",
       "tryHackMeSecurityEngineerTitle": "Security Engineer",

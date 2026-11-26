@@ -84,63 +84,103 @@ body {
   content: "";
 }
 
+.terminal-character-rain {
+  display: none;
+}
+
+.portfolio-desktop[data-theme="terminal"][data-wallpaper="animated"] .terminal-character-rain {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  color: rgba(101, 240, 138, .24);
+  font: 8px/1 "Courier New", monospace;
+  letter-spacing: 2px;
+  image-rendering: pixelated;
+  animation: terminal-character-fall 24s linear infinite;
+}
+
+.terminal-character-rain-a { top: 8%; left: 18%; }
+.terminal-character-rain-b { top: 24%; left: 61%; animation-delay: -9s !important; }
+.terminal-character-rain-c { top: 46%; left: 38%; animation-delay: -17s !important; }
+
+.portfolio-desktop[data-animation="off"] .terminal-character-rain {
+  animation: none;
+}
+
+.portfolio-desktop[data-animation="subtle"] .terminal-character-rain {
+  animation-duration: 38s;
+}
+
+.portfolio-desktop[data-animation="normal"] .terminal-character-rain {
+  animation-duration: 18s;
+}
+
+.portfolio-desktop[data-wallpaper="classic"] .desktop-wallpaper {
+  background: #258ac7 url("/images/wallpaper/background.jpg") center center / cover no-repeat;
+}
+
 .portfolio-desktop[data-wallpaper="solid"] .desktop-wallpaper {
   background: var(--title-start);
 }
 
 .portfolio-desktop[data-wallpaper="animated"] .desktop-wallpaper {
   overflow: hidden;
-  background: linear-gradient(180deg, #79bde8 0 58%, #dcecf3 58% 64%, #7da66d 64% 100%);
+  background-size: cover;
+  image-rendering: pixelated;
+}
+
+.portfolio-desktop[data-theme="professional"][data-wallpaper="animated"] .desktop-wallpaper {
+  background: #70b5df url("/images/wallpaper/professional-pixel.svg") center center / cover no-repeat;
 }
 
 .portfolio-desktop[data-theme="terminal"][data-wallpaper="animated"] .desktop-wallpaper {
-  background:
-    linear-gradient(rgba(42, 255, 117, .08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42, 255, 117, .08) 1px, transparent 1px),
-    #020805;
-  background-size: 32px 32px;
+  background: #020805 url("/images/wallpaper/terminal-pixel.svg") center center / cover no-repeat;
 }
 
 .portfolio-desktop[data-theme="professional"][data-wallpaper="animated"] .desktop-wallpaper::before {
-  inset: 54% -15% -8%;
+  inset: 0;
   background:
-    linear-gradient(135deg, transparent 42%, #355f43 43% 58%, transparent 59%) 0 0 / 260px 180px,
-    linear-gradient(225deg, transparent 42%, #5f8064 43% 58%, transparent 59%) 100px 20px / 280px 190px,
-    linear-gradient(180deg, #78986d, #1f4d35);
-  clip-path: polygon(0 32%, 12% 20%, 24% 38%, 38% 12%, 54% 42%, 68% 20%, 82% 36%, 100% 10%, 100% 100%, 0 100%);
-  opacity: .9;
-  animation: professional-hills 20s linear infinite;
+    linear-gradient(90deg, transparent 0 12%, rgba(255,255,255,.72) 12% 18%, transparent 18% 58%, rgba(255,255,255,.62) 58% 64%, transparent 64%),
+    linear-gradient(90deg, transparent 0 20%, rgba(238,247,252,.58) 20% 25%, transparent 25% 72%, rgba(238,247,252,.5) 72% 78%, transparent 78%);
+  background-size: 320px 48px, 420px 40px;
+  background-position: 0 18%, 80px 28%;
+  background-repeat: repeat-x;
+  opacity: .48;
+  animation: professional-clouds 56s linear infinite;
 }
 
 .portfolio-desktop[data-theme="professional"][data-wallpaper="animated"] .desktop-wallpaper::after {
-  width: 88px;
-  height: 88px;
-  inset: 12% 12% auto auto;
-  border: 8px solid #f7e6a2;
-  background: #fff1af;
-  box-shadow: 0 0 24px rgba(255, 238, 169, .55);
+  width: 20px;
+  height: 20px;
+  inset: 12% 10% auto auto;
+  border: 3px solid #fff0a6;
+  background: #fff5bd;
+  box-shadow: 0 0 18px rgba(255, 238, 169, .35);
   image-rendering: pixelated;
-  animation: professional-sun 12s ease-in-out infinite alternate;
+  animation: professional-sun 16s ease-in-out infinite alternate;
 }
 
 .portfolio-desktop[data-theme="terminal"][data-wallpaper="animated"] .desktop-wallpaper::before {
+  inset: 0;
   background:
-    repeating-linear-gradient(180deg, transparent 0 21px, rgba(66, 255, 132, .18) 22px 23px),
-    linear-gradient(90deg, transparent 0 18%, rgba(49, 255, 116, .12) 18.5% 19%, transparent 19.5% 46%, rgba(49, 255, 116, .16) 46.5% 47%, transparent 47.5%);
-  opacity: .75;
-  animation: terminal-grid 10s linear infinite;
+    linear-gradient(90deg, transparent 0 17%, rgba(77,255,145,.22) 17% 17.5%, transparent 17.5% 52%, rgba(77,255,145,.16) 52% 52.5%, transparent 52.5%),
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(77,255,145,.10) 31px 32px);
+  background-size: 100% 100%, 100% 32px;
+  opacity: .72;
+  animation: terminal-grid 18s linear infinite;
 }
 
 .portfolio-desktop[data-theme="terminal"][data-wallpaper="animated"] .desktop-wallpaper::after {
-  inset: auto 8% 0 8%;
-  height: 38%;
+  inset: -20% 0 0;
   background:
-    repeating-linear-gradient(90deg, transparent 0 24px, rgba(72, 255, 137, .12) 25px 26px),
-    repeating-linear-gradient(0deg, transparent 0 24px, rgba(72, 255, 137, .12) 25px 26px);
-  mask-image: linear-gradient(to top, #000 0, transparent 92%);
-  transform: perspective(280px) rotateX(58deg) scale(1.25);
-  transform-origin: bottom;
-  animation: terminal-radar 8s linear infinite;
+    radial-gradient(circle at 12% 18%, rgba(77,255,145,.9) 0 1px, transparent 2px),
+    radial-gradient(circle at 42% 42%, rgba(77,255,145,.7) 0 1px, transparent 2px),
+    radial-gradient(circle at 68% 24%, rgba(77,255,145,.8) 0 1px, transparent 2px),
+    radial-gradient(circle at 86% 58%, rgba(77,255,145,.6) 0 1px, transparent 2px),
+    repeating-linear-gradient(90deg, transparent 0 48px, rgba(77,255,145,.08) 48px 49px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 49px 100%;
+  mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,.35) 70%, transparent 100%);
+  animation: terminal-particles 28s linear infinite;
 }
 
 .portfolio-desktop[data-animation="off"] .desktop-wallpaper::before,
@@ -159,9 +199,15 @@ body {
   animation-duration: 9s;
 }
 
-@keyframes professional-hills {
-  0%, 100% { transform: translateX(-1.5%); }
-  50% { transform: translateX(1.5%); }
+html[data-wallpaper-tab-visible="false"] .desktop-wallpaper *,
+html[data-wallpaper-tab-visible="false"] .desktop-wallpaper::before,
+html[data-wallpaper-tab-visible="false"] .desktop-wallpaper::after {
+  animation-play-state: paused !important;
+}
+
+@keyframes professional-clouds {
+  0% { background-position: 0 18%, 80px 28%; }
+  100% { background-position: 320px 18%, -340px 28%; }
 }
 
 @keyframes professional-sun {
@@ -170,14 +216,21 @@ body {
 }
 
 @keyframes terminal-grid {
-  0% { background-position: 0 0, 0 0, 0 0; transform: translateY(0); }
-  100% { background-position: 0 32px, 32px 0, 0 0; transform: translateY(32px); }
+  0% { background-position: 0 0, 0 0; transform: translateY(0); }
+  100% { background-position: 0 0, 0 32px; transform: translateY(32px); }
 }
 
-@keyframes terminal-radar {
-  0% { opacity: .45; background-position: 0 0, 0 0; }
-  50% { opacity: .9; }
-  100% { opacity: .45; background-position: 48px 0, 0 48px; }
+@keyframes terminal-particles {
+  0% { transform: translateY(-12px); opacity: .55; }
+  50% { opacity: .85; }
+  100% { transform: translateY(96px); opacity: .55; }
+}
+
+@keyframes terminal-character-fall {
+  0% { transform: translateY(-24px); opacity: 0; }
+  12% { opacity: .28; }
+  88% { opacity: .28; }
+  100% { transform: translateY(64px); opacity: 0; }
 }
 
 .desktop-icons {
@@ -375,7 +428,7 @@ body {
 .appearance-choice[aria-pressed="true"] { border-style: inset; outline: 2px solid var(--xmas-green); outline-offset: 1px; }
 .appearance-choice small { font-size: 9px; }
 .wallpaper-preview { width: 100%; height: 34px; border: 1px solid var(--win-dark-shadow); }
-.wallpaper-choice-original .wallpaper-preview { background: url("/images/wallpaper/background.jpg") center / cover no-repeat; }
+.wallpaper-choice-classic .wallpaper-preview { background: url("/images/wallpaper/background.jpg") center / cover no-repeat; }
 .wallpaper-choice-animated .wallpaper-preview { background: repeating-linear-gradient(90deg, #79bde8 0 12px, #dcecf3 12px 24px, #6d9365 24px 36px); }
 .portfolio-desktop[data-theme="terminal"] .wallpaper-choice-animated .wallpaper-preview { background: repeating-linear-gradient(0deg, #020805 0 8px, #183a24 8px 9px); }
 .wallpaper-choice-solid .wallpaper-preview { background: var(--title-start); }
@@ -516,6 +569,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .desktop-wallpaper::before,
+  .desktop-wallpaper::after,
+  .desktop-wallpaper { animation: none !important; }
 }
 
 .contact-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }

@@ -120,12 +120,12 @@
       "openPhoto": "Ouvrir la photo en taille réelle : {event} (nouvel onglet)",
       "photos": {
         "gitex": "Public d’une conférence dans l’espace d’exposition de GITEX.",
-        "secops": "Photo de groupe lors de la remise des prix de la compétition SecOps."
+        "secops": "Photo de groupe lors de la remise des prix du CTF de l’ENSA Fès."
       },
       "noPhotos": "Aucune photo n’a été fournie pour cette activité.",
       "items": {
         "gitex": {"title": "Participation à GITEX", "summary": "Les détails de participation ne sont pas encore documentés.", "detail": "La participation à GITEX a été indiquée pour ce portfolio. L'année, le rôle et les autres détails n'ont pas été fournis.", "details": "Une photographie du public de la conférence figure ci-dessous."},
-        "ctf": {"title": "Compétition SecOps", "summary": "Deuxième place à un CTF de cybersécurité.", "details": "L'année de la compétition et les détails supplémentaires du classement ne sont pas documentés."},
+        "ctf": {"title": "CTF de l’ENSA Fès", "summary": "Deuxième place en 2025.", "details": "Résultat d’équipe à la deuxième place avec Brahim Elfarroud."},
         "community": {"title": "Activités du SecOps Club", "summary": "Apprentissage communautaire et participation vérifiés.", "details": "Les activités documentées comprennent Wireshark, la stéganographie, la participation à des CTF et l'exploitation binaire."}
       }
     },
@@ -137,7 +137,7 @@
         "jrPentester": {"title": "Jr Penetration Tester", "summary": "Parcours d'apprentissage TryHackMe."},
         "securityEngineer": {"title": "Security Engineer", "summary": "Parcours d'apprentissage TryHackMe."},
         "cyberSecurity101": {"title": "Cyber Security 101", "summary": "Parcours de formation TryHackMe."},
-        "ctf": {"title": "CTF de l'ENSA Fès", "summary": "Résultat de deuxième place en compétition."},
+        "ctf": {"title": "CTF de l’ENSA Fès", "summary": "Deuxième place en 2025."},
         "secOps": {"title": "SecOps Club", "summary": "Apprentissage et activités communautaires."}
       }
     },
@@ -157,9 +157,9 @@
       "themeDescription": "Choisir le style de l’interface du bureau.",
       "themes": {"professional": "Windows Professionnel", "terminal": "Terminal Cyber"},
       "selected": "Sélectionné",
-      "wallpaper": "Fond d’écran",
-      "wallpaperDescription": "Choisir le fond original, animé en pixel art ou uni.",
-      "wallpapers": {"original": "Original", "animated": "Pixel art animé", "solid": "Uni"},
+      "wallpaper": "Arrière-plan",
+      "wallpaperDescription": "Choisir le fond classique, le pixel art animé ou une couleur unie.",
+      "wallpapers": {"classic": "Fond classique", "animated": "Pixel art animé", "solid": "Couleur unie"},
       "animation": "Intensité d’animation",
       "animationDescription": "Contrôler la vitesse et le mouvement des fonds animés.",
       "animations": {"off": "Désactivée", "subtle": "Subtile", "normal": "Normale"},
@@ -289,7 +289,7 @@
       "tryHackMePathsTitle": "Profil classé dans le Top 1%",
       "tryHackMePathsDetail": "Profil TryHackMe classé dans le Top 1 %. Parcours terminés : Jr Penetration Tester, Security Engineer et Cyber Security 101. Ces réalisations de formation sur la plateforme ne sont pas des certifications professionnelles indépendantes.",
       "ctfTitle": "2e place au CTF de l'ENSA Fès",
-      "ctfDetail": "Un résultat en compétition qui témoigne d'une participation à un challenge de cybersécurité. L'année, le nom de l'équipe, le nombre d'épreuves et les autres détails de classement ne sont pas supposés.",
+      "ctfDetail": "Résultat du CTF à la deuxième place en 2025, avec Brahim Elfarroud.",
       "clubTitle": "Membre depuis octobre 2024",
       "clubDetail": "Engagement communautaire autour de Wireshark, de la stéganographie, de la participation à des CTF et de l'exploitation binaire. Il s'agit d'apprentissage pratique et de participation, et non d'un emploi ou d'une qualification officielle.",
       "tryHackMeSecurityEngineerTitle": "Security Engineer",

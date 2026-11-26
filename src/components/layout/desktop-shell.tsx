@@ -22,7 +22,7 @@ import {
 } from '@/components/desktop/explorer-window';
 
 type Theme = 'professional' | 'terminal';
-type Wallpaper = 'original' | 'animated' | 'solid';
+type Wallpaper = 'classic' | 'animated' | 'solid';
 type AnimationIntensity = 'off' | 'subtle' | 'normal';
 type WindowKind = 'welcome' | 'explorer' | 'settings' | 'route';
 type DesktopWindowState = {
@@ -150,7 +150,7 @@ export function DesktopShell({
   const pathname = usePathname();
   const router = useRouter();
   const [theme, setTheme] = useState<Theme>('professional');
-  const [wallpaper, setWallpaper] = useState<Wallpaper>('original');
+  const [wallpaper, setWallpaper] = useState<Wallpaper>('animated');
   const [animationIntensity, setAnimationIntensity] = useState<AnimationIntensity>('subtle');
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -176,7 +176,8 @@ export function DesktopShell({
     queueMicrotask(() => {
       if (stored === 'terminal' || stored === 'dark') setTheme('terminal');
       else setTheme('professional');
-      if (storedWallpaper === 'original' || storedWallpaper === 'animated' || storedWallpaper === 'solid') setWallpaper(storedWallpaper);
+      if (storedWallpaper === 'classic' || storedWallpaper === 'original') setWallpaper('classic');
+      else if (storedWallpaper === 'animated' || storedWallpaper === 'solid') setWallpaper(storedWallpaper);
       if (storedAnimation === 'off' || storedAnimation === 'subtle' || storedAnimation === 'normal') setAnimationIntensity(storedAnimation);
       setThemeLoaded(true);
     });
@@ -190,6 +191,13 @@ export function DesktopShell({
     };
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const updateVisibility = () => document.documentElement.dataset.wallpaperTabVisible = document.visibilityState === 'visible' ? 'true' : 'false';
+    updateVisibility();
+    document.addEventListener('visibilitychange', updateVisibility);
+    return () => document.removeEventListener('visibilitychange', updateVisibility);
   }, []);
 
   const setThemePreference = (nextTheme: Theme) => {
@@ -335,7 +343,11 @@ export function DesktopShell({
         setIsStartMenuOpen(false);
       }
     }}>
-      <div className="desktop-wallpaper" aria-hidden="true" />
+      <div className="desktop-wallpaper" aria-hidden="true">
+        <span className="terminal-character-rain terminal-character-rain-a">0101&nbsp;&nbsp;7F</span>
+        <span className="terminal-character-rain terminal-character-rain-b">AUTH&nbsp;&nbsp;A3</span>
+        <span className="terminal-character-rain terminal-character-rain-c">SYS&nbsp;&nbsp;0001</span>
+      </div>
 
       <nav className="desktop-icons" aria-label={navigation('desktopShortcuts')}>
         {desktopIcons.map((spec) => (
@@ -428,7 +440,7 @@ export function DesktopShell({
                       <h2>{desktop('settings.wallpaper')}</h2>
                       <p>{desktop('settings.wallpaperDescription')}</p>
                       <div className="settings-options wallpaper-options">
-                        {(['original', 'animated', 'solid'] as const).map((choice) => (
+                        {(['classic', 'animated', 'solid'] as const).map((choice) => (
                           <button key={choice} type="button" className={`appearance-choice wallpaper-choice-${choice}`} aria-pressed={wallpaper === choice} onClick={() => setWallpaperPreference(choice)}>
                             <span className="wallpaper-preview" aria-hidden="true" />
                             <span>{desktop(`settings.wallpapers.${choice}`)}</span>
