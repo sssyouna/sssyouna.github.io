@@ -242,6 +242,13 @@ export const projects: Project[] = [
           en: 'Windows Sysmon reaches Wazuh through the Agent; pfSense, Suricata, and Zeek telemetry reach it through syslog-ng or Filebeat. Verified detections include firewall rule 100114, Suricata 2009358 mapped to Wazuh 100121, and Zeek HTTP rule 100131. The 311-evidence report distinguishes successful final states from intermediate failures.',
           fr: 'Sysmon Windows rejoint Wazuh via l’agent ; les télémétries pfSense, Suricata et Zeek y arrivent via syslog-ng ou Filebeat. Les détections vérifiées comprennent la règle pare-feu 100114, Suricata 2009358 associée à Wazuh 100121 et la règle HTTP Zeek 100131. Le rapport fondé sur 311 preuves distingue les états finaux réussis des échecs intermédiaires.'
         }
+      },
+      {
+        title: {en: 'Limitation and future roadmap', fr: 'Limite actuelle et feuille de route'},
+        body: {
+          en: 'The only current limitation is available homelab resources. The project is planned to evolve into a SOAR platform by adding cloud-hosted components and security services, automating detection-to-response workflows, and integrating cloud telemetry and orchestration with the existing local SOC.',
+          fr: 'La seule limite actuelle est la disponibilité des ressources du laboratoire. Le projet doit évoluer vers une plateforme SOAR en ajoutant des composants et services de sécurité hébergés dans le cloud, en automatisant les workflows de détection à réponse et en intégrant les télémétries et l’orchestration cloud au SOC local existant.'
+        }
       }
     ]
   }
