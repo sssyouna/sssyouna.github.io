@@ -28,7 +28,11 @@ export async function generateMetadata({
     locale,
     path: `/projects/${slug}`,
     title: `${project.title[locale]} | ${t('metadataTitle')}`,
-    description: project.summary[locale]
+    description: project.summary[locale],
+    ...(slug === 'pfsense-high-availability-lab' ? {
+      imagePath:'/images/og/soc-homelab.png',
+      imageAlt:{en:'High-Availability SOC Homelab project',fr:'Projet de laboratoire SOC haute disponibilité'}
+    } : {})
   });
 }
 

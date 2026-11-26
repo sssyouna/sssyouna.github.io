@@ -18,6 +18,18 @@ export type ProjectSection = {
   body: LocalizedText;
 };
 
+export type ProjectImage = {
+  src: string;
+  alt: LocalizedText;
+  caption: LocalizedText;
+};
+
+export type ExternalProjectReport = {
+  title: LocalizedText;
+  viewUrl: string;
+  downloadUrl: string;
+};
+
 export type Project = {
   slug: string;
   category: ProjectCategory;
@@ -26,6 +38,8 @@ export type Project = {
   summary: LocalizedText;
   technologies: string[];
   repository?: string;
+  images?: ProjectImage[];
+  externalReports?: ExternalProjectReport[];
   sections: ProjectSection[];
 };
 
@@ -185,36 +199,48 @@ export const projects: Project[] = [
   {
     slug: 'pfsense-high-availability-lab',
     category: 'network-infrastructure-security',
-    status: 'experimental',
+    status: 'completed',
     title: {
-      en: 'pfSense High Availability Lab',
-      fr: 'Laboratoire de haute disponibilité pfSense'
+      en: 'High-Availability SOC Homelab & Detection Engineering',
+      fr: 'Laboratoire SOC haute disponibilité et ingénierie de détection'
     },
     summary: {
-      en: 'An experimental infrastructure lab exploring pfSense failover, state synchronization, and security monitoring.',
-      fr: 'Un laboratoire d’infrastructure expérimental autour du basculement pfSense, de la synchronisation des états et de la supervision de sécurité.'
+      en: 'A completed blue-team lab combining redundant pfSense infrastructure, Suricata and Zeek network visibility, Windows endpoint telemetry, Wazuh detection engineering, and controlled external reconnaissance.',
+      fr: 'Un laboratoire défensif complet associant une infrastructure pfSense redondante, la visibilité réseau Suricata et Zeek, la télémétrie endpoint Windows, l’ingénierie de détection Wazuh et des tests externes contrôlés.'
     },
-    technologies: ['pfSense 2.8.1', 'CARP', 'pfsync', 'Suricata'],
+    technologies: ['pfSense 2.9.1', 'CARP', 'pfsync', 'Suricata', 'Zeek', 'Wazuh', 'Sysmon', 'syslog-ng', 'Filebeat'],
+    repository: 'https://github.com/sssyouna/SOC-LAB',
+    images: [
+      {src:'/images/projects/soc-homelab/general-architecture.png', alt:{en:'SOC homelab physical and virtual architecture',fr:'Architecture physique et virtuelle du laboratoire SOC'}, caption:{en:'Physical and virtual network architecture',fr:'Architecture réseau physique et virtuelle'}},
+      {src:'/images/projects/soc-homelab/wazuh-dashboard.jpg', alt:{en:'Wazuh SOC dashboard',fr:'Tableau de bord SOC Wazuh'}, caption:{en:'Wazuh dashboard and indexed SOC events',fr:'Tableau de bord Wazuh et événements SOC indexés'}},
+      {src:'/images/projects/soc-homelab/carp-validation.jpg', alt:{en:'CARP HA validation evidence',fr:'Preuve de validation HA CARP'}, caption:{en:'CARP roles and final HA validation',fr:'Rôles CARP et validation finale de la haute disponibilité'}},
+      {src:'/images/projects/soc-homelab/suricata-detection.jpg', alt:{en:'Suricata detection evidence',fr:'Preuve de détection Suricata'}, caption:{en:'Suricata network detection',fr:'Détection réseau Suricata'}},
+      {src:'/images/projects/soc-homelab/zeek-detection.jpg', alt:{en:'Zeek HTTP and network detection evidence',fr:'Preuve de détection HTTP et réseau Zeek'}, caption:{en:'Zeek HTTP detection and network metadata',fr:'Détection HTTP Zeek et métadonnées réseau'}}
+    ],
+    externalReports: [
+      {title:{en:'Implementation Report',fr:'Rapport de mise en œuvre'},viewUrl:'https://github.com/sssyouna/SOC-LAB/blob/main/docs/SOC_Homelab_Implementation_Report.pdf',downloadUrl:'https://raw.githubusercontent.com/sssyouna/SOC-LAB/main/docs/SOC_Homelab_Implementation_Report.pdf'},
+      {title:{en:'Troubleshooting Report',fr:'Rapport de dépannage'},viewUrl:'https://github.com/sssyouna/SOC-LAB/blob/main/docs/SOC_Homelab_Troubleshooting_Report.pdf',downloadUrl:'https://raw.githubusercontent.com/sssyouna/SOC-LAB/main/docs/SOC_Homelab_Troubleshooting_Report.pdf'}
+    ],
     sections: [
       {
-        title: {en: 'Objective', fr: 'Objectif'},
+        title: {en: 'Project objectives', fr: 'Objectifs du projet'},
         body: {
-          en: 'Explore a master/backup firewall arrangement and how high availability mechanisms can coexist with security monitoring.',
-          fr: 'Explorer une architecture de pare-feu maître/secours et la coexistence des mécanismes de haute disponibilité avec la supervision de sécurité.'
+          en: 'Build a defensible, documented SOC environment combining redundant network infrastructure, centralized monitoring, endpoint visibility, detection engineering, and controlled external testing.',
+          fr: 'Construire un environnement SOC défensif et documenté associant une infrastructure réseau redondante, une supervision centralisée, la visibilité des endpoints, l’ingénierie de détection et des tests externes contrôlés.'
         }
       },
       {
-        title: {en: 'Architecture', fr: 'Architecture'},
+        title: {en: 'Architecture and high availability', fr: 'Architecture et haute disponibilité'},
         body: {
-          en: 'The documented lab uses CARP for virtual IP failover and pfsync for state synchronization between pfSense nodes, with Suricata included for security monitoring.',
-          fr: 'Le laboratoire documenté utilise CARP pour le basculement d’une adresse IP virtuelle et pfsync pour synchroniser les états entre les nœuds pfSense, avec Suricata pour la supervision de sécurité.'
+          en: 'Two pfSense nodes share LAN CARP VIP 10.200.200.1, with Master/Backup roles, pfsync state synchronization, and XMLRPC configuration synchronization. Evidence includes complementary CARP roles, state IDs on both nodes, XMLRPC alias synchronization, and pfsync MTU 1500 compatibility.',
+          fr: 'Deux nœuds pfSense partagent la VIP LAN CARP 10.200.200.1, avec des rôles Master/Backup, une synchronisation d’état pfsync et une synchronisation XMLRPC des configurations. Les preuves montrent des rôles CARP complémentaires, des ID d’état sur les deux nœuds, une synchronisation XMLRPC d’alias et une compatibilité pfsync avec une MTU de 1500.'
         }
       },
       {
-        title: {en: 'Current status', fr: 'État actuel'},
+        title: {en: 'Detection and validation', fr: 'Détection et validation'},
         body: {
-          en: 'Experimental lab. It is not presented as a fully operational production environment.',
-          fr: 'Laboratoire expérimental. Il n’est pas présenté comme un environnement de production pleinement opérationnel.'
+          en: 'Windows Sysmon reaches Wazuh through the Agent; pfSense, Suricata, and Zeek telemetry reach it through syslog-ng or Filebeat. Verified detections include firewall rule 100114, Suricata 2009358 mapped to Wazuh 100121, and Zeek HTTP rule 100131. The 311-evidence report distinguishes successful final states from intermediate failures.',
+          fr: 'Sysmon Windows rejoint Wazuh via l’agent ; les télémétries pfSense, Suricata et Zeek y arrivent via syslog-ng ou Filebeat. Les détections vérifiées comprennent la règle pare-feu 100114, Suricata 2009358 associée à Wazuh 100121 et la règle HTTP Zeek 100131. Le rapport fondé sur 311 preuves distingue les états finaux réussis des échecs intermédiaires.'
         }
       }
     ]

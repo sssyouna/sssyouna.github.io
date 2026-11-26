@@ -1,18 +1,22 @@
 import type {Metadata} from 'next';
 import type {Locale} from '@/i18n/routing';
 
-const siteUrl = 'https://younass.me';
+const siteUrl = 'https://www.younass.me';
 
 export function localizedMetadata({
   locale,
   path,
   title,
-  description
+  description,
+  imagePath,
+  imageAlt
 }: {
   locale: Locale;
   path: string;
   title: string;
   description: string;
+  imagePath?: string;
+  imageAlt?: {en:string;fr:string};
 }): Metadata {
   const localizedPath = `/${locale}${path}`;
   const englishPath = `/en${path}`;
@@ -36,12 +40,14 @@ export function localizedMetadata({
       url: localizedPath,
       siteName: 'Younass.me',
       title,
-      description
+      description,
+      ...(imagePath ? {images:[{url:`${siteUrl}${imagePath}`,width:1200,height:630,alt:imageAlt?.[locale] ?? title}]} : {})
     },
     twitter: {
-      card: 'summary',
+      card: imagePath ? 'summary_large_image' : 'summary',
       title,
-      description
+      description,
+      ...(imagePath ? {images:[`${siteUrl}${imagePath}`]} : {})
     }
   };
 }
