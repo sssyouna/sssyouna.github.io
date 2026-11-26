@@ -21,7 +21,9 @@ import {
   type ExplorerLocation
 } from '@/components/desktop/explorer-window';
 
-type Theme = 'blue' | 'white' | 'dark';
+type Theme = 'professional' | 'terminal';
+type Wallpaper = 'original' | 'animated' | 'solid';
+type AnimationIntensity = 'off' | 'subtle' | 'normal';
 type WindowKind = 'welcome' | 'explorer' | 'settings' | 'route';
 type DesktopWindowState = {
   id: string;
@@ -44,6 +46,8 @@ type IconSpec = {
 };
 
 const STORAGE_KEY = 'younass-desktop-theme';
+const WALLPAPER_STORAGE_KEY = 'younass-desktop-wallpaper';
+const ANIMATION_STORAGE_KEY = 'younass-desktop-animation';
 const iconPath = (name: string) => `/images/windows-icons/${name}.png`;
 const iconAsset = (name: string) => name.endsWith('.svg') ? `/images/windows-icons/${name}` : iconPath(name);
 
@@ -145,7 +149,9 @@ export function DesktopShell({
   const about = useTranslations('About');
   const pathname = usePathname();
   const router = useRouter();
-  const [theme, setTheme] = useState<Theme>('blue');
+  const [theme, setTheme] = useState<Theme>('professional');
+  const [wallpaper, setWallpaper] = useState<Wallpaper>('original');
+  const [animationIntensity, setAnimationIntensity] = useState<AnimationIntensity>('subtle');
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
@@ -160,9 +166,18 @@ export function DesktopShell({
 
   useEffect(() => {
     let stored: string | null = null;
-    try { stored = window.localStorage.getItem(STORAGE_KEY); } catch { /* Storage can be disabled. */ }
+    let storedWallpaper: string | null = null;
+    let storedAnimation: string | null = null;
+    try {
+      stored = window.localStorage.getItem(STORAGE_KEY);
+      storedWallpaper = window.localStorage.getItem(WALLPAPER_STORAGE_KEY);
+      storedAnimation = window.localStorage.getItem(ANIMATION_STORAGE_KEY);
+    } catch { /* Storage can be disabled. */ }
     queueMicrotask(() => {
-      if (stored === 'blue' || stored === 'white' || stored === 'dark') setTheme(stored);
+      if (stored === 'terminal' || stored === 'dark') setTheme('terminal');
+      else setTheme('professional');
+      if (storedWallpaper === 'original' || storedWallpaper === 'animated' || storedWallpaper === 'solid') setWallpaper(storedWallpaper);
+      if (storedAnimation === 'off' || storedAnimation === 'subtle' || storedAnimation === 'normal') setAnimationIntensity(storedAnimation);
       setThemeLoaded(true);
     });
   }, []);
@@ -180,6 +195,16 @@ export function DesktopShell({
   const setThemePreference = (nextTheme: Theme) => {
     setTheme(nextTheme);
     try { window.localStorage.setItem(STORAGE_KEY, nextTheme); } catch { /* Keep the in-memory preference. */ }
+  };
+
+  const setWallpaperPreference = (nextWallpaper: Wallpaper) => {
+    setWallpaper(nextWallpaper);
+    try { window.localStorage.setItem(WALLPAPER_STORAGE_KEY, nextWallpaper); } catch { /* Keep the in-memory preference. */ }
+  };
+
+  const setAnimationPreference = (nextIntensity: AnimationIntensity) => {
+    setAnimationIntensity(nextIntensity);
+    try { window.localStorage.setItem(ANIMATION_STORAGE_KEY, nextIntensity); } catch { /* Keep the in-memory preference. */ }
   };
 
   const bringToFront = useCallback((id: string) => {
@@ -304,7 +329,7 @@ export function DesktopShell({
       activeId: activeWindowId, order: routeWindow ? windowList.indexOf(routeWindow) : 0,
       registerRoute, focus: bringToFront, close: closeWindow, minimize: minimizeWindow, maximize: toggleMaximize
     }}>
-    <div className="portfolio-desktop" data-theme={theme} data-theme-ready={themeLoaded} onClick={(event) => {
+    <div className="portfolio-desktop" data-theme={theme} data-wallpaper={wallpaper} data-animation={animationIntensity} data-theme-ready={themeLoaded} onClick={(event) => {
       if (event.target === event.currentTarget) {
         setSelectedIcon(null);
         setIsStartMenuOpen(false);
@@ -390,7 +415,7 @@ export function DesktopShell({
                       <h2>{desktop('settings.theme')}</h2>
                       <p>{desktop('settings.themeDescription')}</p>
                       <div className="settings-options theme-options">
-                        {(['blue', 'white', 'dark'] as const).map((choice) => (
+                        {(['professional', 'terminal'] as const).map((choice) => (
                           <button key={choice} type="button" className={`theme-choice theme-choice-${choice}`} aria-pressed={theme === choice} onClick={() => setThemePreference(choice)}>
                             <span className="theme-preview" aria-hidden="true" />
                             <span>{desktop(`settings.themes.${choice}`)}</span>
@@ -398,7 +423,32 @@ export function DesktopShell({
                           </button>
                         ))}
                       </div>
-                      <p className="settings-footnote">{desktop('settings.wallpaperUnchanged')}</p>
+                    </section>
+                    <section className="settings-section">
+                      <h2>{desktop('settings.wallpaper')}</h2>
+                      <p>{desktop('settings.wallpaperDescription')}</p>
+                      <div className="settings-options wallpaper-options">
+                        {(['original', 'animated', 'solid'] as const).map((choice) => (
+                          <button key={choice} type="button" className={`appearance-choice wallpaper-choice-${choice}`} aria-pressed={wallpaper === choice} onClick={() => setWallpaperPreference(choice)}>
+                            <span className="wallpaper-preview" aria-hidden="true" />
+                            <span>{desktop(`settings.wallpapers.${choice}`)}</span>
+                            {wallpaper === choice ? <small>{desktop('settings.selected')}</small> : null}
+                          </button>
+                        ))}
+                      </div>
+                    </section>
+                    <section className="settings-section">
+                      <h2>{desktop('settings.animation')}</h2>
+                      <p>{desktop('settings.animationDescription')}</p>
+                      <div className="settings-options animation-options">
+                        {(['off', 'subtle', 'normal'] as const).map((choice) => (
+                          <button key={choice} type="button" className="appearance-choice" aria-pressed={animationIntensity === choice} onClick={() => setAnimationPreference(choice)}>
+                            <span>{desktop(`settings.animations.${choice}`)}</span>
+                            {animationIntensity === choice ? <small>{desktop('settings.selected')}</small> : null}
+                          </button>
+                        ))}
+                      </div>
+                      <p className="settings-footnote">{desktop('settings.preferencesSaved')}</p>
                     </section>
                   </div>
                 ) : null}

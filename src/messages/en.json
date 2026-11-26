@@ -154,10 +154,16 @@
       "english": "English",
       "french": "Français",
       "theme": "Theme",
-      "themeDescription": "Choose the desktop interface colors. The wallpaper remains the same.",
-      "themes": {"blue": "Blue", "white": "White", "dark": "Dark"},
+      "themeDescription": "Choose the desktop interface style.",
+      "themes": {"professional": "Windows Professional", "terminal": "Cyber Terminal"},
       "selected": "Selected",
-      "wallpaperUnchanged": "Theme preference is saved on this device."
+      "wallpaper": "Wallpaper",
+      "wallpaperDescription": "Choose an original, animated pixel-art, or solid background.",
+      "wallpapers": {"original": "Original", "animated": "Animated pixel art", "solid": "Solid"},
+      "animation": "Animation intensity",
+      "animationDescription": "Control the speed and motion of animated backgrounds.",
+      "animations": {"off": "Off", "subtle": "Subtle", "normal": "Normal"},
+      "preferencesSaved": "Appearance preferences are saved on this device."
     },
     "startLinks": {
       "linkedin": "LinkedIn",

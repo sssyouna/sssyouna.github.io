@@ -154,10 +154,16 @@
       "english": "English",
       "french": "Français",
       "theme": "Thème",
-      "themeDescription": "Choisir les couleurs du bureau. Le fond d'écran reste identique.",
-      "themes": {"blue": "Bleu", "white": "Blanc", "dark": "Sombre"},
+      "themeDescription": "Choisir le style de l’interface du bureau.",
+      "themes": {"professional": "Windows Professionnel", "terminal": "Terminal Cyber"},
       "selected": "Sélectionné",
-      "wallpaperUnchanged": "Le thème est mémorisé sur cet appareil."
+      "wallpaper": "Fond d’écran",
+      "wallpaperDescription": "Choisir le fond original, animé en pixel art ou uni.",
+      "wallpapers": {"original": "Original", "animated": "Pixel art animé", "solid": "Uni"},
+      "animation": "Intensité d’animation",
+      "animationDescription": "Contrôler la vitesse et le mouvement des fonds animés.",
+      "animations": {"off": "Désactivée", "subtle": "Subtile", "normal": "Normale"},
+      "preferencesSaved": "Les préférences d’apparence sont mémorisées sur cet appareil."
     },
     "startLinks": {
       "linkedin": "LinkedIn",
